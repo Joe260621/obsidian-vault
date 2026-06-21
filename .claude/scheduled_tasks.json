@@ -1,0 +1,13 @@
+{
+  "tasks": [
+    {
+      "id": "897a642b",
+      "cron": "35 8 24 6 *",
+      "prompt": "🔔 今天（6月24日）是海珠区社区专职工作人员笔试（6月14日）后的第7个工作日，成绩可能今天公布。请在早晨例行中额外执行以下操作：1) 用 WebSearch 搜索「海珠区 2026 社区专职工作人员 笔试成绩」；2) 用 PowerShell 尝试抓取 https://hzsg2026.zhaopin.com/zk/ 页面关键词；3) 将查询结果写入飞书推送中。之后每天继续监测直到成绩公布。",
+      "createdAt": 1781775768772,
+      "createdBySessionId": "95f86268-f8e0-4bc2-b46d-0ddac992b402",
+      "createdByPid": 3924,
+      "createdByProcStart": "639174235597826040"
+    }
+  ]
+}

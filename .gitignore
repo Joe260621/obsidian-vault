@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Backup directories (large)
+backup-laptop/
+
+# Backup archives (large files)
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Obsidian workspace state (changes constantly)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+*.swp
+*.swo
