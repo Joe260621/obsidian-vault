@@ -1,0 +1,3 @@
+- [Auto-execute preference](auto-execute-preference.md) — User prefers direct execution, no confirmation needed for non-destructive ops
+- [DeepSeek token optimization](deepseek-token-optimization.md) — Flash default, session-segmentation rules (15-20), cost-monitoring hooks, 2026-06-20 incident postmortem
+- [Mentor role](mentor-role.md) — Claude as Mentor not Consultant: protect thinking process, slow convergence, methodology over directions

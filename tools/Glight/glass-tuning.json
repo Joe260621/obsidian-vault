@@ -1,0 +1,21 @@
+{
+  "cornerR": 48,
+  "cornerN": 2.1,
+  "refractBand": 3,
+  "edgeSqueeze": 0.25,
+  "contrast": 1.2,
+  "brightness": 0.9,
+  "saturate": 1.5,
+  "lampR": 19,
+  "lampGap": 64,
+  "glow": 0,
+  "springK": 120,
+  "springC": 8,
+  "steadyX": 0.91,
+  "steadyY": 1.11,
+  "pressX": 0.82,
+  "pressY": 1.22,
+  "dragK": 0.02,
+  "dragMin": 0.5,
+  "releaseImpulse": 1.5
+}

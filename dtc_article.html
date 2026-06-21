@@ -1,0 +1,1164 @@
+<!DOCTYPE html><html lang="en"><!--
+  ########     ###    ########  ######## ##     ## #### ######## ##      ##
+  ##     ##   ## ##   ##     ## ##       ##     ##  ##  ##       ##  ##  ##
+  ##     ##  ##   ##  ##     ## ##       ##     ##  ##  ##       ##  ##  ##
+  ########  ##     ## ########  ######   ##     ##  ##  ######   ##  ##  ##
+  ##   ##   ######### ##   ##   ##        ##   ##   ##  ##       ##  ##  ##
+  ##    ##  ##     ## ##    ##  ##         ## ##    ##  ##       ##  ##  ##
+  ##     ## ##     ## ##     ## ########    ###    #### ########  ###  ### 
+
+  # rareview.com
+  # Built: 2026
+  # Stack: markdown to html (file over app) and back to markdown (for the machines)
+  # Agencies are a dime a dozen. The great ones are rare.
+  # Minimalism is a movement. Brutalism is a lifestyle. 
+  # Simple is better. 
+  --><head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M82JSQZ');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin"> 
+    <meta name="robots" content="index, follow">
+    <meta property="og:site_name" content="Rareview®">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:logo" content="https://rareview.com/_Assets/logo.png">
+
+    <title>DTC's reckoning - Rareview®</title>
+    <meta name="description" content="How sameness, bad AI, and the platform tax killed the direct promise. CMO Rob Pearson on the structural reset facing direct-to-consumer brands and what has to change now.">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Rareview®" href="/feed.rss">
+    <link rel="icon" href="https://cdn.blot.im/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_avatars/eff2c957-f822-4137-b85c-c3e2393cd24d.png" type="image/x-icon">
+    <link rel="preconnect" href="https://cdn.blot.im">
+    <!-- @font-face lives in styles-fonts.css (not styles-base — appCSS/minify dropped Regular). -->
+    <link rel="preload" href="https://cdn.blot.im/folder/v-718c960b/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_Fonts/rmneue-regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="https://cdn.blot.im/folder/v-e2754598/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_Fonts/rmneue-semibold.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="https://cdn.blot.im/template/cb/6f/26be53e013dc1254c115f8f4000b/styles-fonts.css">
+    <link rel="stylesheet" href="https://cdn.blot.im/template/d1/9e/292f1ae04311198190ad591bf577/styles-base.css">
+    <link rel="stylesheet" href="https://cdn.blot.im/template/88/f8/ef4489a5e26fc4088eb03981b713/styles-type.css">
+    <link rel="stylesheet" href="https://cdn.blot.im/template/20/bc/4add73bed7811e2daa3141e60738/styles-layout.css">
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "where": {
+            "href_matches": "/*"
+          },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+    </script>
+    <script>
+      (function () {
+        var path = (window.location.pathname || "/").replace(/\/$/, "") || "/";
+
+        function appendStyle(href) {
+          var link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = href;
+          document.head.appendChild(link);
+        }
+
+        document.documentElement.setAttribute("data-css-mode", "chunks");
+
+        var files = [
+          "lists",
+          "buttons",
+          "forms",
+        ];
+
+        var push = function (name) {
+          if (files.indexOf(name) === -1) {
+            files.push(name);
+          }
+        };
+
+        if (path === "/") {
+          push("cards");
+          push("work");
+        }
+
+        if (
+          path.indexOf("/work") === 0 ||
+          path.indexOf("/clients") === 0 ||
+          path.indexOf("/insights") === 0 ||
+          path.indexOf("/home") === 0 ||
+          path.indexOf("/tagged") === 0
+        ) {
+          push("work");
+          var entrySegments = path.split("/").filter(Boolean);
+          if (
+            entrySegments.length > 1 &&
+            entrySegments[1] !== "page" &&
+            entrySegments[1] !== "tagged"
+          ) {
+            push("cards");
+            push("video");
+          }
+        }
+
+        if (path.indexOf("/sectors") === 0) {
+          push("cards");
+        }
+
+        if (
+          path.indexOf("/capabilities") === 0 ||
+          path.indexOf("/brand") === 0 ||
+          path.indexOf("/design") === 0 ||
+          path.indexOf("/engineering") === 0 ||
+          path.indexOf("/marketing") === 0 ||
+          path.indexOf("/growth") === 0
+        ) {
+          push("capabilities");
+          push("cards");
+          push("video");
+        }
+
+        if (path.indexOf("/partners") === 0) {
+          push("cards");
+        }
+
+        files.forEach(function (file) {
+          appendStyle("/styles-" + file + ".css");
+        });
+      })();
+    </script>
+    <link rel="api-catalog" type="application/linkset+json" href="https://rareview.com/.well-known/api-catalog" title="API catalog (RFC 9727)">
+    <link rel="describedby" type="application/json" href="https://rareview.com/.well-known/agent-skills/index.json" title="Agent skills index">
+    <link rel="service-doc" type="text/plain" href="https://cdn.blot.im/folder/v-dddbcdc6/blog_7eeb38a72a6045e8906d9cc42a2b12ce/llms.txt" title="Site documentation for tools (llms.txt)">
+    <link rel="service-desc" type="application/json" href="https://rareview.com/.well-known/mcp/server-card.json" title="MCP server card (SEP)">
+    <script defer="" src="https://cdn.blot.im/template/1d/cc/a5ec6dd9b051a3fe8b20e318db0d/scripts-webmcp.js"></script>
+
+    <!-- (A) URL / identity -->
+    <link rel="canonical" href="https://rareview.com/articles/dtc-reckoning/">
+    <meta property="og:url" content="https://rareview.com/articles/dtc-reckoning/">
+
+    <!-- (B) Title -->
+    <meta property="og:title" content="DTC's reckoning">
+
+    <!-- (C) Summary (fallback to title if no summary) -->
+    <meta property="og:description" content="How sameness, bad AI, and the platform tax killed the direct promise. CMO Rob Pearson on the structural reset facing direct-to-consumer brands and what has to change now.">
+
+    <!-- (D) Preview image (prefer large for 1200×630-ish; fallback to medium) -->
+    <meta property="og:image" content="https://cdn.blot.im/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_thumbnails/97a2a051-f808-45e7-934e-3dbe1b711c07/large.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="840">
+
+    <!-- (E) Content type (article for posts) -->
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DTC's reckoning">
+    <meta name="twitter:description" content="How sameness, bad AI, and the platform tax killed the direct promise. CMO Rob Pearson on the structural reset facing direct-to-consumer brands and what has to change now.">
+    <meta name="twitter:image" content="https://cdn.blot.im/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_thumbnails/97a2a051-f808-45e7-934e-3dbe1b711c07/large.webp">
+
+    <!-- (F) Author: per-post AuthorUrl metadata overrides site-wide author_url -->
+    <meta property="article:author" content="https://rareview.com/principals/rob/">
+
+    <!-- (G) Dates (auto from Blot entry; ISO 8601 via formatDate/formatUpdated) -->
+    <meta property="article:published_time" content="2026-05-14T00:00:00-07:00">
+    <meta property="article:modified_time" content="2026-06-11T07:35:16-07:00">
+
+    <!-- (H) Tags -->
+    <meta property="article:tag" content="Articles">
+
+    <!-- Non-entry pages: og:type website; canonical/og:url if view exposes url -->
+
+    <script defer="" src="https://cdn.blot.im/template/23/45/7a37e0695744f40cd35bed4b1765/unicornStudio.umd.js"></script>
+    <script defer="" src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      window.oaiq = window.oaiq || function () {
+        (window.oaiq.q = window.oaiq.q || []).push(arguments);
+      };
+      oaiq("init", { pixelId: "N5Ax8NALod9ZBuGbDmwu9b" });
+    </script>
+    <script async="" src="https://bzrcdn.openai.com/sdk/oaiq.min.js"></script>
+    <script>    
+      const pageUrl = new URL(window.location);
+      const pathname = pageUrl.pathname
+        .replace(/^\/|\/$/g, '') // remove leading/trailing slashes
+        .replace(/\//g, '_');    // replace remaining slashes with underscores
+      const pageTitle = document.querySelector('h1') || '';
+
+      let pageContentType = 'page';
+
+      if ( pageUrl.pathname.indexOf('/articles/') > -1 ) {
+        pageContentType = 'article';
+      }
+
+      if ( pageUrl.pathname.indexOf('/clients/') > -1 ) {
+        pageContentType = 'case_study';
+      }
+
+      const pageViewData = {
+        type: "contents",
+        contents: [
+          {
+            id: pathname || 'home',
+            name: document.title,
+            content_type: pageContentType,
+          }
+        ],
+      };
+
+      oaiq("measure", "page_viewed", pageViewData);
+    </script>
+
+    <!-- Global Service schema (all pages): org, provider, areaServed. Use @id so page-level Schema can reference it without duplicating. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Digital Transformation & Creative Agency",
+      "provider": {
+        "@type": "Organization",
+        "@id": "https://rareview.com/#organization",
+        "name": "Rareview",
+        "url": "https://rareview.com/",
+        "logo": "https://rareview.com/_Assets/logo.png",
+        "foundingDate": "2002",
+        "founder": [
+          {"@type": "Person", "@id": "https://rareview.com/principals/chuck/", "name": "Chuck Pearson"},
+          {"@type": "Person", "@id": "https://rareview.com/principals/rob/", "name": "Rob Pearson"}
+        ],
+        "description": "A meticulously designed agency focused on the intersection of high-end design and performance marketing.",
+        "sameAs": [
+          "https://www.linkedin.com/company/rareview",
+          "https://twitter.com/rareview"
+        ]
+      },
+      "areaServed": "Global"
+    }
+    </script>
+
+    <!-- WebSite + SearchAction: enables Google sitelinks search box for rareview.com -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://rareview.com/#website",
+      "url": "https://rareview.com/",
+      "name": "Rareview",
+      "description": "A meticulously designed agency focused on the intersection of high-end design and performance marketing.",
+      "publisher": {"@id": "https://rareview.com/#organization"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://rareview.com/insights/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+
+
+    <!-- Page-specific schema: set Schema in the page’s metadata (YAML/front matter) -->
+    <script type="application/ld+json">[object Object]</script>
+  </head>
+
+  <body class="template-entry">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M82JSQZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->    <script>
+    (function(){
+      var path = (window.location.pathname || "").replace(/\/$/, "") || "/";
+      if (path === "/") return;
+      var parts = path.split("/").filter(Boolean);
+      if (parts.length < 2) return;
+      if (parts[0] === "partners") return;
+      if (parts[0] === "work" && (parts[1] === "page" || parts[1] === "tagged")) return;
+      if (parts[0] === "insights" && (parts[1] === "page" || parts[1] === "tagged")) return;
+      document.body.classList.add("has-toc");
+    })();
+    </script>
+    <div class="global-banner" id="global-banner" role="region" aria-label="Site announcement">
+      <div class="global-banner-inner">
+        <p class="global-banner-text"><a href="/public/plugins/alpaca/">Alpaca</a> is now available in the <a href="https://wordpress.org/plugins/alpaca-issue-tracker/" target="_blank" rel="noopener">WordPress directory</a></p>
+        <button type="button" class="global-banner-dismiss" aria-label="Dismiss banner" title="Dismiss">×</button>
+      </div>
+    </div>
+    <script>
+    (function() {
+      var key = 'global-banner-dismissed';
+      var banner = document.getElementById('global-banner');
+      if (!banner) return;
+      if (sessionStorage.getItem(key)) { banner.remove(); return; }
+      var btn = banner.querySelector('.global-banner-dismiss');
+      if (btn) btn.addEventListener('click', function() { sessionStorage.setItem(key, '1'); banner.remove(); });
+    })();
+    </script>    <header>
+      <div class="site-title">
+        <a href="/" title="Rareview® Growth Consultancy">Rareview<span class="site-title-mark">®</span><!--<em>Growth Consultancy</em>--></a>
+      </div>
+      <nav class="main-nav" aria-label="Main">
+        <div class="nav-section nav-section--has-dropdown nav-section--has-dropdown nav-section--has-dropdown nav-section--has-dropdown">
+          <span class="nav-collapsed">
+            <a class="nav-item nav-main-link" href="/about/" title="About">About</a>
+          </span>
+          <span class="nav-expanded nav-links-inline" aria-hidden="true">
+            <a class="nav-item" href="/about/">About</a>, <a class="nav-item" href="/values/">Values</a>, <a class="nav-item" href="/principals/">Principals</a>, <a class="nav-item" href="/partners/">Partners</a>, <a class="nav-item" href="/careers/">Careers</a>
+          </span>
+        </div>
+        <div class="nav-section nav-section--has-dropdown nav-section--has-dropdown nav-section--has-dropdown nav-section--has-dropdown nav-section--has-dropdown">
+          <span class="nav-collapsed">
+            <a class="nav-item nav-main-link" href="/work/" title="Work">Work</a>
+          </span>
+          <span class="nav-expanded nav-links-inline" aria-hidden="true">
+            <a class="nav-item" href="/work/">Work</a>, <a class="nav-item" href="/capabilities/">Capabilities</a>, <a class="nav-item" href="/sectors/">Sectors</a>, <a class="nav-item" href="/sprints/">Sprints</a>, <a class="nav-item" href="/public/">Public</a>, <a class="nav-item" href="/insights/">Insights</a>
+          </span>
+        </div>
+        <div class="nav-section nav-section--has-dropdown nav-section--has-dropdown">
+          <span class="nav-collapsed">
+            <a class="nav-item nav-main-link" href="/contact/" title="Contact">Contact</a>
+          </span>
+          <span class="nav-expanded nav-links-inline" aria-hidden="true">
+            <a class="nav-item" href="/contact/">Contact</a>, <a class="nav-item" href="tel:+19492289263">+1 949 228 9263</a>, <a class="nav-item email-link" href="#" data-user="hello" data-domain="rareview.com">Loading…</a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main class="container container-with-toc">
+      <div class="toc-row">
+      <div class="container-main">
+                
+<p><img src="https://cdn.blot.im/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_image_cache/4b46ba66-06e0-44f9-80b7-c571dc5247bc/_dtc_reckoning.webp" alt="DTC’s reckoning" width="4000" height="2800"></p>
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+<ol class="breadcrumbs-list">
+<li class="breadcrumbs-item">
+<a href="/insights/">Insights</a>
+</li>
+<li class="breadcrumbs-item breadcrumbs-current" aria-current="page"><span class="small-caps">
+DTC</span><span class="push-single"></span><span class="pull-single">’</span>s reckoning
+</li>
+</ol>
+</nav>
+<h1 id="how-sameness-bad-ai-and-the-platform-tax-killed-the-direct-promise.">How sameness, bad <span class="small-caps">AI</span>, and the platform tax killed the direct promise.</h1>
+<p><span class="pill"> <img src="https://cdn.blot.im/blog_7eeb38a72a6045e8906d9cc42a2b12ce/_image_cache/7c188c65-d7eb-48b3-ba73-5147b6f37792/_robpearson_cro_headshot.png" alt="Rob Pearson, CMO of Rareview" class="pill-img" width="100" height="100"> <span class="pill-text">Rob Pearson</span> </span></p>
+<h2 data-toc-label="Brand, not marketing">
+We do not have a marketing problem. We have a brand problem masquerading as a <span class="small-caps">CAC</span> problem. And the brands still operating from the 2020 playbook are on the clock.
+</h2>
+<details class="article-summary" open="">
+<summary class="article-summary-toggle">
+<span class="article-summary-label">Summary</span> <span class="article-summary-chevron" aria-hidden="true"></span>
+</summary>
+<div class="article-summary-body">
+<ul>
+<li><span class="small-caps">
+DTC</span> did not fail because the model was wrong; brands treated distribution as strategy and ceded experience to broken <span class="small-caps">AI</span> and ad platforms.
+</li>
+<li><span class="small-caps">
+CAC</span> inflation and platform fees are structural, not cyclical — the 2020 Meta-only playbook is on the clock.
+</li>
+<li>
+Indistinguishable brands, identical Shopify themes, and chatbots that frustrate more than they convert are symptoms of the same problem.
+</li>
+<li>
+The reset requires brand differentiation, margin discipline, and teams accountable to revenue — not more performance marketing theater.
+</li>
+</ul>
+<p class="article-summary-note">
+Summarized with <span class="small-caps">AI</span> assistance and reviewed by the author.
+</p>
+</div>
+</details>
+<div class="article-actions">
+<button type="button" class="article-listen" data-state="idle" aria-pressed="false" aria-label="Listen to this article">
+<span class="article-listen-icon" aria-hidden="true"></span> <span class="article-listen-label">Listen</span>
+</button>
+</div>
+<p>For the past decade, the direct-to-consumer playbook was treated as inevitability. Build a single product and wrap it in a clean Shopify theme, then run Meta ads and capture email, ideally sell more. Raise. Repeat. Investors funded it. Founders worshipped it. And every keynote speaker at every commerce conference pretended it was a religion rather than an arbitrage.</p>
+<p>I have spent the last ten years helping brands run this exact playbook. I have watched it work. And over the last eighteen months I have watched it stop working. This is what I am seeing on the ground.</p>
+<p><span class="small-caps">DTC</span> did not collapse because the model was bad. It collapsed because operators confused a distribution mechanism for a brand strategy, ceded the customer experience to chatbots that do not work, and surrendered margin to ad platforms that have no incentive to give it back. The result is a generation of indistinguishable brands selling indistinguishable products to consumers who do not remember any of them, on websites that all look the same, served by <span class="small-caps">AI</span> agents that frustrate more than they help.</p>
+<p>This is not a cyclical downturn. It is a structural reset. And anyone still operating from the 2020 playbook is on the clock.</p>
+<h2 data-toc-label="By the numbers">
+The numbers do not care about your mission statement
+</h2>
+<p>eMarketer’s May 2025 forecast pegged <span class="small-caps">US</span> direct-to-consumer ecommerce at roughly 19% of total <span class="small-caps">US</span> retail ecommerce by 2025. They project that share to stay flat through 2028. The category is no longer growing as a share of digital retail. That alone is a damning verdict on a model that was sold to investors as exponential.</p>
+<p>Drill into the unit economics. It gets worse. Median <span class="small-caps">DTC</span> brands now spend $130 to $156 to acquire a single customer in 2026. That is roughly a 60% increase over the past five years. Triple Whale’s 2025 benchmark data found that every single industry on Meta saw its <span class="small-caps">CPM</span> increase year-over-year, with the platform-wide median up 20.03%. Health and wellness, once a <span class="small-caps">CAC</span> bargain, saw a 38.03% jump. Google did not help. Wordstream and Mobiloud benchmarks showed Google CPCs up 12.88% year-over-year in 2025, with Shopping CPCs jumping 33.72% to $3.49. Overall <span class="small-caps">ROAS</span> dropped 10.03%.</p>
+<div class="boxed-layout boxed-layout--3 boxed-layout--outlined">
+<div>
+<h3 class="text-stat-xl">
++60%
+</h3>
+<p>
+Increase in median <span class="small-caps">DTC</span> customer acquisition cost over five years, per ProfitWell longitudinal data
+</p>
+</div>
+<div>
+<h3 class="text-stat-xl">
+-97%
+</h3>
+<p>
+Decline in venture funding to <span class="small-caps">DTC</span> brands from 2021 to <span class="small-caps">2023
+</span></p>
+</div>
+<div>
+<h3 class="text-stat-xl">
+19%
+</h3>
+<p><span class="small-caps">
+DTC</span> share of <span class="small-caps">US</span> retail ecommerce, projected to stay flat through 2028 per eMarketer
+</p>
+</div>
+</div>
+<p>You are paying more for less. That is not a marketing problem. That is the platforms doing exactly what publicly traded ad platforms do. They are optimizing their take rate.</p>
+<p>Meanwhile, the funding spigot closed. Venture investment into <span class="small-caps">DTC</span> dropped 97% from 2021 to 2023, according to data tracked across multiple consumer-tech analyses. The brands that survived had to learn how to operate on cash flow rather than rounds. Median <span class="small-caps">EBITDA</span> margins for eight-figure brands settled at 7 to 8%. Average annual revenue growth for <span class="small-caps">DTC</span> stores dropped to 10% in 2024, the slowest in five years.</p>
+<p>This is not a soft patch. This is what the asymptote looks like. Every brand operator who hit the wall in 2024 is now facing the same question. Do we keep paying the platform tax? Or do we rebuild from the ground up?</p>
+<div class="chart-card">
+<p class="eyebrow">
+Exhibit A
+</p>
+<h2 class="has-style-h4 skip-toc">
+The Meta <span class="small-caps">CPM</span> curve, 2021 to <span class="small-caps">2026
+</span></h2>
+<p class="chart-card-sub"><span class="small-caps">
+Q1</span> averages, <span class="small-caps">US</span> ecommerce advertisers. Meta’s own <span class="small-caps">Q1</span> 2026 earnings confirm the climb continues.
+</p>
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart of Meta Q1 CPM 2021 to 2026">
+<g stroke="var(--rule)" stroke-width="1"> <line x1="90" y1="60" x2="770" y2="60"></line> <line x1="90" y1="135" x2="770" y2="135"></line> <line x1="90" y1="210" x2="770" y2="210"></line> <line x1="90" y1="285" x2="770" y2="285"></line> </g> <g font-family="var(--font-sans)" font-size="var(--text-sm)" fill="var(--ink-muted)"> <text x="80" y="64" text-anchor="end">$14</text> <text x="80" y="139" text-anchor="end">$10.50</text> <text x="80" y="214" text-anchor="end">$7</text> <text x="80" y="289" text-anchor="end">$3.50</text> <text x="80" y="364" text-anchor="end">$0</text> </g> <rect x="110" y="159.84" width="80" height="200.16" fill="var(--chart-bar-default)"></rect> <rect x="222" y="143.34" width="80" height="216.66" fill="var(--chart-bar-default)"></rect> <rect x="334" y="171.63" width="80" height="188.37" fill="var(--chart-bar-muted)"></rect> <rect x="446" y="158.13" width="80" height="201.87" fill="var(--chart-bar-default)"></rect>
+<rect x="558" y="126.84" width="80" height="233.16" fill="var(--chart-bar-default)"></rect> <rect x="670" y="98.77" width="80" height="261.23" fill="var(--chart-bar-accent)"></rect> <line x1="90" y1="360" x2="770" y2="360" stroke="var(--ink)" stroke-width="2"></line> <g font-family="var(--font-sans)" font-size="var(--text-base)" fill="var(--ink)"> <text x="150" y="150" text-anchor="middle">$9.34</text> <text x="262" y="133" text-anchor="middle">$10.11</text> <text x="374" y="161" text-anchor="middle">$8.79</text> <text x="486" y="148" text-anchor="middle">$9.42</text> <text x="598" y="117" text-anchor="middle">$10.88</text> <text x="710" y="89" text-anchor="middle" fill="var(--chart-bar-accent)">~$12.19</text> </g>
+</svg>
+<table width="100%" aria-hidden="true" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="11.25%">
+</td>
+<td width="14.166%" align="center"><span class="small-caps">
+Q1</span> <span class="small-caps">2021
+</span></td>
+<td width="14.166%" align="center"><span class="small-caps">
+Q1</span> <span class="small-caps">2022
+</span></td>
+<td width="14.166%" align="center"><span class="small-caps">
+Q1</span> <span class="small-caps">2023
+</span></td>
+<td width="14.166%" align="center"><span class="small-caps">
+Q1</span> <span class="small-caps">2024
+</span></td>
+<td width="14.166%" align="center"><span class="small-caps">
+Q1</span> <span class="small-caps">2025
+</span></td>
+<td width="14.166%" align="center" class="chart-card-accent"><span class="small-caps">
+Q1</span> <span class="small-caps">2026
+</span></td>
+<td width="3.75%">
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td align="center" class="chart-card-accent">
++12% YoY price per ad (Meta <span class="small-caps">IR</span>, Apr 29 2026)
+</td>
+<td>
+</td>
+</tr>
+</tbody></table>
+<p class="chart-card-source">
+<span class="chart-card-source-text">Sources: Right Side Up <span class="small-caps">Q1</span> 2025 Meta <span class="small-caps">CPM</span> Analysis (2021 to 2025); Meta Platforms <span class="small-caps">Q1</span> 2026 Earnings Press Release, April 29, 2026 (2026 estimate based on reported +12% YoY price-per-ad increase). <span class="small-caps">Q1</span> 2026 represents the highest <span class="small-caps">Q1</span> average on record.</span>
+</p>
+</div>
+<div class="scoreboard">
+<p class="eyebrow"><span class="small-caps">
+Q1</span> 2026 Meta scoreboard
+</p>
+<h2 class="has-style-h4 skip-toc">
+While advertisers struggled, Meta posted its strongest quarter in years.
+</h2>
+<p class="scoreboard-sub">
+Reported by Meta Platforms, April 29, 2026. Year-over-year change vs <span class="small-caps">Q1</span> 2025.
+</p>
+<div class="scoreboard-grid">
+<div class="scoreboard-row">
+<span class="scoreboard-label">Ad revenue</span> <span class="scoreboard-value">$55.0B / +33%</span>
+</div>
+<div class="scoreboard-row">
+<span class="scoreboard-label">Net income</span> <span class="scoreboard-value">$26.8B / +61%</span>
+</div>
+<div class="scoreboard-row">
+<span class="scoreboard-label">Average price per ad</span> <span class="scoreboard-value">+12%</span>
+</div>
+<div class="scoreboard-row">
+<span class="scoreboard-label">Ad impressions delivered</span> <span class="scoreboard-value">+19%</span>
+</div>
+<div class="scoreboard-row">
+<span class="scoreboard-label">Operating margin</span> <span class="scoreboard-value">41%</span>
+</div>
+<div class="scoreboard-row">
+<span class="scoreboard-label">2026 capex guidance</span> <span class="scoreboard-value">$125 to $<span class="small-caps">145B</span></span>
+</div>
+</div>
+<p class="scoreboard-footnote">
+Capex range raised from prior $115 to $<span class="small-caps">135B</span> guidance. The bulk is allocated to <span class="small-caps">AI</span> infrastructure and data centers. Source: Meta <span class="small-caps">Q1</span> 2026 Earnings Press Release.
+</p>
+</div>
+<h2 data-toc-label="Sameness tax">
+Sameness is the real tax
+</h2>
+<p>Here is the hot take that nobody in the <span class="small-caps">DTC</span> industrial complex wants to admit. The platform tax is not the worst thing that happened to direct-to-consumer brands. The sameness tax is.</p>
+<p>Walk through any <span class="small-caps">DTC</span> vertical. Mattresses. Eyewear. Sneakers. Meal kits. Supplements. Skincare. Candles. Dog food. Men’s grooming. Cookware. Picture the websites. They all look the same. Hero image with one overconfident model. Floating product card. Eight customer review stars. Bland product description that sounds exactly like every other brand in the category. Same checkout. Same email capture. Same 10% off pop-up. Same <span class="small-caps">SMS</span> prompt.</p>
+<p>This is not an accident. It is the natural output of an ecosystem where the platform (Shopify), the templates (Theme Store), the agencies (one of fifty boutique shops using the same Figma kits), and the tooling (Klaviyo, Yotpo, Postscript, Recharge, the same five Meta-recommended creator agencies) all converge toward a mean. Generative <span class="small-caps">AI</span> did not cause this. It accelerated it. When everyone uses the same tools to write the same copy, run the same retargeting, and ship products from the same three Chinese contract manufacturers, the only differentiation left is price.</p>
+<blockquote class="stats-testimonial-quote">
+<span class="stats-testimonial-quote-mark" aria-hidden="true"></span> A brand without association is not a brand. It is a <span class="small-caps">SKU</span> on a scroll.
+</blockquote>
+<p>Brands earn pricing power because they earn association. Nike does not compete with House of Hoops. Patagonia does not compete with North Face performance fleece. Their customers do not shop them. Their customers belong to them. The sameness economy produces the opposite. Brands without association, customers without loyalty, products without memory. And when memory is gone, marketing has to work harder every quarter to acquire the same person all over again.</p>
+<p>That is what the <span class="small-caps">CAC</span> chart is actually measuring. Not the platforms getting greedier. The brands getting weaker.</p>
+<h2 data-toc-label="Performance marketing">
+The performance marketing death spiral
+</h2>
+<p>Look at who is winning the math. Meta is. On April 29, 2026, Meta reported <span class="small-caps">Q1</span> 2026 ad revenue of $55.02 billion, up 33% year-over-year. Ad impressions delivered across the family of apps rose 19% YoY. Average price per ad rose another 12% YoY, on top of every increase that came before. Net income hit $26.77 billion, up 61%. Operating margin sat at 41%. Capital expenditure guidance for 2026 was raised to $125 to $145 billion, the bulk of which is going to <span class="small-caps">AI</span> infrastructure that advertisers are effectively financing through <span class="small-caps">CPM</span> inflation. For ecommerce brands specifically, Meta now commands 68.31% of total advertising budgets, more than Google, TikTok, and every other channel combined.</p>
+<p>Translation. Meta sold more inventory, charged more for it, and posted a 61% profit jump while the average <span class="small-caps">DTC</span> operator paying those bills watched <span class="small-caps">ROAS</span> continue to fall.</p>
+<p>Then Temu and Shein walked in. Between them, those two companies spent an estimated $2.7 billion on digital advertising in 2023 alone, with Temu reportedly funneling $1.2 billion into Meta. Every American <span class="small-caps">DTC</span> brand has been bidding against the deepest-pocketed consumer-arbitrage operations on earth, in a closed auction, where the only counter-strategy is to spend more.</p>
+<p>Our team ran the experiment in real client accounts. Cut Meta spend by 30%, revenue dropped 4%. Cut by 50%, revenue dropped 9%. Most of what brands are paying for at the top of the auction is not incremental. It is rent. Reallocating those wasted marketing dollars can move profitability and scale in a way the spend itself never did.</p>
+<p>Meta’s pixel-era targeting is permanently degraded, which means the auction is less efficient at the same time it has gotten more expensive. Every dollar buys less signal and less precision.</p>
+<p>Stack the inputs. Higher CPMs. Lower opt-in rates. Lower <span class="small-caps">ROAS</span>. Higher return rates. The average ecommerce return rate is 20.5%, fashion runs 20% to 30%, and January post-holiday returns spike as high as 44.5%. Globally, consumers returned over $181 billion in online purchases from the November-to-December 2025 holiday period alone, a 10% year-over-year increase. Returns are not a footnote. For a brand carrying a 60 to 70% gross margin, returns can compress contribution margin by 8 to 15 percentage points before any other variable cost enters the equation.</p>
+<p>This is the math. This is why <span class="small-caps">DTC</span> brands keep raising. Not because growth-at-all-costs is a strategy, but because the unit economics no longer survive on their own.</p>
+<h2 data-toc-label="AI customer service">
+The <span class="small-caps">AI</span> customer service catastrophe
+</h2>
+<p>While the math was breaking, the customer experience was getting worse. The biggest unforced error of the <span class="small-caps">DTC</span> era was the wholesale replacement of human customer service with first-generation <span class="small-caps">AI</span> chatbots that do not actually solve problems.</p>
+<p>The data on this is crushing. SurveyMonkey’s 2025 customer-experience study found that just 8% of consumers prefer <span class="small-caps">AI</span> over humans for customer service. Kinsta’s research showed that 41% of consumers feel customer service has gotten worse because of <span class="small-caps">AI</span>, and 81% believe <span class="small-caps">AI</span> is being deployed to save the company money rather than to help them. 84% of consumers believe humans are more accurate than <span class="small-caps">AI</span> agents. 63% do not believe <span class="small-caps">AI</span> could ever fully replace humans in service. The Qualtrics 2026 Customer Experience Trends Report found that nearly one in five consumers who used <span class="small-caps">AI</span> for customer service got no benefit at all, a failure rate roughly four times higher than <span class="small-caps">AI</span> use in general.</p>
+<p>Every brand operator I work with has a deflection rate dashboard. Almost none of them have a resolution rate dashboard. That is the entire problem in one sentence.</p>
+<div class="chart-card">
+<p class="eyebrow">
+Exhibit B
+</p>
+<h2 class="has-style-h4 skip-toc">
+Consumers are voting against <span class="small-caps">AI</span> customer service
+</h2>
+<p class="chart-card-sub">
+Selected findings, <span class="small-caps">US</span> consumer studies 2025 to 2026.
+</p>
+<table class="chart-card-html-gap" width="100%" cellpadding="0" cellspacing="0" aria-label="Horizontal bar chart of AI customer service sentiment">
+<tbody><tr>
+<td>
+Believe humans are more accurate than <span class="small-caps">AI</span> agents
+</td>
+</tr>
+<tr>
+<td height="8">
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="90%">
+<table width="84%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="chart-card-bar chart-card-bar--accent">
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="10%" align="right">
+84%
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td height="20">
+</td>
+</tr>
+<tr>
+<td>
+Believe <span class="small-caps">AI</span> is used to cut costs, not improve service
+</td>
+</tr>
+<tr>
+<td height="8">
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="90%">
+<table width="81%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="chart-card-bar chart-card-bar--default">
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="10%" align="right">
+81%
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td height="20">
+</td>
+</tr>
+<tr>
+<td>
+Do not believe <span class="small-caps">AI</span> can ever replace humans in <span class="small-caps">CS
+</span></td>
+</tr>
+<tr>
+<td height="8">
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="90%">
+<table width="63%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="chart-card-bar chart-card-bar--default">
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="10%" align="right">
+63%
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td height="20">
+</td>
+</tr>
+<tr>
+<td>
+Say customer service has gotten worse because of <span class="small-caps">AI
+</span></td>
+</tr>
+<tr>
+<td height="8">
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="90%">
+<table width="41%" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="chart-card-bar chart-card-bar--accent">
+</td>
+</tr>
+</tbody></table>
+</td>
+<td width="10%" align="right">
+41%
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<p class="chart-card-source">
+<span class="chart-card-source-text">Source: SurveyMonkey 2025 <span class="small-caps">CX</span> Study, Kinsta consumer research, Qualtrics 2026 <span class="small-caps">CX</span> Trends Report.</span>
+</p>
+</div>
+<p>Klarna ran the experiment in public. The fintech famously announced in 2024 that its <span class="small-caps">AI</span> assistant had replaced the work of 700 human customer service agents. By 2025, Klarna was rehiring humans because the <span class="small-caps">AI</span> delivered<span class="push-double"></span> <span class="pull-double">“</span>lower-quality performance” on complex tasks. The cost-saving math worked on a spreadsheet and broke in the wild.</p>
+<p>Here is the underlying problem. Most <span class="small-caps">DTC</span> chatbots are not deployed to resolve. They are deployed to deflect. To bury the contact form. To loop the customer through FAQs the customer has already read. To buy the brand a few more days before the chargeback hits. The <span class="small-caps">CEO</span> of Decagon, one of the better-funded conversational-AI startups, acknowledged in <span class="small-caps">CNBC</span> reporting that the customer-side perception of<span class="push-double"></span> <span class="pull-double">“</span>deflection” is real even when companies claim to optimize for resolution.</p>
+<p>Rip the band-aid off. If your <span class="small-caps">CAC</span> is up 60% and your retention is dropping because customers cannot resolve their issues, you do not have an <span class="small-caps">AI</span> strategy problem. You have a brand-permission problem. Customers used to extend grace to brands they trusted. They do not extend grace to a logo they bought once on TikTok.</p>
+<h2 data-toc-label="Brand equity">
+Brand equity was the moat. We filled it with discounts.
+</h2>
+<p>Step back. The original <span class="small-caps">DTC</span> promise was that by going direct, brands could own the customer relationship, capture more margin, build community, and reinvest into the experience. What actually happened is the opposite. Brands ceded the relationship to platforms, ceded the margin to ad auctions, ceded the community to creators they do not own, and reinvested into discounts.</p>
+<p>This is the real reckoning. Not that <span class="small-caps">DTC</span> failed, but that <span class="small-caps">DTC</span> scaled the wrong things. Scale the discount, lose the brand. Scale the ad spend, lose the moat. Scale the chatbot, lose the customer. The economic incentive structure inside Shopify-native <span class="small-caps">DTC</span> pushes operators toward all three of those decisions, every quarter, until there is nothing left to differentiate.</p>
+<p>Compare that to brands that resisted the playbook. Patagonia. Levi’s. Lululemon. Even, more recently, On Running and Hoka. These are companies that built association first, then leveraged digital. Their <span class="small-caps">CAC</span> is lower. Their pricing power is higher. Their margins compound. They do not need to discount because their customers do not need a reason to choose them. They already chose.</p>
+<p>That is what brand equity actually does. And that is what the past decade of <span class="small-caps">DTC</span> operators traded away for a slightly better <span class="small-caps">Q3</span>.</p>
+<h2 id="the-body-count">The body count</h2>
+<p>Look at the named casualties. Each one was funded, celebrated, and held up as the future of consumer commerce. Each one is now a case study in what the model cannot survive.</p>
+<div class="chart-card">
+<p class="eyebrow">
+Exhibit C
+</p>
+<h2 class="has-style-h4 skip-toc">
+Capital destruction among public <span class="small-caps">DTC</span> champions
+</h2>
+<p class="chart-card-sub">
+Approximate decline in market cap or sale value from peak.
+</p>
+<svg class="chart-card-svg-gap" viewBox="0 0 800 365" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart showing percentage decline of major DTC brands">
+<g stroke="var(--rule)" stroke-width="1"> <line x1="80" y1="70" x2="760" y2="70"></line> <line x1="80" y1="142.5" x2="760" y2="142.5"></line> <line x1="80" y1="215" x2="760" y2="215"></line> <line x1="80" y1="287.5" x2="760" y2="287.5"></line> </g> <g font-family="var(--font-sans)" font-size="var(--text-sm)" fill="var(--ink-muted)"> <text x="70" y="74" text-anchor="end">-100%</text> <text x="70" y="146.5" text-anchor="end">-75%</text> <text x="70" y="219" text-anchor="end">-50%</text> <text x="70" y="291.5" text-anchor="end">-25%</text> <text x="70" y="364" text-anchor="end">0%</text> </g> <rect x="97" y="84.5" width="110" height="275.5" fill="var(--chart-bar-accent)"></rect> <rect x="231" y="96.1" width="110" height="263.9" fill="var(--chart-bar-accent)"></rect> <rect x="365" y="128" width="110" height="232" fill="var(--chart-bar-default)"></rect> <rect x="499" y="139.6" width="110" height="220.4" fill="var(--chart-bar-default)"></rect>
+<rect x="633" y="151.2" width="110" height="208.8" fill="var(--chart-bar-muted)"></rect> <line x1="80" y1="360" x2="760" y2="360" stroke="var(--ink)" stroke-width="2"></line> <g font-family="var(--font-sans)" font-size="var(--text-base)" fill="var(--ink)"> <text x="152" y="74" text-anchor="middle" fill="var(--chart-bar-accent)">-95%</text> <text x="286" y="86" text-anchor="middle" fill="var(--chart-bar-accent)">-91%</text> <text x="420" y="118" text-anchor="middle">-80%</text> <text x="554" y="129.6" text-anchor="middle">-76%</text> <text x="688" y="141.2" text-anchor="middle" fill="var(--chart-bar-muted)">-72%</text> </g>
+</svg>
+<table class="chart-card-brand-table" width="100%" cellpadding="0" cellspacing="0" aria-hidden="true">
+<tbody><tr>
+<td width="11.25%">
+</td>
+<td width="14.166%" align="center">
+Peloton
+</td>
+<td width="14.166%" align="center">
+Allbirds
+</td>
+<td width="14.166%" align="center">
+Honest Co.
+</td>
+<td width="14.166%" align="center">
+Bonobos
+</td>
+<td width="14.166%" align="center">
+Warby Parker
+</td>
+<td width="3.75%">
+</td>
+</tr>
+</tbody></table>
+<table class="chart-card-caption-table" width="100%" cellpadding="0" cellspacing="0" aria-hidden="true">
+<tbody><tr>
+<td width="11.25%">
+</td>
+<td width="14.166%" align="center">
+peak to today
+</td>
+<td width="14.166%" align="center">
+since <span class="small-caps">IPO
+</span></td>
+<td width="14.166%" align="center">
+peak to <span class="small-caps">2022
+</span></td>
+<td width="14.166%" align="center">
+Walmart writedown
+</td>
+<td width="14.166%" align="center">
+since <span class="small-caps">IPO
+</span></td>
+<td width="3.75%">
+</td>
+</tr>
+</tbody></table>
+<p class="chart-card-source">
+<span class="chart-card-source-text">Sources: <span class="small-caps">CB</span> Insights, Retail Dive, Business of Fashion, Motley Fool. Figures rounded.</span>
+</p>
+</div>
+<div class="boxed-layout boxed-layout--3">
+<div>
+<p class="eyebrow">
+Down ~91% from <span class="small-caps">IPO
+</span></p>
+<h2 class="has-style-h4 skip-toc">
+Allbirds
+</h2>
+<p>
+Went public in November 2021 on the back of a sustainable-materials story and a category-defining sneaker. By April 2024, the stock had fallen below $1 for 30 consecutive trading days, triggering a Nasdaq delisting warning. <span class="small-caps">Q1</span> 2024 revenue dropped 28% year-over-year. Full-year 2024 revenue was guided down to roughly $190 million, a 25% decline. The company closed 10 to 15 underperforming <span class="small-caps">US</span> stores. The product was real. The category was real. The brand could not compete in a sea of indistinguishable sustainable sneakers, including ones from incumbents with bigger distribution and lower CAC.
+</p>
+</div>
+<div>
+<p class="eyebrow">
+Down ~95% from peak
+</p>
+<h2 class="has-style-h4 skip-toc">
+Peloton
+</h2>
+<p>
+Became a $50 billion company at its peak. Has lost approximately 95% of that peak market value. The stock peaked at $167.42 in January 2021 and has traded near $4 throughout much of the past two years. Annual revenue went from $4 billion in fiscal 2021 to roughly $2.49 billion in fiscal 2025, a contraction in every successive year. Connected fitness subscribers dropped from 6.4 million members to 6 million between fiscal 2024 and fiscal 2025. The company has cut more than 25% of its workforce across multiple rounds. Peloton is the cautionary tale of a brand that confused pandemic-era demand for permanent product-market fit and built a cost structure that could not survive a return to gyms.
+</p>
+</div>
+<div>
+<p class="eyebrow">
+76% writedown in six years
+</p>
+<h2 class="has-style-h4 skip-toc">
+Bonobos
+</h2>
+<p>
+Acquired by Walmart for $310 million in 2017. In 2023, Walmart sold it for $75 million, a 76% writedown. The brand was the last survivor of Walmart’s 2016 to 2017 <span class="small-caps">DTC</span> acquisition spree, which also included ModCloth, Moosejaw, Shoes.com, and Bare Necessities. Walmart wrote off the entire experiment because the <span class="small-caps">DTC</span> customer did not migrate to the parent retailer, and the parent retailer’s customer did not migrate to the <span class="small-caps">DTC</span> brand. Two audiences, two acquisition costs, no synergy.
+</p>
+</div>
+<div>
+<p class="eyebrow">
+Stake fell from $<span class="small-caps">130M</span> to $<span class="small-caps">27M
+</span></p>
+<h2 class="has-style-h4 skip-toc">
+Honest Company
+</h2>
+<p>
+IPO’d in May 2021 at $16 per share, jumped 44% on day one, and within a year had collapsed to $4.52. Founder Jessica Alba’s stake fell from roughly $130 million at <span class="small-caps">IPO</span> to approximately $27 million. The brand had a massive household-name founder, an authentic clean-products story, and a real consumer base. None of it was enough to defend the unit economics against private-label competition from Amazon Basics, Costco’s Kirkland, and Target’s Up &amp; Up.
+</p>
+</div>
+<div>
+<p class="eyebrow">
+Down ~72% from <span class="small-caps">IPO
+</span></p>
+<h2 class="has-style-h4 skip-toc">
+Warby Parker
+</h2>
+<p>
+Warby is the polite cautionary tale, because the brand still exists and has even posted some recent recovery. But its market cap is down roughly 72% from its 2021 <span class="small-caps">IPO</span>, despite running one of the better-executed omnichannel <span class="small-caps">DTC</span> playbooks in the category. If Warby is the success story of this cohort, that should tell you something about the broader basket.
+</p>
+</div>
+</div>
+<!-- end boxed-layout--3 -->
+<p>The point is not that any of these companies were poorly run. Several were extremely well run. The point is that even excellent execution against a structurally compromised model produces the same outcome. Capital destruction.</p>
+<h2 data-toc-label="Counter-argument">
+The counter-argument, briefly
+</h2>
+<p>Steel-manning the bull case is fair. There are real counter-arguments worth taking seriously.</p>
+<p><span class="small-caps">DTC</span> is not dead, the bulls argue. It is maturing. Total <span class="small-caps">US</span> <span class="small-caps">DTC</span> ecommerce is projected to hit $250 billion in 2026, a 16.6% increase over 2025. <span class="small-caps">AI</span> is making campaign creation cheaper and faster. First-party data is more valuable than ever as third-party signal degrades. Gen Z buys directly from brands at more than twice the rate of the general population, with 28% reporting regular <span class="small-caps">DTC</span> purchases compared to 13% of the total population. Owned channels like email still produce $36 in revenue for every $1 spent, the highest <span class="small-caps">ROI</span> in marketing. The category has plenty of life left. The brands that survive will be leaner, omnichannel, and AI-native. They will print money.</p>
+<p>I agree with the second half of that argument. Lean, omnichannel, AI-native brands will print money. I disagree with the first half. The brands that get there will not be Shopify-native <span class="small-caps">DTC</span> operators using the 2020 playbook. They will be operators who treat the website as a brand asset, not a transaction layer. Who use <span class="small-caps">AI</span> to deepen relationships, not deflect them. Who treat paid acquisition as an input, not an identity. Who build association before they build audience. The math only works for the operators who refuse the playbook everyone else followed.</p>
+<h2 data-toc-label="What changes now">
+What has to change now
+</h2>
+<p>Here is what the next decade looks like, and what we are advising the brands and investors who work with Rareview.</p>
+<h3 id="first-brand-investment-is-no-longer-optional">First, brand investment is no longer optional</h3>
+<p>The era of<span class="push-double"></span> <span class="pull-double">“</span>we will build the brand later” is over because there is no later. The brands with no association are dying first. The brands with association are surviving, and a few are thriving. Investors evaluating consumer companies should be asking, before they ask about <span class="small-caps">CAC</span>, what is the unaided brand recall in the target customer segment. If the answer is below 10%, the unit economics will not save you.</p>
+<h3 id="second-the-sameness-trap-has-to-break">Second, the sameness trap has to break</h3>
+<p>Templates, theme kits, <span class="small-caps">AI</span> copy, and beige modern voice cannot be the answer for brands that need to stand out. Distinctive design, distinctive voice, distinctive product point of view, distinctive packaging. None of this is expensive in 2026. It is mostly a function of taste and conviction. Most operators have neither, and they will lose to operators who do.</p>
+<h3 id="third-ai-in-customer-service-has-to-be-rebuilt-around-resolution-not-deflection">Third, <span class="small-caps">AI</span> in customer service has to be rebuilt around resolution, not deflection</h3>
+<p>The current generation of bots is a brand liability. The next generation, deployed correctly, can be a brand asset. The litmus test is simple. Does the <span class="small-caps">AI</span> shorten the customer’s path to outcome, or extend it? If the latter, kill it.</p>
+<h3 id="fourth-the-platform-tax-has-to-be-diversified">Fourth, the platform tax has to be diversified</h3>
+<p>Brands cannot keep funneling 68% of their ad budget into one company that has no incentive to make the auction cheaper. <span class="small-caps">SEO</span>, generative-search optimization, retail media, owned content, influencer partnerships, retail distribution, <span class="small-caps">B2B</span> channels. All of these need real budget. Not for diversification’s sake. For survival’s sake.</p>
+<h3 id="fifth-profitability-is-the-new-growth">Fifth, profitability is the new growth</h3>
+<p>Investors should be skeptical of any consumer-brand pitch that does not show a path to positive contribution margin within 18 months. Growth-at-all-costs is not a strategy. It is a slow liquidation.</p>
+<hr>
+<p>The <span class="small-caps">DTC</span> era did not fail. The <span class="small-caps">DTC</span> playbook failed. The model still works for operators who use it as an instrument rather than as an identity. The capital destruction we have watched over the past five years, from Allbirds to Peloton to Bonobos to Honest, is not a cautionary tale about ecommerce. It is a cautionary tale about what happens when an entire generation of brands lets distribution choices substitute for strategic ones.</p>
+<p>At Rareview, we work with consumer brands that have stopped optimizing for the playbook that broke. We are rebuilding their growth engines around brand association, margin discipline, and profitability that survives a <span class="small-caps">CAC</span> shock. The metric is not spend and revenue. It is durable, intentional growth.</p>
+<p>If you are an investor reading this, the next decade in consumer is going to reward brand discipline, channel diversity, and operational rigor. Not the next iteration of the same Shopify template with a different color palette. Not the next <span class="small-caps">AI</span> chatbot promising to replace the contact form. Not the next 10% off pop-up.</p>
+<p>The brands that win from here are not going to be the loudest. They are going to be the ones with the strongest associations and the most patient capital. That is a much harder game than the one we played for the last ten years. It is also the only one left.</p>
+
+                <div class="entry-date">
+                  <p>Published on May 14, 2026</p>
+                    <p>Posted in <span class="entry-tag-wrap"><a href="/tagged/articles/" class="entry-tag">Articles</a></span></p>
+                    <p>By <a href="https://rareview.com/principals/rob">Rob Pearson</a></p>
+                </div>
+
+      </div><!-- end container-main -->
+      <aside class="toc-sidebar" id="toc-sidebar">
+        <nav id="toc-nav" aria-labelledby="toc-sidebar-title" hidden="">
+          <p class="eyebrow toc-sidebar-title" id="toc-sidebar-title">Table of contents</p>
+          <ol class="toc-list" id="toc-list"></ol>
+        </nav>
+      </aside>
+      </div><!-- end toc-row -->
+      <div class="downloads">
+        <!-- Injected at bottom of insights posts via entry.html (downloads partial). Edit this file to change Resources + form on all posts. -->
+
+        <!-- <h2>Resources</h2>
+        <div class="boxed-layout boxed-layout--2">
+          <div>
+            <h3>The 2026 Digital Health Landscape Report</h3>
+            <p>Download our latest analysis on "Social Search" in healthcare and why patients are bypassing Google to find care through new digital discovery engines.</p>
+            <a href="/" class="link-button">
+              <span class="link-button-circle" aria-hidden="true">
+                <span class="link-button-arrow" aria-hidden="true"></span>
+              </span>
+              <span class="link-button-text">Download report</span>
+            </a>
+          </div>
+          <div>
+            <h3>Health Operational Readiness Sprint</h3>
+            <p>Stop the "replatforming" guesswork. Over 4 weeks, our senior directors perform a deep-dive audit of your current tech stack, security protocols, and content architecture to deliver a high-fidelity execution roadmap.</p>
+            <a href="/" class="link-button">
+              <span class="link-button-circle" aria-hidden="true">
+                <span class="link-button-arrow" aria-hidden="true"></span>
+              </span>
+              <span class="link-button-text">Schedule consultation</span>
+            </a>
+          </div>
+        </div> -->
+
+        <h2>Contact us</h2>
+        <div class="form-box">
+          <h3>Get in touch</h3>
+          <p>Let's have a conversation about your digital growth. How can we help?</p>
+          <script id="formScript6809907000005617001" src="https://crm.zoho.com/crm/WebFormServeServlet?rid=1a106b1f04c1700e48d469823a75b664d8230cd1e2b8c3c6b30a3929861576c836670d58eb7e12c203411c720e1ab7ecgida48387a915d9e832419e26ebb4a2f14d518ceeef0fb698633fde27a56b75d137&amp;script=$sYG"></script>
+        </div><!-- end form-box -->
+      </div>
+    </main>
+    <script type="text/javascript">
+      const initFullVimeoPlayers = () => {
+        const players = document.querySelectorAll('.rv-full-vimeo-player');
+
+        if (!players.length) {
+          return;
+        }
+
+        players.forEach((player) => {
+          const playButton = player?.querySelector('.video-play-overlay');
+          const playerId = player.dataset.id;
+
+          if (!playerId || !playButton) {
+            return;
+          }
+
+          const args = {
+            id: playerId,
+            autoplay: true,
+            muted: true,
+            loop: true,
+            background: true,
+            autopause: false,
+            controls: false,
+            title: false,
+            byline: false,
+            portrait: false,
+            dnt: true,
+          };
+
+          let vimeoPlayer = new Vimeo.Player(
+            player,
+            args,
+          );
+
+          vimeoPlayer.ready().then(() => {
+            const playerIframe = player.querySelector('iframe');
+            
+            vimeoPlayer.play();
+
+            vimeoPlayer.on('play', (data) => {
+              player.classList.add('vimeo-playing');
+
+              setTimeout(() => {
+                playerIframe.style.opacity = 1;
+              }, 50);
+            });
+          });
+
+          playButton?.addEventListener('click', () => {
+            vimeoPlayer.destroy();
+            args.muted = false;
+            args.background = false;
+            args.controls = true;
+
+            vimeoPlayer = new Vimeo.Player(
+              player,
+              args,
+            );
+
+            vimeoPlayer.ready().then(() => {
+              vimeoPlayer.play();
+
+              player.querySelector('iframe').style.opacity = 1;
+              playButton.style.opacity = 0;
+              playButton.style.pointerEvents = 'none';
+            });
+          });
+        });
+      };
+
+      window.addEventListener('load', () => {
+        initFullVimeoPlayers();
+      });
+    </script>
+     <!-- CTA + sticky unicorn only when not error; optional per-page overrides via entry metadata (see snippets.html) -->
+    <section class="cta-block" aria-label="Call to action">
+      <h2 class="has-style-h3">Most agencies focus on how much you spend. We focus on how much you keep.</h2>
+      <p class="cta-block-heading">Rareview® is a strategic growth consultancy. We partner with $10M-$500M brands who've outgrown the vendor model and need a team that's accountable to outcomes, not hours. Schedule a conversation with a Director to see if we're the right fit.</p>
+      <a href="/contact/" class="link-button link-button--with-arrow" data-shortcut="l" accesskey="l" title="Let's talk [L]">
+        <span class="link-button-circle" aria-hidden="true">
+          <span class="link-button-key" aria-hidden="true">L</span>
+        </span>
+        <span class="link-button-text">Let's talk</span>
+      </a>
+    </section>
+    <footer>
+      <div class="footer-columns">
+        <div class="footer-col-left">
+          <div class="office-status" id="office-status" aria-label="Office status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <p class="has-style-heading has-style-h6 office-status--title">Surf Town USA</p>
+            <span class="office-status-message" id="office-status-message" aria-live="polite"></span>
+          </div>
+          <p class="footer-datetime" id="footer-datetime" aria-live="polite"></p>
+          <p>1520 N El Camino Real 2<br>San Clemente, CA 92672</p>
+          <p><a href="tel:+19492289263">+1 949 228 9263</a></p>
+          <p><a class="email-link" href="#" data-user="hello" data-domain="rareview.com">Loading…</a></p>
+          <nav class="footer-links" aria-label="Legal and agency">
+            <p class="footer-links-row"><span class="footer-links-label">Legal:</span> <a href="/privacy-policy/">Privacy Policy</a>, <a href="/terms-of-service/">Terms of Service</a>, <a href="/disclaimer/">Disclaimer</a></p>
+            <p class="footer-links-row"><span class="footer-links-label">Agency:</span> <a href="/accessibility-statement/">Accessibility</a>, <a href="/diversity-inclusion-policy/">Diversity</a>, <a href="/authentication-access-policy/">Authentication</a></p>
+          </nav>
+        </div>
+        <div class="footer-col-right">
+          <button type="button" class="footer-logo-link" id="dark-mode-toggle" aria-label="Toggle dark mode">
+            <span class="footer-logo" aria-hidden="true"></span>
+            <span class="footer-logo-message" id="footer-logo-message"></span>
+          </button>
+          <p class="footer-about">All in, always. Established in 2002, we are a growth consultancy built on <span id="years-since-2002"></span> years of pattern recognition. While AI and technology redefine the landscape, we remain focused on the strategy behind the systems. Headquartered in San Clemente and distributed worldwide, we build high-performance applications and omnichannel programs for global brands and media giants.</p>
+          <div class="list-icon-wrap">
+            <ul class="list-icon">
+              <li><a href="https://docs.rareview.com/" target="_blank" rel="noopener">Rareview® Docs</a></li>
+              <li><a href="https://social.rareview.com/" target="_blank" rel="noopener">Rareview® Social</a></li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h3>Subscribe for new posts</h3>
+            <p class="footer-newsletter-label">Enter your email to receive updates when new posts are published. This includes articles from our <a href="/insights/">Insights</a> page and new case studies from our <a href="/work/">Work</a> page. Emails are sent weekly. Unsubscribe at any time.</p>
+            <form action="https://buttondown.com/api/emails/embed-subscribe/Rareview" method="post" class="embeddable-buttondown-form footer-newsletter-form">
+              <input type="email" name="email" id="bd-email" autocomplete="email" aria-label="Enter your email">
+              <span class="submit-button-wrap"><input type="submit" value="Subscribe"></span>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>© <span id="current-year"></span> Rareview®. All rights reserved.</p>
+      </div>
+    </footer>
+    <div class="sticky-footer-wrap" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);">
+      <div class="sticky-footer-fixed">
+        <div class="sticky-footer-embed unicorn-embed" data-us-scale="1" data-us-dpi="1.5" data-us-lazyload="false" data-us-alttext="Footer decoration" data-us-arialabel="Footer decoration" aria-label="Footer decoration"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.blot.im/template/29/b1/14f19f6a2e5d7ad8be9a2f7bc417/scripts-app.js" type="text/javascript"></script>
+    <script src="https://cdn.blot.im/template/65/23/ed8f2418e8700b5c796dcfc137c6/scripts-rareview.js" type="text/javascript"></script>
+    <script>
+        (function () {
+          var files = [];
+          var push = function (name) {
+            if (files.indexOf(name) === -1) {
+              files.push(name);
+            }
+          };
+
+          var path = (window.location.pathname || "/").replace(/\/$/, "") || "/";
+
+          // Always load for entry pages: container img sizing, svg-adapt, tall-hero-image,
+          // entry-date, entry-columns, and all video embed styles.
+          push("video");
+
+          if (document.querySelector("pre, code, .code-block, .code-syntax-panel")) {
+            push("code");
+          }
+          if (document.querySelector("form, #crmWebToEntityForm, .zcwf_row")) {
+            push("forms");
+          }
+          if (document.querySelector(".boxed-layout, .stats-testimonial-block, .story-grid-2col, .story-grid-3col, .text-cols, .testimonial-block, .form-box, .gray-box")) {
+            push("cards");
+          }
+          if (document.querySelector(".capabilities-block") || path.indexOf("/capabilities") === 0) {
+            push("capabilities");
+          }
+          if (document.querySelector(".plugin-gallery, .photo-gallery")) {
+            push("gallery");
+          }
+          if (document.querySelector(".comparison-table, .chart-card, .scoreboard")) {
+            push("tables");
+          }
+          if (document.querySelector(".articles-view, .work-chronological-wrap, .work-brands-grid")) {
+            push("work");
+          }
+
+          var loaded = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(function (l) { return l.href; });
+          files.forEach(function (file) {
+            var href = "/styles-" + file + ".css";
+            if (loaded.indexOf(href) !== -1) { return; }
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = href;
+            document.head.appendChild(link);
+          });
+        })();
+        </script>    <script>
+    (function () {
+      var path = (window.location.pathname || '').replace(/\/$/, '') || '/';
+      if (path.indexOf('/articles/') !== 0) return;
+
+      // Skip only if a complete BlogPosting already exists (has mainEntityOfPage).
+      // Old posts have BlogPosting but lack mainEntityOfPage/@id — those still get the enriched block.
+      var existing = document.querySelectorAll('script[type="application/ld+json"]');
+      for (var i = 0; i < existing.length; i++) {
+        try {
+          var parsed = JSON.parse(existing[i].textContent);
+          if (parsed['@type'] === 'BlogPosting' && parsed['mainEntityOfPage']) return;
+        } catch (e) {}
+      }
+
+      var base = window.location.origin;
+      var getMeta = function (sel) { var el = document.querySelector(sel); return el ? (el.getAttribute('content') || el.getAttribute('href') || '') : ''; };
+      var headline = ((document.querySelector('h1') || {}).textContent || '').trim() || getMeta('meta[property="og:title"]');
+      var description = getMeta('meta[name="description"]') || getMeta('meta[property="og:description"]');
+      var image = getMeta('meta[property="og:image"]');
+      var datePublished = getMeta('meta[property="article:published_time"]');
+      var dateModified = getMeta('meta[property="article:modified_time"]') || datePublished;
+      var authorUrl = getMeta('meta[property="article:author"]');
+      var canonical = getMeta('link[rel="canonical"]') || base + path;
+
+      var authorNames = { '/principals/chuck': 'Chuck Pearson', '/principals/rob': 'Rob Pearson' };
+      var authorKey = authorUrl.replace(base, '');
+      var author = authorUrl
+        ? { '@type': 'Person', '@id': authorUrl, 'name': authorNames[authorKey] || authorUrl.split('/').pop(), 'url': authorUrl }
+        : { '@type': 'Organization', '@id': base + '#organization', 'name': 'Rareview' };
+
+      var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': headline,
+        'description': description,
+        'datePublished': datePublished,
+        'dateModified': dateModified,
+        'author': author,
+        'publisher': {
+          '@type': 'Organization',
+          '@id': base + '#organization',
+          'name': 'Rareview',
+          'logo': { '@type': 'ImageObject', 'url': base + '/_Assets/logo.png' }
+        },
+        'mainEntityOfPage': { '@type': 'WebPage', '@id': canonical },
+        'isPartOf': { '@type': 'WebSite', '@id': base + '#website' }
+      };
+      if (image) schema.image = { '@type': 'ImageObject', 'url': image };
+
+      var s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.text = JSON.stringify(schema);
+      document.head.appendChild(s);
+    })();
+    </script>
+    <script>
+    (function () {
+      var path = (window.location.pathname || '').replace(/\/$/, '') || '/';
+      if (path === '/') return;
+      var parts = path.split('/').filter(Boolean);
+      if (!parts.length) return;
+      var base = window.location.origin;
+      var pageTitle = (document.querySelector('h1') || {}).textContent || document.title.split(' - ')[0] || parts[parts.length - 1];
+      pageTitle = pageTitle.trim();
+      var crumbs = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": base + "/" }];
+      if (parts[0] === 'clients') {
+        crumbs.push({ "@type": "ListItem", "position": 2, "name": "Work", "item": base + "/work" });
+        crumbs.push({ "@type": "ListItem", "position": 3, "name": pageTitle, "item": base + path });
+      } else if (parts[0] === 'articles') {
+        crumbs.push({ "@type": "ListItem", "position": 2, "name": "Insights", "item": base + "/insights" });
+        crumbs.push({ "@type": "ListItem", "position": 3, "name": pageTitle, "item": base + path });
+      } else if (parts[0] === 'principals' && parts.length > 1) {
+        crumbs.push({ "@type": "ListItem", "position": 2, "name": "Principals", "item": base + "/principals" });
+        crumbs.push({ "@type": "ListItem", "position": 3, "name": pageTitle, "item": base + path });
+      } else if (parts[0] === 'endorsements') {
+        crumbs.push({ "@type": "ListItem", "position": 2, "name": "Endorsements", "item": base + "/" });
+        crumbs.push({ "@type": "ListItem", "position": 3, "name": pageTitle, "item": base + path });
+      } else if (parts.length >= 2) {
+        crumbs.push({ "@type": "ListItem", "position": 2, "name": pageTitle, "item": base + path });
+      } else {
+        return;
+      }
+      var s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.text = JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs });
+      document.head.appendChild(s);
+    })();
+    </script>
+  
+
+</body></html>
