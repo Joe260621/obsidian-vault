@@ -25,3 +25,6 @@ desktop.ini
 ~$*
 *.swp
 *.swo
+_ocr_pages/
+_extracted/
+.env

@@ -1,0 +1,115 @@
+{
+  "cookies": [
+    {
+      "name": "HWWAFSESTIME",
+      "value": "1781784009719",
+      "domain": "platform.deepseek.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "HWWAFSESID",
+      "value": "c85b873b12af7ee95f",
+      "domain": "platform.deepseek.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "smidV2",
+      "value": "20260618200022f161a032fcc4ad59e25f01d51e5d1297001c27899ff6c1710",
+      "domain": "platform.deepseek.com",
+      "path": "/",
+      "expires": 1816344022.269875,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": ".thumbcache_6b2e5483f9d858d7c661c5e276b6a6ae",
+      "value": "ck4diaxwIrH0jL0zoH8vivx4I+JujUaNvoVtSFUvGqd0vvcufOVrPEX2EMiNJTH4KIF3Xrmp1476wTCLvQT7Kw%3D%3D",
+      "domain": "platform.deepseek.com",
+      "path": "/",
+      "expires": 1816344022.620169,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://platform.deepseek.com",
+      "localStorage": [
+        {
+          "name": "__appKit_@deepseek/platform_lastSessionValue",
+          "value": "{\"value\":{\"loginMethod\":\"code\"},\"__version\":\"0\"}"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_themePreference",
+          "value": "{\"value\":\"system\",\"__version\":\"0\"}"
+        },
+        {
+          "name": ".thumbcache_6b2e5483f9d858d7c661c5e276b6a6ae",
+          "value": "ck4diaxwIrH0jL0zoH8vivx4I+JujUaNvoVtSFUvGqd0vvcufOVrPEX2EMiNJTH4KIF3Xrmp1476wTCLvQT7Kw=="
+        },
+        {
+          "name": "userUsageCurrencyCountInLastSession",
+          "value": "{\"value\":1,\"__version\":\"0\"}"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_banner",
+          "value": "{\"value\":{\"closedBannerId\":null,\"cachedBannerOptions\":{\"id\":\"v4-launch\",\"items\":[{\"show\":true,\"showCondition\":[\"unauthenticated\",\"authenticated\"],\"content\":{\"zh_CN\":\"🎉 DeepSeek-V4 预览版本发布，具备世界顶级推理性能，Agent 能力大幅提高，已在网页端、APP 和 API 上线，[点击查看详情](https://mp.weixin.qq.com/s/8bxXqS2R8Fx5-1TLDBiEDg)。\",\"en_US\":\"🎉 DeepSeek-V4 Preview is here with stronger Agent capabilities and top-tier reasoning. Now available on web, app, and API. [Click for details](https://x.com/deepseek_ai/status/2047516922263285776).\"},\"fallbackLocale\":\"en_US\",\"type\":\"info\",\"closable\":true}]}},\"__version\":\"0\"}"
+        },
+        {
+          "name": "userCurrencyInLastSession",
+          "value": "{\"value\":null,\"__version\":\"0\"}"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_debugPanelEnabled",
+          "value": "{\"value\":false,\"__version\":\"0\"}"
+        },
+        {
+          "name": "__tea_cache_tokens_20006841",
+          "value": "{\"web_id\":\"7652704051485786372\",\"user_unique_id\":\"7652704051485786372\",\"timestamp\":1781784022447,\"_type_\":\"default\"}"
+        },
+        {
+          "name": "__ds_remote_feature_did",
+          "value": "24d7dffb-302d-4e2d-88b5-d7dda6f0e021"
+        },
+        {
+          "name": "__ds_remote_feature_store",
+          "value": "{\"schemaVersion\":2,\"entries\":{\"volcengine_enabled\":{\"id\":591966471,\"value\":\"true\"}},\"timestamp\":1781784022166,\"remoteVersion\":1}"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_bannerSettings",
+          "value": "{\"schemaVersion\":2,\"entries\":{\"banner\":{\"id\":348562636,\"value\":{\"id\":\"v4-launch\",\"items\":[{\"show\":true,\"showCondition\":[\"unauthenticated\",\"authenticated\"],\"content\":{\"zh_CN\":\"🎉 DeepSeek-V4 预览版本发布，具备世界顶级推理性能，Agent 能力大幅提高，已在网页端、APP 和 API 上线，[点击查看详情](https://mp.weixin.qq.com/s/8bxXqS2R8Fx5-1TLDBiEDg)。\",\"en_US\":\"🎉 DeepSeek-V4 Preview is here with stronger Agent capabilities and top-tier reasoning. Now available on web, app, and API. [Click for details](https://x.com/deepseek_ai/status/2047516922263285776).\"},\"fallbackLocale\":\"en_US\",\"type\":\"info\",\"closable\":true}]}}},\"timestamp\":1781784022235,\"remoteVersion\":1}"
+        },
+        {
+          "name": "__tea_cache_first_20006841",
+          "value": "1"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_debug",
+          "value": "{\"value\":false,\"__version\":\"0\"}"
+        },
+        {
+          "name": "smidV2",
+          "value": "20260618200022f161a032fcc4ad59e25f01d51e5d1297001c27899ff6c1710"
+        },
+        {
+          "name": "__appKit_@deepseek/platform_localePreference",
+          "value": "{\"value\":\"system\",\"__version\":\"0\"}"
+        },
+        {
+          "name": "userToken",
+          "value": "{\"value\":null,\"__version\":\"0\"}"
+        }
+      ]
+    }
+  ]
+}
