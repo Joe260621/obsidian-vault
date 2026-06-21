@@ -1,209 +1,292 @@
 /* ============================================ */
-/* Dashboard 仪表盘样式 — 参考 Dataview 截图    */
+/* Dashboard 仪表盘 — 层次配色 + 参考图风格      */
 /* ============================================ */
 
-/* --- 仪表盘根容器 --- */
+/* --- 根容器（背景由 JS 注入到 workspace-leaf-content）--- */
 .dashboard {
-  --card-radius: 10px;
-  --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  --card-bg: var(--background-primary-alt, #f6f8fa);
-  --accent: var(--interactive-accent, #5b6af0);
-  padding: 0 8px;
+  --accent: #5b6af0;
+  --card-bg: rgba(255,255,255,0.75);
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 20px 40px 60px;
+  min-height: 100vh;
+  background: transparent;
 }
 
 /* ============================================ */
-/* 统计卡片行 */
+/* 隐藏 Obsidian 属性面板 + 内联标题 */
 /* ============================================ */
-
-.dashboard .dataview.table-view-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 12px;
+.dashboard .metadata-container,
+.dashboard .metadata-add-button,
+.dashboard .metadata-properties-heading,
+.dashboard .metadata-property,
+.dashboard .inline-title {
+  display: none !important;
 }
 
-.dashboard .dataview.table-view-table th {
-  background: var(--card-bg);
-  border-radius: var(--card-radius) var(--card-radius) 0 0;
-  padding: 10px 16px 4px;
-  font-size: 0.88em;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-align: center;
-  border: none;
-  box-shadow: var(--card-shadow);
-}
-
-.dashboard .dataview.table-view-table td {
-  background: var(--card-bg);
-  border-radius: 0 0 var(--card-radius) var(--card-radius);
-  padding: 4px 16px 14px;
+/* ============================================ */
+/* H1 / Header */
+/* ============================================ */
+.dashboard h1 {
   font-size: 2em;
   font-weight: 700;
-  color: var(--accent);
   text-align: center;
+  margin: 0 0 4px;
   border: none;
-  box-shadow: var(--card-shadow);
 }
 
-/* --- 概览区块: 用第一个表格（卡片行）--- */
-.dashboard h2:first-of-type + .dataview ~ * {
-  /* 仅针对概览下的 stats 表格 */
-}
-
-/* ============================================ */
-/* 快捷操作按钮 */
-/* ============================================ */
-
-.dashboard .block-language-button {
-  display: inline-block;
-  margin: 4px 6px 4px 0;
-}
-
-.dashboard button.button-default {
-  background: var(--card-bg);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 0.9em;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: var(--card-shadow);
-  color: var(--text-normal);
-}
-
-.dashboard button.button-default:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
-
-/* ============================================ */
-/* 导航链接行 */
-/* ============================================ */
-
-.dashboard .nav-table table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 8px;
-}
-
-.dashboard .nav-table th,
-.dashboard .nav-table td {
-  background: var(--card-bg);
-  border-radius: var(--card-radius);
-  padding: 10px;
+/* H1 下方的日期行 */
+.dashboard .markdown-preview-section > .dataview > p,
+.dashboard .dataview-result > p:first-child {
   text-align: center;
-  font-weight: 600;
-  font-size: 0.95em;
-  border: none;
-  box-shadow: var(--card-shadow);
-}
-
-.dashboard .nav-table a {
-  color: var(--text-normal);
-  text-decoration: none;
-}
-
-.dashboard .nav-table a:hover {
-  color: var(--accent);
-}
-
-/* ============================================ */
-/* 提醒/倒计时 Callout */
-/* ============================================ */
-
-.dashboard .reminder-callout {
-  background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
-  border-left: 4px solid #ef6c6c;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin: 16px 0;
-}
-
-/* ============================================ */
-/* Dataview 通用表格美化 */
-/* ============================================ */
-
-.dashboard .dataview:not(.table-view-table) table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 12px 0;
-}
-
-.dashboard .dataview:not(.table-view-table) th {
-  background: var(--background-secondary);
-  padding: 8px 12px;
-  font-size: 0.85em;
-  font-weight: 600;
-  text-align: left;
-  color: var(--text-muted);
-  border-bottom: 2px solid var(--background-modifier-border);
-}
-
-.dashboard .dataview:not(.table-view-table) td {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--background-modifier-border-hover);
-  font-size: 0.9em;
-}
-
-/* ============================================ */
-/* 引用块/提示 */
-/* ============================================ */
-
-.dashboard blockquote {
-  background: var(--card-bg);
-  border-left: 4px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  padding: 10px 16px;
-  margin: 16px 0;
-  font-size: 0.95em;
+  font-size: 0.88em;
+  color: #8b8fa3;
+  margin: 0 0 22px;
 }
 
 /* ============================================ */
 /* H2 标题 */
 /* ============================================ */
-
 .dashboard h2 {
-  font-size: 1.15em;
+  font-size: 1.05em;
   font-weight: 700;
   margin: 28px 0 10px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--background-modifier-border);
-  color: var(--text-normal);
+  padding: 0 0 6px;
+  color: #3b3e52;
+  border-bottom: 1px solid #e8e9f0;
 }
 
 /* ============================================ */
-/* 顶部 Header */
+/* 📊 统计卡片行 */
 /* ============================================ */
-
-.dashboard h1 {
-  font-size: 1.6em;
-  margin-bottom: 0;
+.stats-row {
+  display: flex;
+  gap: 12px;
+  margin: 6px 0 14px;
 }
 
-.dashboard > blockquote:first-of-type {
+.stats-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 14px 12px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+
+/* 每张卡片不同强调色 */
+.stats-card:nth-child(1) { border-top: 3px solid #4f8ff7; }
+.stats-card:nth-child(1) .stats-num { color: #4f8ff7; }
+.stats-card:nth-child(2) { border-top: 3px solid #34b27b; }
+.stats-card:nth-child(2) .stats-num { color: #34b27b; }
+.stats-card:nth-child(3) { border-top: 3px solid #8b5cf6; }
+.stats-card:nth-child(3) .stats-num { color: #8b5cf6; }
+.stats-card:nth-child(4) { border-top: 3px solid #f59e0b; }
+.stats-card:nth-child(4) .stats-num { color: #f59e0b; }
+.stats-card:nth-child(5) { border-top: 3px solid #14b8a6; }
+.stats-card:nth-child(5) .stats-num { color: #14b8a6; }
+
+.stats-icon {
+  font-size: 1.3em;
+}
+
+.stats-label {
+  font-size: 0.75em;
+  color: #8b8fa3;
+  font-weight: 500;
+}
+
+.stats-num {
+  font-size: 1.9em;
+  font-weight: 800;
+}
+
+/* ============================================ */
+/* 🔧 功能栏按钮 */
+/* ============================================ */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.dash-btn {
+  background: #fff;
+  border: 1px solid #e2e4ed;
+  border-radius: 8px;
+  padding: 8px 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  color: #4a4d5e;
+  white-space: nowrap;
+}
+
+.dash-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(91,106,240,0.25);
+}
+
+/* ============================================ */
+/* 🧭 导航栏 */
+/* ============================================ */
+.dashboard table:has(td a[href="Dashboard.md"]) {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
+.dashboard table:has(td a[href="Dashboard.md"]) td {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
   font-size: 0.9em;
-  color: var(--text-muted);
-  margin-top: 4px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: all 0.15s;
+}
+.dashboard table:has(td a[href="Dashboard.md"]) td:hover {
+  background: #f0f2f7;
+}
+.dashboard table:has(td a[href="Dashboard.md"]) a {
+  color: #4a4d5e;
+  text-decoration: none;
 }
 
 /* ============================================ */
-/* 响应式 — 手机/窄屏 */
+/* 🎯 求职专区卡片 */
 /* ============================================ */
+.job-box {
+  background: linear-gradient(135deg, #fef2f2 0%, #fffbfb 100%);
+  border: 1px solid #fecaca;
+  border-left: 5px solid #dc2626;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin: 8px 0 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.job-box:hover {
+  box-shadow: 0 4px 16px rgba(220,38,38,0.10);
+}
+.job-title {
+  font-size: 1.1em;
+  font-weight: 800;
+  color: #991b1b;
+}
+.job-sub {
+  font-size: 0.82em;
+  color: #8b8fa3;
+  margin-top: 2px;
+}
+.job-btn {
+  border-color: #fecaca !important;
+  background: #fffbfb !important;
+}
+.job-btn:hover {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(220,38,38,0.20) !important;
+}
 
+/* ============================================ */
+/* ⏰ 提醒盒子 */
+/* ============================================ */
+.reminder-box {
+  background: #fafafa;
+  border: 1px solid #e8e9f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 6px 0 14px;
+}
+.reminder-title {
+  font-size: 0.88em;
+  font-weight: 600;
+  color: #3b3e52;
+  margin-bottom: 6px;
+}
+.reminder-countdown {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #4a4d5e;
+}
+.reminder-num {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #dc2626;
+  margin: 0 2px;
+}
+.reminder-date {
+  font-size: 0.75em;
+  color: #a0a4b8;
+  margin-top: 3px;
+}
+
+/* ============================================ */
+/* Dataview 表格 */
+/* ============================================ */
+.dashboard .dataview:not(.table-view-table) table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 14px;
+  font-size: 0.86em;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.dashboard .dataview:not(.table-view-table) th {
+  background: #f0f2f7;
+  padding: 8px 12px;
+  font-weight: 600;
+  color: #6b6f85;
+  text-align: left;
+  border-bottom: 1px solid #e2e4ed;
+}
+.dashboard .dataview:not(.table-view-table) td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+/* ============================================ */
+/* 引用块 */
+/* ============================================ */
+.dashboard blockquote {
+  background: #f8f9fb;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 16px;
+  margin: 10px 0;
+  font-size: 0.88em;
+  color: #6b6f85;
+}
+
+/* ============================================ */
+/* 响应式 */
+/* ============================================ */
 @media (max-width: 700px) {
-  .dashboard .dataview.table-view-table {
-    border-spacing: 4px;
-  }
-  .dashboard .dataview.table-view-table td {
-    font-size: 1.3em;
-    padding: 4px 8px 8px;
-  }
-  .dashboard button.button-default {
-    padding: 6px 10px;
-    font-size: 0.8em;
-  }
+  .dashboard { padding: 16px 10px 40px; }
+  .stats-row { flex-wrap: wrap; gap: 6px; }
+  .stats-card { flex: 1 1 30%; padding: 10px 6px; }
+  .stats-num { font-size: 1.3em; }
+  .btn-row { gap: 4px; }
+  .dash-btn { padding: 6px 10px; font-size: 0.78em; }
 }

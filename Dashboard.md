@@ -2,88 +2,140 @@
 cssclass: dashboard
 ---
 
-# 🏠 项目管理仪表盘
+```dataviewjs
+// ⚡ 第一优先级：折叠侧边栏 + 移除属性面板 + 注入全屏背景
+const app = dv.app;
+app.workspace.leftSplit.collapse();
+app.workspace.rightSplit.collapse();
 
-> **`= date(today).year` 年 `= date(today).month` 月 `= date(today).day` 日** · `= dateformat(date(today), "EEEE")` · 2026 夏日规划
-
----
-
-## 📊 数据概览
-
-| 📥 待办任务 | 📅 Daily 笔记 | 📚 知识库 | ✂️ 剪藏 | 🧠 记忆库 |
-|:-----------:|:------------:|:--------:|:------:|:--------:|
-| `$= dv.pages().file.tasks.where(t => !t.completed).length` | `$= dv.pages('"daily"').length` | `$= dv.pages('"wiki"').length` | `$= dv.pages('"Clippings"').length` | `$= dv.pages('"memory"').length` |
-
----
-
-## 🔧 快捷操作
-
-```button
-name 🆕 新建 Daily
-type command
-action Daily notes: Open today's daily note
+setTimeout(() => {
+  // 移除属性面板
+  document.querySelectorAll('.metadata-container').forEach(m => m.remove());
+  // 隐藏内联标题
+  document.querySelectorAll('.inline-title').forEach(t => { if (t.textContent.trim() === 'Dashboard') t.style.display = 'none'; });
+  // 给整个工作区上蓝天渐变背景（覆盖两边留白）
+  const leaf = document.querySelector('.workspace-leaf-content');
+  if (leaf) {
+    leaf.style.background = 'linear-gradient(180deg, #dceefb 0%, #e8f2fc 15%, #f5f7fb 40%, #ffffff 80%)';
+    leaf.style.backgroundAttachment = 'fixed';
+  }
+}, 100);
 ```
 
-```button
-name ✅ 待办清单
-type link
-action TODO.md
-```
+# 🏠 Home
 
-```button
-name 📋 项目进度
-type link
-action progress.md
-```
-
-```button
-name 📖 CLAUDE.md
-type link
-action CLAUDE.md
-```
-
-```button
-name 🎓 考编入口
-type link
-action wiki/考编/考编学习计划_阶段四.md
-```
-
-```button
-name 📝 今日总结
-type link
-action daily/2026-06-22.md
-```
-
-```button
-name 🔄 Git 同步
-type command
-action Obsidian Git: Create backup
-```
-
-```button
-name 🗂️ 知识库
-type link
-action wiki/index.md
+```dataviewjs
+const now = DateTime.now();
+const weekdays = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+const wd = weekdays[now.weekday - 1];
+dv.paragraph('<center><b>' + now.toFormat('yyyy-MM-dd') + '</b> · ' + wd + ' · ' + now.toFormat('HH:mm') + ' · 2026·夏日每日规划</center>');
 ```
 
 ---
 
-## 🧭 导航
+## 📊 概览
 
-| 🏠 [主页](Dashboard.md) | 📅 [Daily](daily/) | ✅ [待办](TODO.md) | 📚 [Wiki](wiki/index.md) |
+```dataviewjs
+const app = dv.app;
+const stats = [
+  { icon: '📥', label: '待办任务', count: dv.pages().flatMap(p => p.file.tasks || []).where(t => !t.completed).length, link: 'TODO.md' },
+  { icon: '📅', label: 'Daily 笔记', count: dv.pages('"daily"').length, link: 'daily/2026-06-22.md' },
+  { icon: '📚', label: '知识库', count: dv.pages('"wiki"').length, link: 'wiki/index.md' },
+  { icon: '✂️', label: '剪藏', count: dv.pages('"Clippings"').length, link: 'Clippings/' },
+  { icon: '🧠', label: '记忆库', count: dv.pages('"memory"').length, link: 'memory/MEMORY.md' },
+];
+
+const row = dv.el('div', '', { cls: 'stats-row' });
+stats.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'stats-card';
+  card.innerHTML = '<span class="stats-icon">' + s.icon + '</span><span class="stats-label">' + s.label + '</span><span class="stats-num">' + s.count + '</span>';
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => app.workspace.openLinkText(s.link, '', false));
+  row.appendChild(card);
+});
+```
+
+---
+
+## 🎯 求职
+
+```dataviewjs
+const app = dv.app;
+const box = dv.el('div', '', { cls: 'job-box' });
+box.innerHTML = '<div class="job-title">🔴 求职进行中</div>' +
+  '<div class="job-sub">广州 · 用户运营 / 私域运营</div>';
+box.style.cursor = 'pointer';
+box.addEventListener('click', () => app.workspace.openLinkText('求职入口.md', '', false));
+```
+
+```dataviewjs
+const app = dv.app;
+const btns = [
+  { label: '📋 求职总览', action: () => app.workspace.openLinkText('求职入口.md', '', false) },
+  { label: '📄 我的简历', action: () => app.workspace.openLinkText('raw/career/resume-zhuowenyu-user-operations.md', '', false) },
+  { label: '💬 面试准备', action: () => app.workspace.openLinkText('wiki/career/私域运营面试真题解析.md', '', false) },
+  { label: '🔍 岗位搜索', action: () => app.workspace.openLinkText('raw/career/2026-06-04-bosszhipin-user-operations-jobs.md', '', false) },
+];
+
+const row = dv.el('div', '', { cls: 'btn-row' });
+btns.forEach(b => {
+  const btn = document.createElement('button');
+  btn.textContent = b.label;
+  btn.className = 'dash-btn job-btn';
+  btn.addEventListener('click', b.action);
+  row.appendChild(btn);
+});
+```
+
+---
+
+## 🔧 功能栏
+
+```dataviewjs
+const app = dv.app;
+const buttons = [
+  { label: '🆕 新建 Daily', action: () => app.workspace.openLinkText('daily/2026-06-22.md', '', false) },
+  { label: '📋 项目进度', action: () => app.workspace.openLinkText('progress.md', '', false) },
+  { label: '✅ 待办任务', action: () => app.workspace.openLinkText('TODO.md', '', false) },
+  { label: '📖 CLAUDE.md', action: () => app.workspace.openLinkText('CLAUDE.md', '', false) },
+  { label: '🎓 考编入口', action: () => app.workspace.openLinkText('wiki/考编/考编学习计划_阶段四.md', '', false) },
+  { label: '🗂️ 知识库', action: () => app.workspace.openLinkText('wiki/index.md', '', false) },
+  { label: '🔄 Git 同步', action: () => { try { app.commands.executeCommandById('obsidian-git:create-backup'); } catch(e) { app.commands.executeCommandById('obsidian-git:commit'); } } },
+  { label: '📝 今日总结', action: () => app.workspace.openLinkText('daily/2026-06-22.md', '', false) },
+];
+
+const row = dv.el('div', '', { cls: 'btn-row' });
+buttons.forEach(b => {
+  const btn = document.createElement('button');
+  btn.textContent = b.label;
+  btn.className = 'dash-btn';
+  btn.addEventListener('click', b.action);
+  row.appendChild(btn);
+});
+```
+
+---
+
+## 🧭 导航栏
+
+| 🏠 主页 | 📅 Daily | ✅ 待办 | 📚 Wiki |
 |:---:|:---:|:---:|:---:|
+| [→](Dashboard.md) | [→](daily/) | [→](TODO.md) | [→](wiki/index.md) |
 
 ---
 
 ## ⏰ 提醒
 
-> **📌 海珠区社区招聘成绩发布** — `= (date("2026-06-24") - date(today)).days` 天后
-
 ```dataviewjs
-const target = DateTime.fromISO("2026-06-24");
+const target = DateTime.fromISO('2026-06-24');
 const now = DateTime.now();
-const diff = target.diff(now, ["days", "hours"]);
-dv.span(`⏳ 距离成绩发布还有 **${Math.floor(diff.days)} 天 ${Math.floor(diff.hours % 24)} 时**`);
+const diff = target.diff(now, ['days', 'hours']);
+
+const box = dv.el('div', '', { cls: 'reminder-box' });
+box.innerHTML = '<div class="reminder-title">📌 海珠区社区招聘成绩发布</div>' +
+  '<div class="reminder-countdown"><span class="reminder-num">' + Math.floor(diff.days) + '</span> 天 <span class="reminder-num">' + Math.floor(diff.hours % 24) + '</span> 时</div>' +
+  '<div class="reminder-date">2026-06-24 00:00</div>';
 ```
 
 ---
@@ -93,12 +145,12 @@ dv.span(`⏳ 距离成绩发布还有 **${Math.floor(diff.days)} 天 ${Math.floo
 ```dataview
 TASK
 FROM "TODO.md"
-WHERE !completed AND contains(text, "⏰")
+WHERE !completed
 LIMIT 10
 ```
 
 ```dataview
-TABLE file.ctime as "创建时间", file.mtime as "修改时间"
+TABLE file.ctime as "创建时间"
 FROM "Clippings"
 SORT file.ctime DESC
 LIMIT 5
@@ -127,9 +179,9 @@ LIMIT 10
 TASK
 FROM "progress.md"
 WHERE !completed
-LIMIT 5
+LIMIT 8
 ```
 
 ---
 
-> 💡 点击上方按钮快速操作 · [[TODO.md|查看全部待办]] · [[progress.md|查看全部进度]] · [[2026-06-21-session-handoff.md|会话记录]]
+> 💡 点击功能栏按钮快速操作 · [查看全部待办](TODO.md) · [查看项目进度](progress.md)

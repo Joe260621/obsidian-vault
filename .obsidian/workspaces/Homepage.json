@@ -1,20 +1,24 @@
 {
   "main": {
-    "type": "leaf",
-    "state": {
-      "type": "markdown",
-      "state": {
-        "file": "Dashboard.md",
-        "mode": "preview",
-        "source": false
+    "type": "split",
+    "children": [
+      {
+        "type": "tabs",
+        "children": [
+          {
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashboard.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
       }
-    }
-  },
-  "left": {
-    "type": "leaf",
-    "state": {
-      "type": "file-explorer",
-      "state": {}
-    }
+    ],
+    "direction": "vertical"
   }
 }
