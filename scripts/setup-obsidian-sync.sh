@@ -11,7 +11,7 @@ set -e
 usage() {
     echo ""
     echo "用法:"
-    echo "  全新安装:  bash setup-obsidian-sync.sh <Token> [目标目录]"
+    echo "  全新安装:  bash setup-obsidian-sync.sh <Token> <目标目录>"
     echo "  合并旧库:  bash setup-obsidian-sync.sh <Token> <目标目录> --merge <旧Vault路径>"
     echo ""
     echo "参数说明:"
@@ -26,10 +26,10 @@ usage() {
     exit 1
 }
 
-if [ $# -lt 1 ]; then usage; fi
+if [ $# -lt 2 ]; then usage; fi
 
 TOKEN="$1"
-TARGET_DIR="${2:-.}"
+TARGET_DIR="$2"
 MODE="fresh"
 OLD_VAULT=""
 
@@ -37,7 +37,7 @@ OLD_VAULT=""
 shift 2 2>/dev/null || true
 while [ $# -gt 0 ]; do
     case "$1" in
-        --merge|--merge-existing)
+        --merge)
             MODE="merge"
             OLD_VAULT="$2"
             if [ ! -d "$OLD_VAULT" ]; then
@@ -52,6 +52,7 @@ while [ $# -gt 0 ]; do
 done
 
 REPO_URL="https://${TOKEN}@github.com/Joe260621/obsidian-vault.git"
+CLEAN_URL="https://github.com/Joe260621/obsidian-vault.git"
 GIT_NAME="Joe260621"
 GIT_EMAIL="wzhuo2023@gmail.com"
 
@@ -75,8 +76,13 @@ if ! command -v git &> /dev/null; then
 fi
 echo "✅ git: $(git --version)"
 
+# ── 配置凭据管理器（Windows 自带，token 不存明文）──────
+echo ""
+echo "🔐 配置凭据管理器..."
+git config --global credential.helper manager
+echo "✅ Git Credential Manager 已启用（token 不会明文存储在 .git/config）"
+
 # ── 克隆仓库 ────────────────────────────────────────────
-# 确保不会克隆到已有仓库中
 if [ -d "$TARGET_DIR/.git" ]; then
     echo "⚠️  目标已是 git 仓库，跳过 clone"
     cd "$TARGET_DIR"
@@ -86,6 +92,12 @@ else
     git clone "$REPO_URL" "$TARGET_DIR"
     cd "$TARGET_DIR"
     echo "✅ 克隆完成: $(git log --oneline -1)"
+
+    # ── 移除 remote URL 中的 token，改用凭据管理器 ──────
+    echo ""
+    echo "🔒 清理 remote URL 中的 token..."
+    git remote set-url origin "$CLEAN_URL"
+    echo "✅ remote URL 已替换为无 token 版本"
 fi
 
 # ── Git 配置 ─────────────────────────────────────────────
@@ -113,10 +125,10 @@ if [ "$MODE" = "merge" ]; then
     echo "旧 vault 文件总数: $OLD_TOTAL"
 
     # 逐文件复制（跳过已有和 .obsidian 配置）
+    # 使用 < <(...) 而非管道，避免子 shell 导致计数器丢失
     COPIED=0
     SKIPPED=0
     while IFS= read -r -d '' src; do
-        # 相对路径
         rel="${src#$OLD_VAULT/}"
         dest="$TARGET_DIR/$rel"
 
@@ -139,19 +151,25 @@ if [ "$MODE" = "merge" ]; then
     echo ""
     echo "✅ 复制了 $COPIED 个独有文件"
     echo "⏭️  跳过了 $SKIPPED 个已存在文件（两边都有）"
-    echo "🔒 跳过了 .obsidian/ 配置（保留共享仓库版本）"
+    echo "🔒 跳过了 .obsidian/ 目录（保留共享仓库的插件配置）"
+    echo "🔒 跳过了 .git/ 目录"
 
     # 提交合并
     if [ "$COPIED" -gt 0 ]; then
         echo ""
         echo "📝 提交合并..."
         git add -A
-        git commit -m "merge: 合并本地旧vault独有内容 — $COPIED 个新文件
+        git diff --cached --stat | tail -1
+        git commit -m "merge: 合并本地旧vault独有内容
 
-Co-Authored-By: Claude <noreply@anthropic.com>" || echo "⚠️  没有新内容需要提交"
+来自 $(hostname) 的 $COPIED 个新文件
+
+Co-Authored-By: Claude <noreply@anthropic.com>" || echo "⚠️  没有变更需要提交"
         echo ""
         echo "📤 推送到 GitHub..."
-        git push
+        # 首次 push 需要认证，凭据管理器会弹窗或使用已缓存的 token
+        # 这里用 token URL 做一次性 push
+        git push "$REPO_URL" master
         echo "✅ 合并已推送"
     else
         echo ""
@@ -167,17 +185,18 @@ git pull 2>&1 || echo "⚠️  pull 失败（可能已是最新）"
 # ── 验证清单 ─────────────────────────────────────────────
 echo ""
 echo "────────────────────────────────────────────"
-echo " 📋 验证清单"
+echo " 📋 设置完成"
 echo "────────────────────────────────────────────"
 echo ""
-echo "✅ 共享仓库: $TARGET_DIR"
-echo "✅ 远程地址: origin  →  Joe260621/obsidian-vault"
-echo "✅ 当前分支: $(git branch --show-current)"
-echo "✅ 最新提交: $(git log --oneline -1)"
-echo "✅ 自动提交: 每 30 分钟"
-echo "✅ 自动推送: 每 30 分钟"
+echo "  共享仓库:  $TARGET_DIR"
+echo "  远程地址:  origin  →  Joe260621/obsidian-vault"
+echo "  当前分支:  $(git branch --show-current)"
+echo "  最新提交:  $(git log --oneline -1)"
+echo "  凭据管理:  Git Credential Manager"
+echo "  自动提交:  每 30 分钟"
+echo "  自动推送:  每 30 分钟"
 if [ "$MODE" = "merge" ]; then
-    echo "✅ 合并完成: +$COPIED 新文件 / $SKIPPED 跳过"
+    echo "  合并结果:  +$COPIED 新文件 / $SKIPPED 跳过"
 fi
 echo ""
 echo "────────────────────────────────────────────"
@@ -190,11 +209,11 @@ echo ""
 echo "2. 如果提示 Safe mode → 点「关闭安全模式」"
 echo "   插件配置已随仓库同步，无需重新安装"
 echo ""
-echo "3. 检查左侧是否有 Git 图标（源代码管理）"
-echo "   如果没有 → Settings → Community plugins → 手动启用 obsidian-git"
+echo "3. 左侧应有 Git 图标（源代码管理面板）"
+echo "   如果没有 → Settings → Community plugins → 启用 obsidian-git"
 echo ""
-echo "4. 快捷键 Ctrl+P → 输入 'Obsidian Git: Pull' → 验证同步"
+echo "4. Ctrl+P → 'Obsidian Git: Pull' → 验证同步"
 echo ""
 echo "============================================"
-echo " 🎉 设置完成！"
+echo " 🎉 完成！两台电脑现在共用同一个 vault"
 echo "============================================"
