@@ -1,0 +1,20 @@
+{
+  "version": 4,
+  "homepages": {
+    "Main Homepage": {
+      "version": 2,
+      "openOnStartup": true,
+      "hasRibbonIcon": true,
+      "openMode": "Replace all",
+      "manualOpenMode": "Keep open notes",
+      "view": "Reading view",
+      "revertView": true,
+      "refreshDataview": true,
+      "autoCreate": false,
+      "kind": "Workspace",
+      "value": "Homepage",
+      "commands": []
+    }
+  },
+  "separateMobile": false
+}

@@ -1,0 +1,209 @@
+/* ============================================ */
+/* Dashboard 仪表盘样式 — 参考 Dataview 截图    */
+/* ============================================ */
+
+/* --- 仪表盘根容器 --- */
+.dashboard {
+  --card-radius: 10px;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --card-bg: var(--background-primary-alt, #f6f8fa);
+  --accent: var(--interactive-accent, #5b6af0);
+  padding: 0 8px;
+}
+
+/* ============================================ */
+/* 统计卡片行 */
+/* ============================================ */
+
+.dashboard .dataview.table-view-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 12px;
+}
+
+.dashboard .dataview.table-view-table th {
+  background: var(--card-bg);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  padding: 10px 16px 4px;
+  font-size: 0.88em;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  border: none;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboard .dataview.table-view-table td {
+  background: var(--card-bg);
+  border-radius: 0 0 var(--card-radius) var(--card-radius);
+  padding: 4px 16px 14px;
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  border: none;
+  box-shadow: var(--card-shadow);
+}
+
+/* --- 概览区块: 用第一个表格（卡片行）--- */
+.dashboard h2:first-of-type + .dataview ~ * {
+  /* 仅针对概览下的 stats 表格 */
+}
+
+/* ============================================ */
+/* 快捷操作按钮 */
+/* ============================================ */
+
+.dashboard .block-language-button {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+}
+
+.dashboard button.button-default {
+  background: var(--card-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--card-shadow);
+  color: var(--text-normal);
+}
+
+.dashboard button.button-default:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* ============================================ */
+/* 导航链接行 */
+/* ============================================ */
+
+.dashboard .nav-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
+.dashboard .nav-table th,
+.dashboard .nav-table td {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95em;
+  border: none;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboard .nav-table a {
+  color: var(--text-normal);
+  text-decoration: none;
+}
+
+.dashboard .nav-table a:hover {
+  color: var(--accent);
+}
+
+/* ============================================ */
+/* 提醒/倒计时 Callout */
+/* ============================================ */
+
+.dashboard .reminder-callout {
+  background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+  border-left: 4px solid #ef6c6c;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+
+/* ============================================ */
+/* Dataview 通用表格美化 */
+/* ============================================ */
+
+.dashboard .dataview:not(.table-view-table) table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.dashboard .dataview:not(.table-view-table) th {
+  background: var(--background-secondary);
+  padding: 8px 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--background-modifier-border);
+}
+
+.dashboard .dataview:not(.table-view-table) td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--background-modifier-border-hover);
+  font-size: 0.9em;
+}
+
+/* ============================================ */
+/* 引用块/提示 */
+/* ============================================ */
+
+.dashboard blockquote {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 16px;
+  margin: 16px 0;
+  font-size: 0.95em;
+}
+
+/* ============================================ */
+/* H2 标题 */
+/* ============================================ */
+
+.dashboard h2 {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 28px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--background-modifier-border);
+  color: var(--text-normal);
+}
+
+/* ============================================ */
+/* 顶部 Header */
+/* ============================================ */
+
+.dashboard h1 {
+  font-size: 1.6em;
+  margin-bottom: 0;
+}
+
+.dashboard > blockquote:first-of-type {
+  font-size: 0.9em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ============================================ */
+/* 响应式 — 手机/窄屏 */
+/* ============================================ */
+
+@media (max-width: 700px) {
+  .dashboard .dataview.table-view-table {
+    border-spacing: 4px;
+  }
+  .dashboard .dataview.table-view-table td {
+    font-size: 1.3em;
+    padding: 4px 8px 8px;
+  }
+  .dashboard button.button-default {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+}
