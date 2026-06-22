@@ -1,25 +1,35 @@
 ---
 cssclass: dashboard
+cssclasses:
+  - dashboard
 ---
 
 ```dataviewjs
-// ⚡ 第一优先级：折叠侧边栏 + 移除属性面板 + 注入全屏背景
+// ⚡ 折叠侧边栏 + 注入全链路天空蓝背景（沿 DOM 树逐级上色消除白层）
 const app = dv.app;
 app.workspace.leftSplit.collapse();
 app.workspace.rightSplit.collapse();
 
-setTimeout(() => {
-  // 移除属性面板
-  document.querySelectorAll('.metadata-container').forEach(m => m.remove());
-  // 隐藏内联标题
-  document.querySelectorAll('.inline-title').forEach(t => { if (t.textContent.trim() === 'Dashboard') t.style.display = 'none'; });
-  // 给整个工作区上蓝天渐变背景（覆盖两边留白）
-  const leaf = document.querySelector('.workspace-leaf-content');
-  if (leaf) {
-    leaf.style.background = 'linear-gradient(180deg, #dceefb 0%, #e8f2fc 15%, #f5f7fb 40%, #ffffff 80%)';
-    leaf.style.backgroundAttachment = 'fixed';
+(function setBg(retry) {
+  retry = retry || 0;
+  const dash = document.querySelector('.dashboard');
+  if (dash) {
+    // 从 .dashboard 一路向上，给每个父级都设天空蓝，直到 .workspace-leaf-content
+    let el = dash;
+    while (el) {
+      el.style.setProperty('background', '#dceefb', 'important');
+      if (el.classList.contains('workspace-leaf-content')) break;
+      el = el.parentElement;
+    }
+    // 清理
+    document.querySelectorAll('.metadata-container').forEach(m => m.remove());
+    document.querySelectorAll('.inline-title').forEach(t => {
+      if (t.textContent.trim() === 'Dashboard') t.style.display = 'none';
+    });
+  } else if (retry < 20) {
+    setTimeout(() => setBg(retry + 1), 150);
   }
-}, 100);
+})();
 ```
 
 # 🏠 Home

@@ -2,15 +2,25 @@
 /* Dashboard 仪表盘 — 层次配色 + 参考图风格      */
 /* ============================================ */
 
-/* --- 根容器（背景由 JS 注入到 workspace-leaf-content）--- */
-.dashboard {
+/* --- 仪表盘专属浅天空蓝背景（JS 主力注入 .workspace-leaf-content，CSS 兜底 .dashboard 自身 + 父级链）--- */
+
+/* 当仪表盘加载时，强制覆盖内容区背景 */
+body .dashboard {
   --accent: #5b6af0;
   --card-bg: rgba(255,255,255,0.75);
   --card-shadow: 0 1px 3px rgba(0,0,0,0.05);
   padding: 20px 40px 60px;
   min-height: 100vh;
-  background: transparent;
+  background: #dceefb !important;
 }
+
+/* 确保仪表盘直接父容器也是天空蓝（消除中间白层） */
+.markdown-reading-view:has(.dashboard),
+.markdown-source-view:has(.dashboard) {
+  background: #dceefb !important;
+}
+
+/* 如果浏览器不支持 :has，用 JS 兜底 */
 
 /* ============================================ */
 /* 隐藏 Obsidian 属性面板 + 内联标题 */
