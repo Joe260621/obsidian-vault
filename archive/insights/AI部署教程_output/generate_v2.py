@@ -365,62 +365,79 @@ def build_pdf(charts):
     pdf.tip("Codex vs Claude Code 选择建议：\n• 已有 ChatGPT/OpenAI 账号 → 优先用 Codex\n• 已有 Anthropic 账号 → 优先用 Claude Code\n• 两者功能相似（代码生成、对话、文件操作），选自己已有 Key 的即可\n• 也可两个都装，按需切换", border=(59, 130, 246))
 
     # ====== Codex + DeepSeek 直驱 ======
-    pdf.h1("五-C、最强方案：用 DeepSeek API 驱动 Codex / Claude Code")
-    pdf.h2("核心原理")
-    pdf.p("DeepSeek 的 API 与 OpenAI 格式完全兼容！这意味着可以用 DeepSeek 的超低价 API（¥1/百万token）来驱动 Codex CLI，甚至驱动 Claude Code（通过中转）。无需 OpenAI/Anthropic 账号，无需外网，无需海外支付。")
-    pdf.h2("方案一：Codex + DeepSeek（最简单）")
+    pdf.h1("五-C、最强方案：用 DeepSeek 来跑 Codex")
+    pdf.h2("这是什么意思？")
+    pdf.p("简单说：Codex 是一个免费的 AI 编程助手（和 Claude Code 差不多），但它本来需要连 OpenAI 才能用。而 DeepSeek 的接口恰好和 OpenAI 是一样的格式——所以只要告诉 Codex「别去 OpenAI，去 DeepSeek 那儿」，Codex 就能用 DeepSeek 的便宜 AI 来工作了。")
+    pdf.p("打个比方：Codex 是一辆车，本来只能加 OpenAI 的油。但 DeepSeek 的油枪接口和 OpenAI 一样，所以你只需要把加油站地址从 OpenAI 改成 DeepSeek，车就能跑了。油费只要十分之一。")
+    pdf.h2("具体操作（一步步跟着做）")
     pdf.code(
-        "# DeepSeek API 是 OpenAI 兼容的，只需改一个环境变量！\n"
-        "# Step 1: 获取 DeepSeek API Key\n"
-        "#   https://platform.deepseek.com → API Keys → 创建\n"
-        "#   （国内直连 + 微信充值 ¥10）\n"
+        "# 第一步：去 DeepSeek 拿一个「钥匙」\n"
+        "# 用浏览器打开 https://platform.deepseek.com\n"
+        "# （这个网站国内直接就能打开，不用翻墙）\n"
+        "# 用手机号注册 → 登录 → 点左边「API Keys」→ 点创建\n"
+        "# 把生成的钥匙复制下来（sk-...开头的，只显示一次！）\n"
+        "# 然后点「充值」，微信扫一下，充 10 块钱就够了\n"
         "\n"
-        "# Step 2: 安装 Codex\n"
+        "# 第二步：装 Codex（在终端里装，第五章已经讲过怎么装）\n"
         "npm install -g @openai/codex\n"
         "\n"
-        "# Step 3: 指向 DeepSeek 而非 OpenAI\n"
-        "# Windows PowerShell:\n"
+        "# 第三步：告诉 Codex 去 DeepSeek 而不是 OpenAI\n"
+        "# 把下面两行复制到终端里运行（先替换成你自己的钥匙）：\n"
+        "#\n"
+        "# Windows 电脑（PowerShell）：\n"
         '$env:OPENAI_BASE_URL = "https://api.deepseek.com/v1"\n'
-        '$env:OPENAI_API_KEY = "sk-你的DeepSeek_Key"\n'
-        "\n"
-        "# macOS / Linux:\n"
+        '$env:OPENAI_API_KEY = "sk-粘贴你刚才复制的钥匙"\n'
+        "#\n"
+        "# Mac 电脑（终端）：\n"
         'export OPENAI_BASE_URL="https://api.deepseek.com/v1"\n'
-        'export OPENAI_API_KEY="sk-你的DeepSeek_Key"\n'
+        'export OPENAI_API_KEY="sk-粘贴你刚才复制的钥匙"\n'
         "\n"
-        "# Step 4: 验证\n"
+        "# 第四步：试试能不能用\n"
         "codex \"你好\"\n"
-        "# Codex 现在通过 DeepSeek 运行！费用只有 OpenAI 的 1/10")
-    pdf.tip("这个方案的亮点：\n• Codex CLI（免费）+ DeepSeek API（¥1/百万token）= 近乎免费的 AI 编程助手\n• 全程国内网络，微信充值\n• DeepSeek V3 编程能力非常强，日常使用完全够用\n• 之后想切回 OpenAI 只需改回 BASE_URL", border=(34, 197, 94))
+        "# 如果它回复你了 → 成功了！Codex 现在用的是 DeepSeek 的 AI\n"
+        "# 费用比用 OpenAI 便宜十倍，而且不用翻墙不用外币卡")
+    pdf.tip("这三行命令在做什么？\n• 第一行：告诉 Codex「换地址，去 DeepSeek 别去 OpenAI」\n• 第二行：把你的 DeepSeek 钥匙交给 Codex\n• 第三行：测试一下能不能正常聊天\n\n以后每次打开终端要先用 codex 的时候，都要先输前两行。如果想一劳永逸，看附录 9.3 的环境变量永久配置。", border=(34, 197, 94))
 
-    pdf.h2("方案二：Claude Code + DeepSeek（通过中转）")
-    pdf.p("Claude Code 使用 Anthropic 协议，不能直接连 DeepSeek。需要借助 API 中转站，将 Anthropic 格式请求转为 DeepSeek 格式。配置方法见下一章。")
+    pdf.h2("方案二：Claude Code 能不能也这样？")
+    pdf.p("Claude Code 稍微麻烦一点——它用的是另一种接口格式，不能直接连 DeepSeek。需要一个「转接头」（也就是下一章要讲的中转站），把 Claude 的话翻译成 DeepSeek 能听懂的格式。具体看第六章。")
 
     # ====== 第6章：中转站方案 ======
     pdf.add_page()
-    pdf.h1("六、进阶：用中转站让 Claude Code 走 DeepSeek")
+    pdf.h1("六、进阶：让 Claude Code 也能用 DeepSeek")
 
-    pdf.h2("6.1 原理说明")
-    pdf.p("API中转站充当「翻译官」：Claude Code 发出 Anthropic 格式的请求 → 中转站转换为 DeepSeek/OpenAI 格式 → 调用国内模型 → 返回结果。整个过程在国内网络完成，无需外网。")
+    pdf.h2("6.1 为什么需要「中转站」？")
+    pdf.p("Claude Code 说的是「英语」，DeepSeek 说的是「中文」，它们不能直接对话。中转站就像一个翻译，Claude Code 把请求发给中转站，中转站翻译成 DeepSeek 能懂的格式，DeepSeek 回答后再翻译回来。整个过程在国内网络完成，不需要翻墙。")
+    pdf.p("你需要做的就是：找一个靠谱的中转站 → 注册拿到它的地址和钥匙 → 告诉 Claude Code 去那里。")
 
-    pdf.h2("6.2 配置方法")
+    pdf.h2("6.2 具体操作")
     pdf.code(
-        "# 设置环境变量指向中转站\n"
-        "# Windows PowerShell:\n"
-        '$env:ANTHROPIC_BASE_URL = "https://你的中转站地址/v1"\n'
-        '$env:ANTHROPIC_API_KEY = "你的中转站API Key"\n'
+        "# 第一步：找一个中转站（提供 API 中转服务的网站）\n"
+        "# 选站建议：支持微信/支付宝充值、运营超过半年、有客服群\n"
+        "# 注册后你会拿到两样东西：\n"
+        "#   ① 中转站地址（一串网址，类似 https://xxx.com/v1）\n"
+        "#   ② API 钥匙（类似 sk-... 的字符串）\n"
         "\n"
-        "# macOS / Linux:\n"
-        'export ANTHROPIC_BASE_URL="https://你的中转站地址/v1"\n'
-        'export ANTHROPIC_API_KEY="你的中转站API Key"\n'
+        "# 第二步：告诉 Claude Code 用中转站\n"
+        "# 把下面两行复制到终端（替换成你自己的地址和钥匙）：\n"
+        "#\n"
+        "# Windows 电脑（PowerShell）：\n"
+        '$env:ANTHROPIC_BASE_URL = "粘贴中转站给你的地址"\n'
+        '$env:ANTHROPIC_API_KEY = "粘贴中转站给你的钥匙"\n'
+        "#\n"
+        "# Mac 电脑（终端）：\n"
+        'export ANTHROPIC_BASE_URL="粘贴中转站给你的地址"\n'
+        'export ANTHROPIC_API_KEY="粘贴中转站给你的钥匙"\n'
         "\n"
-        "# 然后正常使用 claude 命令即可\n"
-        "claude \"你好\"")
-    pdf.tip("⚠️ 中转站选择建议：优先选支持支付宝/微信充值的国内站，\n用前小额测试（充 ¥5-10），确认稳定后再大额充值。\n不要轻信低价宣传，认准运营时间超过半年的站点。", border=(245, 158, 11))
+        "# 第三步：正常使用\n"
+        "claude \"你好\"\n"
+        "# Claude Code 现在通过中转站走 DeepSeek 了！")
+    pdf.tip("中转站避坑提醒：\n• 先用小金额（充 5-10 块）测试几天，稳定了再多充\n• 不要相信「白菜价」「不限量」的宣传，正常价格是几块钱/百万token\n• 优先选有 QQ 群或微信群的，出了问题能找到人\n• 建议同时注册 2 个中转站备用，一个挂了还有另一个", border=(245, 158, 11))
 
-    pdf.h2("6.3 方案总结")
+    pdf.h2("6.3 全部方案总结")
     pdf.tbl(["方案", "门槛", "费用", "推荐场景"],
-            [["DeepSeek + Cherry Studio", "国内网 + 微信", "¥10起", "⭐ 小白首选"],
-             ["Codex CLI + OpenAI", "外网 + Visa", "$5起", "已有ChatGPT账号"],
+            [["DeepSeek + Cherry Studio", "国内网 + 微信", "¥10起", "⭐ 小白首选（图形界面）"],
+             ["Codex + DeepSeek(直连)", "国内网 + 微信", "¥10起", "⭐ 编程首选（命令行）"],
+             ["Codex + OpenAI", "外网 + Visa", "$5起", "已有ChatGPT账号"],
              ["Claude Code + Anthropic", "外网 + Visa", "$5起", "需最强模型"],
              ["Claude Code + 中转站", "国内网 + 微信", "¥10起", "想用CC但没外网"],
              ["DeepSeek 网页版", "浏览器就行", "免费", "先体验再决定"]])
@@ -504,7 +521,7 @@ def build_pdf(charts):
 # ============================================================
 # PPT 生成（python-pptx，15页）
 # ============================================================
-def build_ppt(charts):
+def build_ppt_old(charts):
     from pptx import Presentation
     from pptx.util import Inches, Pt
     from pptx.dml.color import RGBColor
@@ -545,7 +562,7 @@ def build_ppt(charts):
         s.background.fill.solid()
         s.background.fill.fore_color.rgb = RGBColor(*hex_rgb(c))
 
-    def tb(s, l, t, w, h, txt, sz=18, c=C["dark"], b=False, a=PP_ALIGN.LEFT):
+    def tb(s, l, t, w, h, txt, sz=14, c=C["dark"], b=False, a=PP_ALIGN.LEFT):
         box = s.shapes.add_textbox(Inches(l), Inches(t), Inches(w), Inches(h))
         tf = box.text_frame; tf.word_wrap = True
         p = tf.paragraphs[0]; p.text = txt
@@ -616,7 +633,7 @@ def build_ppt(charts):
         y = 0.8 + j * 0.95
         dot = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(5.2), Inches(y+0.12), Inches(0.15), Inches(0.15))
         dot.fill.solid(); dot.fill.fore_color.rgb = RGBColor(*hex_rgb(C["ds"])); dot.line.fill.background()
-        tb(s, 5.6, y, 7, 0.5, item, 17, C["dark"])
+        tb(s, 5.6, y, 7, 0.55, item, 14, C["dark"])
 
     # === S6: Cherry Studio 介绍 ===
     s = prs.slides.add_slide(blank); bg(s, "#FFFFFF")
@@ -659,7 +676,7 @@ def build_ppt(charts):
             y = 1.2 + j * 1.1
             dot = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(5.2), Inches(y+0.12), Inches(0.15), Inches(0.15))
             dot.fill.solid(); dot.fill.fore_color.rgb = RGBColor(*hex_rgb(color)); dot.line.fill.background()
-            tb(s, 5.6, y, 7, 0.5, item, 18, C["dark"], "⚠️" in item)
+            tb(s, 5.6, y, 7, 0.55, item, 14, C["dark"], "⚠️" in item)
 
     # === S9: Codex CLI ===
     s = prs.slides.add_slide(blank); bg(s, "#FFFFFF")
@@ -674,55 +691,53 @@ def build_ppt(charts):
         y = 0.8 + j * 0.95
         dot = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(5.2), Inches(y+0.12), Inches(0.15), Inches(0.15))
         dot.fill.solid(); dot.fill.fore_color.rgb = RGBColor(*hex_rgb("#10A37F")); dot.line.fill.background()
-        tb(s, 5.6, y, 7, 0.5, item, 17, C["dark"])
+        tb(s, 5.6, y, 7, 0.55, item, 14, C["dark"])
 
-    # === S10: DeepSeek API 直驱方案 ===
+    # === S10: DeepSeek API 直驱方案（白话版）===
     s = prs.slides.add_slide(blank); bg(s, "#FFFFFF")
     bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(4.5), Inches(7.5))
     bar.fill.solid(); bar.fill.fore_color.rgb = RGBColor(*hex_rgb("#059669")); bar.line.fill.background()
     tb(s, 0.6, 1.0, 3.5, 1, "最强方案", 22, "#FFFFFF", True)
-    tb(s, 0.6, 2.0, 3.5, 2, "DeepSeek API\n驱动 Codex/\nClaude Code", 30, "#FFFFFF", True)
-    tb(s, 0.6, 4.5, 3.5, 2, "DeepSeek API 与 OpenAI 兼容\nCodex 直连 DeepSeek\n费用仅为 OpenAI 的 1/10\n国内直连 + 微信充值", 12, "#D1FAE5")
-    items = ["Codex + DeepSeek: 改一个环境变量即可",
-             'OPENAI_BASE_URL=https://api.deepseek.com/v1',
-             "OPENAI_API_KEY=你的DeepSeek_Key",
-             "codex \"你好\" → 通过DeepSeek运行!",
-             "Claude Code 需要通过中转站连接DeepSeek",
-             "参见下一章中转站配置"]
+    tb(s, 0.6, 2.0, 3.5, 2, "用 DeepSeek\n来跑 Codex", 30, "#FFFFFF", True)
+    tb(s, 0.6, 4.2, 3.5, 2.5, "Codex 是车，DeepSeek 是油\n接口一样，换个地址就能用\n费用只要 OpenAI 的 1/10\n国内直连 + 微信充值", 12, "#D1FAE5")
+    items = ["去 DeepSeek 拿钥匙: platform.deepseek.com",
+             "装 Codex: npm install -g @openai/codex",
+             "告诉 Codex 去 DeepSeek（复制粘贴一行）",
+             "第一行: OPENAI_BASE_URL=api.deepseek.com/v1",
+             "第二行: OPENAI_API_KEY=你的钥匙",
+             "试试: codex 你好 → 用 DeepSeek 回复!"]
     for j, item in enumerate(items):
         y = 0.6 + j * 0.95
         dot = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(5.2), Inches(y+0.12), Inches(0.15), Inches(0.15))
         dot.fill.solid(); dot.fill.fore_color.rgb = RGBColor(*hex_rgb("#059669")); dot.line.fill.background()
-        is_code = "BASE_URL" in item or "API_KEY" in item or "codex" in item
-        tb(s, 5.6, y, 7, 0.5, item, 15 if is_code else 16, "#1E293B", is_code)
+        is_code = "BASE_URL" in item or "API_KEY" in item
+        tb(s, 5.6, y, 7, 0.55, item, 12 if is_code else 13, "#1E293B", is_code)
 
-    # === S11: 中转站方案 ===
+    # === S11: 中转站方案（白话版）===
     s = prs.slides.add_slide(blank); bg(s, "#FFFFFF")
-    tb(s, 0.8, 0.3, 10, 0.6, "进阶：中转站方案（Claude Code 走 DeepSeek）", 24, C["accent"], True)
-    tb(s, 0.8, 1.2, 11.5, 0.5, "原理：中转站充当翻译官，把 Claude Code 的请求转发给国内模型（DeepSeek等），在国内网络完成。", 16, C["dark"])
-    card(s, 0.8, 2.2, 11.5, 2.2, "#F5F3FF")
-    tb(s, 1.2, 2.4, 10.5, 0.4, "配置方法（设置两个环境变量）：", 16, C["accent"], True)
-    tb(s, 1.2, 3.0, 10.5, 1.4,
-        'Windows PowerShell:\n'
-        '  $env:ANTHROPIC_BASE_URL = "https://你的中转站/v1"\n'
-        '  $env:ANTHROPIC_API_KEY = "你的中转站Key"\n\n'
-        'macOS / Linux:\n'
-        '  export ANTHROPIC_BASE_URL="https://你的中转站/v1"\n'
-        '  export ANTHROPIC_API_KEY="你的中转站Key"',
-        11, "#334155")
-    tb(s, 0.8, 4.8, 11.5, 0.5, "⚠️ 提醒：选运营半年以上的中转站，先用小额（¥5-10）测试稳定性。", 14, C["warning"], True)
-    # 方案总结表
-    card(s, 0.8, 5.5, 11.5, 1.6, "#F8FAFC")
-    tb(s, 1.2, 5.7, 10.5, 0.4, "四种方案总结", 16, C["dark"], True)
+    tb(s, 0.8, 0.2, 11, 0.5, "进阶：让 Claude Code 走 DeepSeek（中转站）", 20, C["accent"], True)
+    tb(s, 0.8, 0.8, 11.5, 0.5, "Claude Code 说英语，DeepSeek 说中文，中转站当翻译——在国内就能完成。", 13, C["dark"])
+    card(s, 0.8, 1.5, 11.5, 3.2, "#F5F3FF")
+    tb(s, 1.2, 1.65, 10.5, 0.3, "只需三步：", 14, C["accent"], True)
+    tb(s, 1.2, 2.1, 10.5, 2.3,
+        '1. 找中转站 → 微信注册 → 拿到地址和钥匙\n\n'
+        '2. 打开终端，复制粘贴两行（替换成你自己的）：\n'
+        '   $env:ANTHROPIC_BASE_URL = "中转站给的地址"\n'
+        '   $env:ANTHROPIC_API_KEY = "中转站给的钥匙"\n\n'
+        '3. 正常用: claude "你好" → 走DeepSeek回复!',
+        10, "#334155")
+    tb(s, 0.8, 5.0, 11.5, 0.35, "选站提醒：充5-10块先试几天。别信「白菜价」宣传，认准运营半年以上的站。", 11, C["warning"], True)
+    card(s, 0.8, 5.5, 11.5, 1.7, "#F8FAFC")
+    tb(s, 1.2, 5.65, 10.5, 0.3, "方案速查", 13, C["dark"], True)
     for j, (plan, cost, scene) in enumerate([
-        ("DeepSeek + Cherry Studio", "¥10起", "⭐ 小白首选"),
-        ("Codex + OpenAI", "$5起", "已有ChatGPT账号"),
-        ("Claude Code + Anthropic", "$5起", "需最强模型"),
-        ("Claude Code + 中转站", "¥10起", "想用CC但没外网"),
+        ("DS+Cherry", "¥10起", "小白首选"),
+        ("Codex+DS", "¥10起", "编程首选"),
+        ("Codex+OAI", "$5起", "有ChatGPT"),
+        ("CC+中转", "¥10起", "没外网"),
     ]):
-        x = 1.2 + j * 2.9
-        tb(s, x, 6.3, 2.7, 0.35, f"{plan}", 10, C["dark"], True)
-        tb(s, x, 6.6, 2.7, 0.3, f"{cost} | {scene}", 9, "#64748B")
+        x = 1.2 + j * 2.95
+        tb(s, x, 6.1, 2.8, 0.3, f"{plan}", 9, C["dark"], True)
+        tb(s, x, 6.45, 2.8, 0.25, f"{cost} | {scene}", 8, "#64748B")
 
     # === S10: 问题排查 ===
     s = prs.slides.add_slide(blank); bg(s, "#FAFBFC")
@@ -1026,6 +1041,7 @@ def main():
     pdf_path = build_pdf(charts)
 
     print("\n📊 生成 PPT...")
+    from generate_ppt_v3 import build_ppt
     ppt_path = build_ppt(charts)
 
     print("\n📋 生成 Excel...")
