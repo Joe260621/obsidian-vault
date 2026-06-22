@@ -67,7 +67,7 @@ async function scrapeQGSYDW() {
         });
 
         // Save
-        fs.writeFileSync('g:/Claude/jietu/qgsydw_jobs.json', JSON.stringify({
+        fs.writeFileSync('D:/ProjectManagement/Claude/jietu/qgsydw_jobs.json', JSON.stringify({
             time: new Date().toISOString(),
             total: items.length,
             filtered: filtered.length,

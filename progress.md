@@ -49,13 +49,11 @@
 - [x] 跨电脑 Obsidian 双向同步 — GitHub SSH + obsidian-git 30min自动 (2026-06-22)
 - [x] Windows 合盖不休眠配置 (2026-06-22)
 - [x] Token 消耗规则强制执行 — 用户明确要求每会话50轮红线+主动提醒 (2026-06-22)
+- [x] qgsydw-scraper.js 路径修复 — `G:\Claude\jietu\` → `D:\ProjectManagement\Claude\jietu\` (2026-06-22)
 
 ## 阻塞项
-- [ ] 早晨自动化 cron 不触发 — 原因: 关机/Claude Code 不在前台时 cron 不执行
-  - 替代方案：快捷指令"1"手动触发 morning-routine（已就绪）
-  - 长期：保持电脑不关机 + Claude Code 运行；或考虑云服务器方案
+- [ ] 早晨自动化 cron 不触发 — 已删 cron，改用 `/1` 手动触发 morning-routine（已就绪）
 - [ ] 笔记本储存空间有限 — 67GB 原始 PDF/视频未迁入，依赖外接硬盘
-- [ ] qgsydw-scraper.js 输出路径硬编码 `G:\Claude\jietu\` — 需改为 `D:\ProjectManagement\Claude\`
 
 ## 里程碑
 - [x] 工作环境基本可用 (2026-06-14)
