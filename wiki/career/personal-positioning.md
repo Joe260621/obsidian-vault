@@ -1,6 +1,6 @@
 # 个人职业定位
 
-- **Sources**: BOSS直聘用户运营岗位需求, 2026-06; 卓文煜个人简历, 2026-06
+- **Sources**: BOSS直聘用户运营岗位需求, 2026-06; 卓个人简历, 2026-06
 - **Raw**: [BOSS直聘-用户运营岗位需求](../../raw/career/2026-06-04-bosszhipin-user-operations-jobs.md); [卓文煜个人简历](../../raw/career/resume-zhuowenyu-user-operations.md)
 - **Updated**: 2026-06-20
 
