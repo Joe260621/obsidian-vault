@@ -1,4 +1,4 @@
-﻿# Claude Project Backup Manifest
+# Claude Project Backup Manifest
 Generated: 2026-06-21 14:17:49
 Source: G:\Claude\scripts\..
 
