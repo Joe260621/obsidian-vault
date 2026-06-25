@@ -49,10 +49,10 @@ dv.paragraph('<center><b>' + now.toFormat('yyyy-MM-dd') + '</b> · ' + wd + ' ·
 const app = dv.app;
 const stats = [
   { icon: '📥', label: '待办任务', count: dv.pages().flatMap(p => p.file.tasks || []).where(t => !t.completed).length, link: 'TODO.md' },
-  { icon: '📅', label: 'Daily 笔记', count: dv.pages('"daily"').length, link: 'daily/2026-06-22.md' },
+  { icon: '📅', label: 'Daily 笔记', count: dv.pages('"daily"').length, link: 'daily/' + DateTime.now().toFormat('yyyy-MM-dd') + '.md' },
   { icon: '📚', label: '知识库', count: dv.pages('"wiki"').length, link: 'wiki/index.md' },
   { icon: '✂️', label: '剪藏', count: dv.pages('"Clippings"').length, link: 'Clippings/' },
-  { icon: '🧠', label: '记忆库', count: dv.pages('"memory"').length, link: 'memory/MEMORY.md' },
+  { icon: '🧠', label: '记忆库', count: dv.pages('"archive/memory-old"').length, link: 'archive/memory-old/MEMORY.md' },
 ];
 
 const row = dv.el('div', '', { cls: 'stats-row' });
@@ -105,14 +105,14 @@ btns.forEach(b => {
 ```dataviewjs
 const app = dv.app;
 const buttons = [
-  { label: '🆕 新建 Daily', action: () => app.workspace.openLinkText('daily/2026-06-22.md', '', false) },
+  { label: '🆕 新建 Daily', action: () => app.workspace.openLinkText('daily/' + DateTime.now().toFormat('yyyy-MM-dd') + '.md', '', false) },
   { label: '📋 项目进度', action: () => app.workspace.openLinkText('progress.md', '', false) },
   { label: '✅ 待办任务', action: () => app.workspace.openLinkText('TODO.md', '', false) },
   { label: '📖 CLAUDE.md', action: () => app.workspace.openLinkText('CLAUDE.md', '', false) },
   { label: '🎓 考编入口', action: () => app.workspace.openLinkText('wiki/考编/考编学习计划_阶段四.md', '', false) },
   { label: '🗂️ 知识库', action: () => app.workspace.openLinkText('wiki/index.md', '', false) },
   { label: '🔄 Git 同步', action: () => { try { app.commands.executeCommandById('obsidian-git:create-backup'); } catch(e) { app.commands.executeCommandById('obsidian-git:commit'); } } },
-  { label: '📝 今日总结', action: () => app.workspace.openLinkText('daily/2026-06-22.md', '', false) },
+  { label: '📝 今日总结', action: () => app.workspace.openLinkText('daily/' + DateTime.now().toFormat('yyyy-MM-dd') + '.md', '', false) },
 ];
 
 const row = dv.el('div', '', { cls: 'btn-row' });
@@ -143,9 +143,17 @@ const now = DateTime.now();
 const diff = target.diff(now, ['days', 'hours']);
 
 const box = dv.el('div', '', { cls: 'reminder-box' });
-box.innerHTML = '<div class="reminder-title">📌 海珠区社区招聘成绩发布</div>' +
-  '<div class="reminder-countdown"><span class="reminder-num">' + Math.floor(diff.days) + '</span> 天 <span class="reminder-num">' + Math.floor(diff.hours % 24) + '</span> 时</div>' +
-  '<div class="reminder-date">2026-06-24 00:00</div>';
+
+if (diff.days < 0) {
+  // 已过期的提醒
+  box.innerHTML = '<div class="reminder-title">📌 海珠区社区招聘成绩</div>' +
+    '<div class="reminder-countdown" style="color: #666;">❌ 已出结果 · 89.5 分未进面</div>' +
+    '<div class="reminder-date">已过期，可删除此卡片</div>';
+} else {
+  box.innerHTML = '<div class="reminder-title">📌 海珠区社区招聘成绩发布</div>' +
+    '<div class="reminder-countdown"><span class="reminder-num">' + Math.floor(diff.days) + '</span> 天 <span class="reminder-num">' + Math.floor(diff.hours % 24) + '</span> 时</div>' +
+    '<div class="reminder-date">2026-06-24 00:00</div>';
+}
 ```
 
 ---
