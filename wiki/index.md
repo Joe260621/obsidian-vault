@@ -27,3 +27,9 @@ _技能自学与实践——AI+运营、产品能力、技术栈_
 - [希尔顿企微AI客服](wiki/skills/hilton-ai-customer-service.md) — 运营视角：用AI把企微群客服回复从30分钟压到30秒，独立验证全链路可行性 — Updated: 2026-06-20
 - [AI+运营技术栈](wiki/skills/ai-ops-tech-stack.md) — RAG/Tool Calling/ReAct三项核心技术，运营能听懂的解释+面试应答 — Updated: 2026-06-20
 - [产品经理学习路径](wiki/skills/pm-learning-path.md) — 长期发展方向（非当前投递目标）：AI Agent PM目标画像+转型路径 — Updated: 2026-06-20
+
+## meta
+
+_Claude-Obsidian 集成配置_
+
+- [Obsidian五技能参考](meta/obsidian-5skills.md) — Claude可用的Obsidian原生格式能力：Markdown/Canvas/Bases/Defuddle/CLI — Updated: 2026-06-29

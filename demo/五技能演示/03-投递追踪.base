@@ -1,0 +1,59 @@
+filters:
+  and:
+    - file.hasTag("job-application")
+    - 'file.ext == "md"'
+
+formulas:
+  days_since_applied: |
+    if(applied_date, (today() - date(applied_date)).days, "")
+  is_stale: |
+    if(applied_date, (today() - date(applied_date)).days > 7, false)
+properties:
+  status:
+    displayName: "状态"
+  company:
+    displayName: "公司"
+  position:
+    displayName: "岗位"
+  applied_date:
+    displayName: "投递日期"
+  formula.days_since_applied:
+    displayName: "等待天数"
+  match_level:
+    displayName: "匹配等级"
+  source_platform:
+    displayName: "来源"
+
+summaries:
+  status:
+    label: "已投递"
+    formula: 'Count'
+  formula.days_since_applied: Average
+
+views:
+  - type: table
+    name: "全部投递"
+    order:
+      - company
+      - position
+      - status
+      - formula.days_since_applied
+      - match_level
+      - source_platform
+      - applied_date
+
+  - type: table
+    name: "待跟进"
+    filters:
+      and:
+        - 'status != "已拒绝"'
+        - 'status != "已入职"'
+    order:
+      - company
+      - formula.days_since_applied
+      - status
+    groupBy:
+      property: status
+      direction: ASC
+    summaries:
+      formula.days_since_applied: Average

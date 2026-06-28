@@ -1,0 +1,169 @@
+{
+  "nodes": [
+    {
+      "id": "6f0ad84f44ce9c17",
+      "type": "text",
+      "x": 600,
+      "y": 20,
+      "width": 300,
+      "height": 80,
+      "text": "# 🎯 求职技能树\n核心能力 + 差异化标签",
+      "color": "4"
+    },
+    {
+      "id": "a1b2c3d4e5f67890",
+      "type": "text",
+      "x": 200,
+      "y": 200,
+      "width": 280,
+      "height": 140,
+      "text": "## 会员运营 ⭐\n- 用户分层体系\n- 生命周期管理\n- 权益设计与ROI\n- 万富希尔顿实战",
+      "color": "1"
+    },
+    {
+      "id": "b2c3d4e5f67890a1",
+      "type": "text",
+      "x": 600,
+      "y": 200,
+      "width": 280,
+      "height": 140,
+      "text": "## 用户运营 ⭐\n- 数据分析驱动\n- A/B测试框架\n- 留存/激活策略\n- 硕牛+谦腾实战",
+      "color": "2"
+    },
+    {
+      "id": "c3d4e5f67890a1b2",
+      "type": "text",
+      "x": 1000,
+      "y": 200,
+      "width": 280,
+      "height": 140,
+      "text": "## 私域增长\n- 企微SCRM运营\n- 社群SOP\n- 内容矩阵\n- 转化漏斗优化",
+      "color": "3"
+    },
+    {
+      "id": "d4e5f67890a1b2c3",
+      "type": "text",
+      "x": 100,
+      "y": 450,
+      "width": 250,
+      "height": 120,
+      "text": "## AI能力 🤖\n- Claude/LLM应用\n- RAG知识库\n- 自动化脚本\n- 数据爬取",
+      "color": "6"
+    },
+    {
+      "id": "e5f67890a1b2c3d4",
+      "type": "text",
+      "x": 450,
+      "y": 450,
+      "width": 250,
+      "height": 120,
+      "text": "## 数据分析 📊\n- Excel高级分析\n- Python脚本\n- 数据可视化\n- 报表自动化",
+      "color": "5"
+    },
+    {
+      "id": "f67890a1b2c3d4e5",
+      "type": "text",
+      "x": 800,
+      "y": 450,
+      "width": 250,
+      "height": 120,
+      "text": "## 项目管理\n- 跨部门协调\n- SOP体系建设\n- 供应商管理\n- 预算管控",
+      "color": "1"
+    },
+    {
+      "id": "0890a1b2c3d4e5f6",
+      "type": "text",
+      "x": 1100,
+      "y": 450,
+      "width": 250,
+      "height": 120,
+      "text": "## 行业知识 💡\n- 酒店文旅\n- 电商零售\n- 会员体系\n- 竞品分析",
+      "color": "3"
+    },
+    {
+      "id": "190a1b2c3d4e5f67",
+      "type": "link",
+      "x": 50,
+      "y": 650,
+      "width": 400,
+      "height": 80,
+      "url": "https://github.com/kepano/obsidian-skills",
+      "color": "4"
+    },
+    {
+      "id": "2a0b1c2d3e4f5678",
+      "type": "group",
+      "x": 30,
+      "y": 150,
+      "width": 1400,
+      "height": 330,
+      "label": "📌 差异化标签",
+      "color": "4"
+    }
+  ],
+  "edges": [
+    {
+      "id": "0123456789abcdef",
+      "fromNode": "6f0ad84f44ce9c17",
+      "fromSide": "bottom",
+      "toNode": "a1b2c3d4e5f67890",
+      "toSide": "top",
+      "label": "核心"
+    },
+    {
+      "id": "123456789abcdef0",
+      "fromNode": "6f0ad84f44ce9c17",
+      "fromSide": "bottom",
+      "toNode": "b2c3d4e5f67890a1",
+      "toSide": "top",
+      "label": "基础"
+    },
+    {
+      "id": "23456789abcdef01",
+      "fromNode": "6f0ad84f44ce9c17",
+      "fromSide": "bottom",
+      "toNode": "c3d4e5f67890a1b2",
+      "toSide": "top",
+      "label": "增长"
+    },
+    {
+      "id": "3456789abcdef012",
+      "fromNode": "6f0ad84f44ce9c17",
+      "fromSide": "bottom",
+      "toNode": "2a0b1c2d3e4f5678",
+      "toSide": "top"
+    },
+    {
+      "id": "456789abcdef0123",
+      "fromNode": "a1b2c3d4e5f67890",
+      "fromSide": "bottom",
+      "toNode": "d4e5f67890a1b2c3",
+      "toSide": "top",
+      "color": "6"
+    },
+    {
+      "id": "56789abcdef01234",
+      "fromNode": "b2c3d4e5f67890a1",
+      "fromSide": "bottom",
+      "toNode": "e5f67890a1b2c3d4",
+      "toSide": "top",
+      "color": "5"
+    },
+    {
+      "id": "6789abcdef012345",
+      "fromNode": "c3d4e5f67890a1b2",
+      "fromSide": "bottom",
+      "toNode": "f67890a1b2c3d4e5",
+      "toSide": "top",
+      "color": "1"
+    },
+    {
+      "id": "789abcdef0123456",
+      "fromNode": "c3d4e5f67890a1b2",
+      "fromSide": "bottom",
+      "toNode": "0890a1b2c3d4e5f6",
+      "toSide": "top",
+      "color": "3"
+    }
+  ]
+}
