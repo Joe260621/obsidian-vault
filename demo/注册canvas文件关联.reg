@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\.canvas]
+@="Obsidian.Canvas"
+
+[HKEY_CURRENT_USER\Software\Classes\Obsidian.Canvas]
+@="Obsidian Canvas File"
+
+[HKEY_CURRENT_USER\Software\Classes\Obsidian.Canvas\DefaultIcon]
+@="D:\\Obsidian\\Obsidian.exe,0"
+
+[HKEY_CURRENT_USER\Software\Classes\Obsidian.Canvas\shell\open\command]
+@="\"D:\\Obsidian\\Obsidian.exe\" \"%1\""

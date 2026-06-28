@@ -2,9 +2,9 @@
   "file-explorer": true,
   "global-search": true,
   "switcher": true,
-  "graph": false,
+  "graph": true,
   "backlink": true,
-  "canvas": false,
+  "canvas": true,
   "outgoing-link": false,
   "tag-pane": true,
   "footnotes": false,
@@ -17,8 +17,8 @@
   "slash-command": false,
   "editor-status": true,
   "bookmarks": true,
-  "markdown-importer": false,
-  "zk-prefixer": false,
+  "markdown-importer": true,
+  "zk-prefixer": true,
   "random-note": false,
   "outline": true,
   "word-count": true,
@@ -28,6 +28,6 @@
   "file-recovery": true,
   "publish": false,
   "sync": false,
-  "bases": false,
-  "webviewer": false
+  "bases": true,
+  "webviewer": true
 }
