@@ -304,11 +304,37 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .gallery-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+  }
   .gallery-item img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     display: block;
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+  }
+  .gallery-item:hover img {
+    filter: blur(0);
+  }
+  .gallery-item .blur-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 2;
+  }
+  .gallery-item:hover .blur-hint {
+    opacity: 0;
   }
   .gallery-item .caption {
     padding: 10px 12px;
@@ -466,7 +492,7 @@
 <!-- ─── Hero ─── -->
 <section class="hero">
   <h1>AI驱动私域运营效能提升实践</h1>
-  <div class="subtitle">知识付费赛道 · 个人发起项目 · 2026年1月—5月</div>
+  <div class="subtitle">个人发起项目 · 2026年1月—5月（6月起朋友兼职运营）</div>
   <div class="hero-tags">
     <span>🤖 AI深度应用</span>
     <span>📱 私域全链路</span>
@@ -481,7 +507,7 @@
   <div class="stat"><div class="num">1万+</div><div class="label">微信私域沉淀用户</div></div>
   <div class="stat"><div class="num">50%</div><div class="label">渠道引流转化率</div></div>
   <div class="stat"><div class="num">5,939+1,613</div><div class="label">小红书双账号粉丝</div></div>
-  <div class="stat"><div class="num">1.6万份</div><div class="label">累计课件销量</div></div>
+  <div class="stat"><div class="num">2万+份</div><div class="label">累计课件销量（双产品线）</div></div>
   <div class="stat"><div class="num">4大</div><div class="label">AI深度应用场景</div></div>
 </div>
 
@@ -512,9 +538,9 @@
       <div class="tdesc">内容生产→多平台分发→私域承接→转化交付，4大AI场景落地</div>
     </div>
     <div class="item">
-      <div class="tdate">2026年5月</div>
+      <div class="tdate">2026年6月初</div>
       <div class="ttitle">项目转入朋友兼职运营</div>
-      <div class="tdesc">核心验证完成，我开始集中求职</div>
+      <div class="tdesc">核心验证完成，我开始集中求职；项目由朋友接手兼职维护</div>
     </div>
   </div>
   <div class="hr-box">
@@ -553,17 +579,17 @@
     <div class="step">
       <div class="icon">💬</div>
       <div class="name">微信承接</div>
-      <div class="desc">1万+用户沉淀，1352人已打标签分层</div>
+      <div class="desc">1万+用户沉淀，8个微小号承接</div>
     </div>
     <div class="step">
       <div class="icon">💰</div>
       <div class="name">转化交付</div>
-      <div class="desc">50%转化率，累计1.6万份课件交付</div>
+      <div class="desc">50%转化率，累计2万+份课件交付（跨双产品线）</div>
     </div>
-  </div>
+  <!-- 抖音/B站备注 -->
+  <p style="font-size:0.8rem;color:var(--gray-500);margin-top:4px;font-style:italic;">注：同步在抖音/B站发布内容引流，但账号大部分被限流/封号，未列入截图展示</p>
 </div>
 
-<!-- ─── AI深度应用 ─── -->
 <div class="card">
   <h2>三、AI深度应用：4大场景</h2>
   <p style="font-size:0.88rem;color:var(--gray-500);margin-bottom:14px;">本项目的核心价值——证明AI在真实运营场景中是可用的、提效的、可复制的</p>
@@ -616,7 +642,7 @@
     </div>
     <div class="level l3">
       <div class="fnum">1,352人</div>
-      <div class="fdesc">已打标签分层管理 · 进入精细化运营</div>
+      <div class="fdesc">单小号微信好友数（截图展示数据） · 8个小号累计导入1万+</div>
     </div>
     <div class="level l4">
       <div class="fnum">50%转化率</div>
@@ -662,23 +688,26 @@
   <div class="gallery">
     <div class="gallery-item" onclick="openLightbox('jietu/氟西汀PPT%20小红书账号店铺.jpg')">
       <img src="jietu/氟西汀PPT%20小红书账号店铺.jpg" alt="氟西汀PPT小红书账号" loading="lazy">
+      <div class="blur-hint">⚠️ 脱敏展示 · 划过查看</div>
       <div class="caption">
         <span class="badge">内容生产+分发</span>
-        <strong>「氟西汀|PPT」</strong> — 5,939粉丝 · 已售1.6万份
+        <strong>「氟西汀|PPT」</strong> — 小红书护理课件账号
       </div>
     </div>
     <div class="gallery-item" onclick="openLightbox('jietu/苏慕遮小红书账号.jpg')">
       <img src="jietu/苏慕遮小红书账号.jpg" alt="苏慕遮小红书账号" loading="lazy">
+      <div class="blur-hint">⚠️ 脱敏展示 · 划过查看</div>
       <div class="caption">
         <span class="badge">多账号矩阵</span>
-        <strong>「苏慕遮」</strong> — 1,613粉丝 · 大学生备考课件
+        <strong>「苏慕遮」</strong> — 小红书大学生备考课件账号
       </div>
     </div>
     <div class="gallery-item" onclick="openLightbox('jietu/微信小号添加标签人数（知识付费项目）.jpg')">
       <img src="jietu/微信小号添加标签人数（知识付费项目）.jpg" alt="微信私域标签管理" loading="lazy">
+      <div class="blur-hint">⚠️ 脱敏展示 · 划过查看</div>
       <div class="caption">
         <span class="badge">私域分层运营</span>
-        <strong>微信标签管理</strong> — 1,352人已打标签分层
+        <strong>微信好友管理</strong> — 单小号好友列表示例
       </div>
     </div>
   </div>
@@ -688,39 +717,14 @@
       <tr><th>截图</th><th>证明力</th></tr>
       <tr><td>① 氟西汀|PPT 小红书店铺</td><td>✅ 多平台内容分发能力 ✅ 课件产品市场需求验证 ✅ 自然流量增长能力</td></tr>
       <tr><td>② 苏慕遮 小红书账号</td><td>✅ 多账号矩阵运营 ✅ 不同人群定位的内容差异化</td></tr>
-      <tr><td>③ 微信标签管理</td><td>✅ 私域用户真实沉淀 ✅ 用户分层管理执行 ✅ 标签分类逻辑清晰</td></tr>
+      <tr><td>③ 微信好友管理</td><td>✅ 私域用户真实沉淀 ✅ 多小号矩阵承接 ✅ 微信好友管理执行</td></tr>
     </table>
-  </div>
-</div>
-
-<!-- ─── 面试话术 ─── -->
-<div class="card">
-  <h2>六、面试官追问应对</h2>
-
-  <div class="hr-box">
-    <div class="title">Q1："空窗期8个月在做什么？"</div>
-    <div class="content"><strong>回答思路</strong>：三条线——① 案例整理（专业沉淀）② AI学习（技能升级）③ 这个项目（实战验证）。展示空窗期仍有产出。</div>
-  </div>
-
-  <div class="hr-box">
-    <div class="title">Q2："这个项目规模这么小，能说明什么？"</div>
-    <div class="content"><strong>回答思路</strong>：小规模恰恰是亮点——最受限条件下验证了方法论和AI提效。"如果给我企业级资源，我能把同样的事情做得更大。"</div>
-  </div>
-
-  <div class="hr-box">
-    <div class="title">Q3："你会用AI吗？怎么用的？"</div>
-    <div class="content"><strong>回答思路</strong>：加分题！直接展示4个AI应用场景，说明你不仅"会"用AI，而且已经"在用"AI做实际产出。</div>
-  </div>
-
-  <div class="hr-box">
-    <div class="title">Q4："自己做项目和在公司做运营有什么区别？"</div>
-    <div class="content"><strong>回答思路</strong>：自己做是"全链路+结果导向"，在公司做是"体系化+规模效应"。跑过全链路更理解每个环节痛点，回到体系能更精准地找到优化点。</div>
   </div>
 </div>
 
 <!-- ─── 可迁移能力 ─── -->
 <div class="card">
-  <h2>七、可迁移的企业级应用</h2>
+  <h2>六、可迁移的企业级应用</h2>
   <table class="data-table">
     <tr><th>运营场景</th><th>项目验证</th><th>企业级应用</th></tr>
     <tr><td>📝 内容运营</td><td>AI批量生成PPT封面</td><td>商品详情页文案 / 活动海报 / 社群推送</td></tr>
@@ -732,7 +736,7 @@
 
 <div class="print-hint">
   💡 面试时可打开此页面展示 &nbsp;·&nbsp; 也可 <a href="#" onclick="window.print();return false;">打印/保存为PDF</a> &nbsp;·&nbsp;
-  <span style="color:var(--gray-500);">v1.0 · 2026-07-01</span>
+  <span style="color:var(--gray-500);">v1.1 · 2026-07-01</span>
 </div>
 
 </div>
