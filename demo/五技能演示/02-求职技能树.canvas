@@ -9,7 +9,7 @@
 		{"id":"e5f67890a1b2c3d4","type":"text","text":"## 数据分析 📊\n- Excel高级分析\n- Python脚本\n- 数据可视化\n- 报表自动化","x":450,"y":450,"width":250,"height":170,"color":"5"},
 		{"id":"f67890a1b2c3d4e5","type":"text","text":"## 项目管理\n- 跨部门协调\n- SOP体系建设\n- 供应商管理\n- 预算管控","x":800,"y":450,"width":250,"height":170,"color":"1"},
 		{"id":"0890a1b2c3d4e5f6","type":"text","text":"## 行业知识 💡\n- 酒店文旅\n- 电商零售\n- 会员体系\n- 竞品分析","x":1100,"y":450,"width":250,"height":170,"color":"3"},
-		{"id":"190a1b2c3d4e5f67","type":"link","url":"https://github.com/kepano/obsidian-skills","x":80,"y":700,"width":400,"height":80,"color":"4"}
+		{"id":"190a1b2c3d4e5f67","type":"link","url":"https://github.com/kepano/obsidian-skills","x":80,"y":700,"width":670,"height":140,"color":"4"}
 	],
 	"edges":[
 		{"id":"0123456789abcdef","fromNode":"6f0ad84f44ce9c17","fromSide":"bottom","toNode":"a1b2c3d4e5f67890","toSide":"top","label":"核心"},
