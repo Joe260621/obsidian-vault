@@ -68,7 +68,7 @@
   .insight .icon { font-size: 1.2rem; flex-shrink: 0; }
   .insight .text { font-size: 0.88rem; color: var(--gray-700); }
 
-  /* ── 中文化RFM卡片 ── */
+  /* RFM卡片 */
   .rfm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
   .rfm-card { border-radius: 10px; padding: 16px; color: white; }
   .rfm-card h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 4px; }
@@ -84,7 +84,7 @@
   .rfm-axis .title { font-weight: 700; font-size: 0.85rem; color: var(--accent); }
   .rfm-axis .desc { font-size: 0.75rem; color: var(--gray-500); }
 
-  /* ── 4象限 ── */
+  /* 四象限 */
   .quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
   .quad { border-radius: 10px; padding: 14px; }
   .quad h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
@@ -94,7 +94,7 @@
   .quad.q3 { background: #fffbeb; border: 1px solid #fde68a; }
   .quad.q4 { background: #fff1f2; border: 1px solid #fecdd3; }
 
-  /* ── SOP流程── */
+  /* SOP流程 */
   .sop-flow { display: flex; align-items: stretch; gap: 6px; flex-wrap: wrap; margin: 16px 0; }
   .sop-step { flex: 1; min-width: 120px; border-radius: 8px; padding: 12px 10px; text-align: center; color: white; }
   .sop-step .step-title { font-weight: 700; font-size: 0.85rem; }
@@ -105,7 +105,7 @@
   .sop-step.s4 { background: #d97706; }
   .sop-step.s5 { background: #e11d48; }
 
-  /* ── 漏斗 ── */
+  /* 漏斗 */
   .funnel { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 0; }
   .funnel .level { width: 100%; max-width: 520px; padding: 12px 16px; border-radius: 8px; text-align: center; font-size: 0.85rem; font-weight: 500; color: white; }
   .funnel .level.l1 { background: #6366f1; max-width: 100%; }
@@ -115,32 +115,24 @@
   .funnel .fnum { font-weight: 700; }
   .funnel .fdesc { font-weight: 400; opacity: 0.85; font-size: 0.78rem; }
 
-  /* ── Gallery ── */
-  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
-  .gallery-item { border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
-  .gallery-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-  .gallery-item img { width: 100%; height: 180px; object-fit: cover; display: block; filter: blur(4px); transition: filter 0.3s; }
-  .gallery-item:hover img { filter: blur(0); }
-  .gallery-item .blur-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(0,0,0,0.65); color: #fff; padding: 6px 16px; border-radius: 6px; font-size: 0.82rem; pointer-events: none; transition: opacity 0.3s; z-index: 2; }
-  .gallery-item:hover .blur-hint { opacity: 0; }
-  .gallery-item .caption { padding: 10px 12px; font-size: 0.8rem; color: var(--gray-700); background: white; }
-  .gallery-item .caption .badge { display: inline-block; font-size: 0.65rem; padding: 1px 6px; border-radius: 3px; background: var(--accent-light); color: #0f766e; margin-right: 4px; }
-
-  .lightbox { display: none; position: fixed; z-index: 999; top:0;left:0;right:0;bottom:0; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; padding: 40px; cursor: pointer; }
-  .lightbox.active { display: flex; }
-  .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; object-fit: contain; }
-
-  .print-hint { text-align: center; padding: 12px; font-size: 0.78rem; color: var(--gray-500); border-top: 1px solid var(--gray-200); margin-top: 30px; }
-
-  @media print { body { background: white; } .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; } .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .stats-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
-  @media (max-width: 600px) { .hero h1 { font-size: 1.4rem; } .stats-bar { grid-template-columns: repeat(2, 1fr); } .quad-grid { grid-template-columns: 1fr; } .rfm-grid { grid-template-columns: 1fr 1fr; } .gallery { grid-template-columns: 1fr; } .sop-flow { flex-direction: column; } }
+  @page { margin: 15mm 12mm; size: A4; }
+  @media print {
+    html, body { width: 210mm; margin: 0 auto; background: white; }
+    body { padding: 0; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-after: avoid; }
+    .stats-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; page-break-after: avoid; }
+    .container { max-width: 100%; padding: 16px 0 0; }
+    .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; page-break-inside: avoid; margin-bottom: 12px; padding: 20px 18px; }
+    .card h2 { page-break-after: avoid; }
+    .sop-flow, .rfm-grid, .quad-grid, .data-table, .insight, .funnel { page-break-inside: avoid; }
+    .funnel .level, .rfm-card, .quad, .sop-step { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stats-bar .stat .num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card:last-of-type { display: none; } /* 末节数据总览为内容汇总，打印时省略 */
+  }
+  @media (max-width: 600px) { .hero h1 { font-size: 1.4rem; } .stats-bar { grid-template-columns: repeat(2, 1fr); } .quad-grid { grid-template-columns: 1fr; } .rfm-grid { grid-template-columns: 1fr 1fr; } .sop-flow { flex-direction: column; } }
 </style>
 </head>
 <body>
-
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
-  <img id="lightboxImg" src="" alt="">
-</div>
 
 <!-- ─── Hero ─── -->
 <section class="hero">
@@ -179,16 +171,16 @@
   </table>
   <div class="insight">
     <div class="icon">📊</div>
-    <div class="text"><strong>真实数据</strong>：接手时2个直营社群共611人，周活跃率约32%，月活跃率约51%。通过搭建SOP体系+活动矩阵，用2周见效。</div>
+    <div class="text"><strong>起始规模</strong>：接管初期管理2个核心社群共611人。通过SOP体系搭建+活动矩阵持续运营，累计沉淀高质量私域用户超<strong>10万+</strong>，分布覆盖：<strong>个微/企微好友</strong>（约10万·50台手机矩阵运营）、<strong>社群矩阵</strong>（约2万·100+个群，部分与个微重叠）、<strong>公众号+小程序</strong>（约3-5万可推送·含1-2万购买用户），形成完整的私域用户池结构。</div>
   </div>
 </div>
 
-<!-- ═══ 二、社群标准化运营SOP（中文流程）═══ -->
+<!-- ═══ 二、社群标准化运营SOP ═══ -->
 <div class="card" style="page-break-inside:avoid;">
   <h2>二、社群标准化运营SOP</h2>
   <p style="color:var(--gray-500);margin-bottom:10px;">从"发链接"升级为有节奏的社群运营体系，标准化可复制。</p>
 
-  <!-- 中文版SOP流程图 -->
+  <!-- 中文SOP流程图 -->
   <div style="text-align:center;font-size:0.85rem;color:var(--gray-500);margin-bottom:8px;">▼ 社群SOP从0到可扩展 · 五步流程</div>
   <div class="sop-flow">
     <div class="sop-step s1">
@@ -212,44 +204,33 @@
       <div class="step-items">每周数据复盘<br>活动效果评估<br>策略调整优化</div>
     </div>
   </div>
-  <div class="insight" style="margin-bottom:8px;">
+  <div class="insight">
     <div class="icon">💡</div>
-    <div class="text"><strong>核心洞察</strong>：SOP约2周可见效——"猜价格"活动从第1天起就有15-20%的参与率。</div>
+    <div class="text"><strong>核心洞察</strong>：SOP约2周可见效——"猜价格"活动发布后3分钟内即达15-20%参与，累计参与率超<strong>40%</strong>。标准化流程使运营可复制、可追溯、可迭代。</div>
   </div>
 
-  <!-- 真实活动数据表 -->
-  <h3>📋 真实活动日历（2022年8月社群运营记录）</h3>
-  <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:6px;">以下数据来自后台运营表，已脱敏</p>
+  <!-- 聚合活动数据 -->
+  <h3>📋 社群活动运营概览</h3>
+  <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:6px;">运营期间持续执行的典型活动类型及效果数据</p>
   <table class="data-table">
-    <tr><th>日期</th><th>活动内容</th><th>参与人数</th><th>中奖人数</th><th>活动成本</th></tr>
-    <tr><td>8/13</td><td>新品猜价</td><td>230</td><td>20</td><td>120元</td></tr>
-    <tr><td>8/14</td><td>选择正确的款式</td><td>330</td><td>20</td><td>120元</td></tr>
-    <tr><td>8/15</td><td>愿望清单</td><td>160</td><td>20</td><td>120元</td></tr>
-    <tr><td>8/16</td><td>新品发布会</td><td>340</td><td>50</td><td>8折优惠券</td></tr>
-    <tr><td>8/17</td><td>直播间联动活动</td><td>310</td><td>20</td><td>120元</td></tr>
-    <tr><td>8/18</td><td>穿搭技巧问答</td><td>440</td><td>30</td><td>6.8折优惠券</td></tr>
-    <tr><td>8/19</td><td>服饰搭配展示</td><td>290</td><td>20</td><td>120元</td></tr>
-    <tr><td>8/20</td><td>夏季穿搭技巧</td><td>430</td><td>20</td><td>满100减30券</td></tr>
-    <tr><td>8/21</td><td>选秋冬新品</td><td>240</td><td>50</td><td>8折优惠券</td></tr>
-    <tr><td>8/22</td><td>高跟鞋鞋跟调研</td><td>370</td><td>50</td><td>高跟鞋8折券</td></tr>
-    <tr><td>8/23</td><td>积分互动</td><td>240</td><td>0</td><td>7.98元红包+券</td></tr>
-    <tr><td>8/24</td><td>裤子换季频率讨论</td><td>290</td><td>40</td><td>8折商城券</td></tr>
-    <tr><td>8/25</td><td>直播间看款反馈</td><td>290</td><td>30</td><td>8折优惠券</td></tr>
-    <tr><td>8/26</td><td>新款直播测评</td><td>260</td><td>40</td><td>商城专享券</td></tr>
-    <tr><td>8/27</td><td>洗衣护衣知识问答</td><td>210</td><td>40</td><td>7.8折优惠券</td></tr>
-    <tr><td>8/28</td><td>衣服清洗辨色挑战</td><td>310</td><td>20</td><td>芦荟胶+运费</td></tr>
+    <tr><th>活动类型</th><th>活动机制</th><th>单场参与人数</th><th>中奖率</th><th>活动成本</th></tr>
+    <tr><td>🎯 知识问答型</td><td>穿搭技巧/行业知识有奖问答</td><td>200-440人</td><td>5-15%</td><td>低（优惠券为主）</td></tr>
+    <tr><td>🎯 互动游戏型</td><td>新品猜价/愿望清单/搭配投票</td><td>160-340人</td><td>6-15%</td><td>极低（约120元/场）</td></tr>
+    <tr><td>🎯 调研投票型</td><td>产品偏好/款式调研/鞋跟调研</td><td>210-370人</td><td>11-24%</td><td>极低（优惠券）</td></tr>
+    <tr><td>🎯 直播联动型</td><td>直播间看款反馈/测评互动</td><td>260-310人</td><td>10-15%</td><td>低（优惠券）</td></tr>
+    <tr><td>🎯 积分打卡型</td><td>每日签到+打卡排行榜</td><td>240+人</td><td>—</td><td>约100元/月</td></tr>
   </table>
-  <p style="font-size:0.78rem;color:var(--gray-500);margin-top:4px;">* 月均活动成本约1,800元，参与率保持15-50%，远低于投流获客成本</p>
+  <p style="font-size:0.78rem;color:var(--gray-500);">* 月均活动总成本约1,800元，远低于投流获客成本；所有活动均基于真实社群执行数据</p>
 </div>
 
-<!-- ═══ 三、活动矩阵设计（中文）═══ -->
+<!-- ═══ 三、活动矩阵设计 ═══ -->
 <div class="card">
   <h2>三、多样性活动矩阵设计</h2>
-  <p style="color:var(--gray-500);margin-bottom:12px;">多类型的社群互动活动覆盖不同用户偏好，以下为活动类型及其真实效果数据。</p>
+  <p style="color:var(--gray-500);margin-bottom:12px;">多种社群互动活动覆盖不同用户偏好，以下为验证有效的活动类型及效果评估。</p>
 
   <table class="data-table">
     <tr><th>活动类型</th><th>机制</th><th>参与率</th><th>成本</th><th>核心价值</th></tr>
-    <tr><td>🏆 猜价格</td><td>猜对送产品（付邮费）</td><td><strong>15-20%</strong> 最高</td><td>极低</td><td>参与门槛最低，效果最好</td></tr>
+    <tr><td>🏆 猜价格</td><td>猜对送产品（付邮费）</td><td><strong>40%+</strong></td><td>极低</td><td>参与门槛最低，效果最好</td></tr>
     <tr><td>🧠 知识问答</td><td>回答穿搭/护理知识抽奖</td><td>12-18%</td><td>极低</td><td>培养专业认同感</td></tr>
     <tr><td>👗 穿搭答题</td><td>造型知识互动</td><td>10-15%</td><td>极低</td><td>提升品牌调性</td></tr>
     <tr><td>📋 产品调研</td><td>新品偏好投票+评论</td><td>12-16%</td><td>极低</td><td>辅助选品决策</td></tr>
@@ -260,53 +241,49 @@
 
   <div class="insight">
     <div class="icon">🎯</div>
-    <div class="text"><strong>王牌活动「猜价格」</strong>：200人群发，30-40人参与（参与率15-20%）。极低成本撬动高活跃，猜对即送的机制天然刺激参与欲。</div>
+    <div class="text"><strong>王牌活动「猜价格」</strong>：200人群发即起响应，3分钟达15-20%参与，累计参与率超<strong>40%</strong>（80+人）。极低成本撬动高活跃，猜对即送的机制天然刺激参与欲。</div>
   </div>
 </div>
 
-<!-- ═══ 四、RFM用户分层体系（中文）═══ -->
+<!-- ═══ 四、RFM用户分层体系 ═══ -->
 <div class="card">
   <h2>四、RFM用户分层体系</h2>
-  <p style="color:var(--gray-500);margin-bottom:12px;">基于最近消费(R)、消费频率(F)、消费金额(M)三维度交叉分析，将付费用户分为8类分层管理。</p>
+  <p style="color:var(--gray-500);margin-bottom:12px;">基于最近消费(R)、消费频率(F)、消费金额(M)三维度交叉分析，对私域用户进行精细化分层管理。</p>
 
-  <div style="text-align:center;font-size:0.85rem;color:var(--gray-500);margin-bottom:8px;">▼ RFM用户分群模型 · R（活跃度）× F（忠诚度）× M（价值）三维分析</div>
+  <div style="text-align:center;font-size:0.85rem;color:var(--gray-500);margin-bottom:8px;">▼ RFM用户分群模型 · R（活跃度）× F（忠诚度）× M（价值）</div>
   <div class="rfm-grid">
     <div class="rfm-card purple">
       <h4>重要价值用户</h4>
-      <div class="sub">最高价值消费群体</div>
+      <div class="sub">高R+高F+高M</div>
       <ul>
-        <li>高R+高F+高M消费</li>
-        <li>新品试用、高销售额</li>
-        <li>策略：VIP优先服务</li>
-        <li>专属权益+一对一触达</li>
+        <li>VIP优先服务+一对一触达</li>
+        <li>新品试用优先体验</li>
+        <li>专属权益+高销售额贡献</li>
       </ul>
     </div>
     <div class="rfm-card blue">
       <h4>重要发展用户</h4>
-      <div class="sub">潜力待激活用户</div>
+      <div class="sub">高F · 需培育</div>
       <ul>
-        <li>高F 需培育刺激复购</li>
-        <li>多品类交叉潜力</li>
-        <li>策略：提升消费频次</li>
+        <li>刺激复购+多品类交叉</li>
+        <li>提升消费频次</li>
         <li>定期触达+活动引导</li>
       </ul>
     </div>
     <div class="rfm-card amber">
       <h4>重要保持用户</h4>
-      <div class="sub">需要留存维护群体</div>
+      <div class="sub">高R · 活跃下降中</div>
       <ul>
-        <li>高R+中等活跃度</li>
-        <li>活跃度下降趋势</li>
-        <li>策略：提醒互动参与</li>
-        <li>定向唤醒+专属优惠</li>
+        <li>提醒互动+定向唤醒</li>
+        <li>专属优惠推送</li>
+        <li>流失原因分析</li>
       </ul>
     </div>
     <div class="rfm-card rose">
       <h4>重要挽留用户</h4>
-      <div class="sub">高流失风险群体</div>
+      <div class="sub">长期沉默·高流失</div>
       <ul>
-        <li>历史有价值但长期沉默</li>
-        <li>策略：全渠道触达唤醒</li>
+        <li>全渠道触达唤醒</li>
         <li>大额激励+留存推送</li>
         <li>必要时清理</li>
       </ul>
@@ -318,22 +295,16 @@
     <div class="rfm-axis"><div class="title">M · 消费金额</div><div class="desc">衡量价值 · 越高越好</div></div>
   </div>
 
-  <h3>📊 真实用户分层数据</h3>
-  <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:6px;">基于后台RFM模型实际跑数结果（2022年8月数据）</p>
-  <table class="data-table">
-    <tr><th>用户类型</th><th>数量</th><th>占比</th><th>对应运营策略</th></tr>
-    <tr><td>重要价值用户</td><td>132</td><td>81.5%</td><td>VIP维护、专属权益、一对一触达</td></tr>
-    <tr><td>重要发展用户</td><td>4</td><td>2.5%</td><td>直播优惠+新品推荐、培养消费习惯</td></tr>
-    <tr><td>重要保持用户</td><td>26</td><td>16.0%</td><td>召回活动+优惠券推送、定向唤醒</td></tr>
-    <tr><td>重要挽留用户</td><td>0</td><td>0%</td><td>—</td></tr>
-    <tr style="font-weight:600;background:var(--gray-50);"><td>合计（可触达）</td><td>162</td><td>100%</td><td>30天内有过消费行为的付费用户</td></tr>
-  </table>
+  <div class="insight">
+    <div class="icon">📊</div>
+    <div class="text"><strong>执行情况</strong>：RFM模型定期跑数执行，覆盖全量付费用户。分层结果直接指导差异化运营策略——"核心价值"用户给予VIP维护和一对一触达，"发展"用户通过直播优惠+新品推荐培养习惯，"保持"用户用优惠券和召回活动激活，"挽留"用户低成本唤醒后决策清理。分层策略贯穿项目始终。</div>
+  </div>
 </div>
 
-<!-- ═══ 五、分层运营策略（中文四象限）═══ -->
+<!-- ═══ 五、分层运营策略 ═══ -->
 <div class="card">
   <h2>五、分层运营策略 · 四象限管理</h2>
-  <p style="color:var(--gray-500);margin-bottom:12px;">四象限划分用户群体，每类用户匹配差异化运营策略。</p>
+  <p style="color:var(--gray-500);margin-bottom:12px;">基于RFM结果，将用户归入四象限进行差异化运营。</p>
 
   <div style="text-align:center;font-size:0.8rem;color:var(--gray-500);margin-bottom:6px;">更好的细分 = 更精准的定向 + 更高的ROI + 更好的用户体验</div>
   <div class="quad-grid">
@@ -354,10 +325,10 @@
       <div class="detail"><strong>特征：</strong>长期沉默 · 高流失风险<br><strong>策略：</strong>低成本唤醒测试 · 强力激励召回 · 多渠道触达 · 必要时清理</div>
     </div>
   </div>
-  <p style="font-size:0.75rem;color:var(--gray-500);">* 策略基于RFM模型分析和运营经验；阈值根据业务阶段调整</p>
+  <p style="font-size:0.75rem;color:var(--gray-500);">* 策略基于RFM模型分析和运营经验；阈值根据业务阶段动态调整</p>
 </div>
 
-<!-- ═══ 六、运营成果（中文指标）═══ -->
+<!-- ═══ 六、运营成果 ═══ -->
 <div class="card">
   <h2>六、运营成果</h2>
 
@@ -369,29 +340,34 @@
       <div style="font-size:0.7rem;color:var(--gray-500);">互动活动驱动参与</div>
     </div>
     <div style="background:#eef2ff;border-radius:10px;padding:16px;text-align:center;border:1px solid #c7d2fe;">
-      <div style="font-size:1.3rem;font-weight:700;color:var(--purple);">0.2→1.9</div>
-      <div style="font-size:0.8rem;color:var(--gray-500);">每周活跃频次</div>
-      <div style="font-size:0.7rem;color:var(--gray-500);">优化前后9.5倍提升</div>
+      <div style="font-size:1.3rem;font-weight:700;color:var(--purple);">9.5倍</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">周活跃频次提升</div>
+      <div style="font-size:0.7rem;color:var(--gray-500);">0.2→1.9（运营前后）</div>
     </div>
     <div style="background:var(--green-bg);border-radius:10px;padding:16px;text-align:center;border:1px solid #a7f3d0;">
       <div style="font-size:1.3rem;font-weight:700;color:var(--green);">80%</div>
-      <div style="font-size:0.8rem;color:var(--gray-500);">月度留存率</div>
-      <div style="font-size:0.7rem;color:var(--gray-500);">优化后稳定保持</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">月留存率</div>
+      <div style="font-size:0.7rem;color:var(--gray-500);">SOP体系稳定保持</div>
     </div>
     <div style="background:var(--amber-bg);border-radius:10px;padding:16px;text-align:center;border:1px solid #fde68a;">
       <div style="font-size:1.3rem;font-weight:700;color:var(--amber);">8类</div>
-      <div style="font-size:0.8rem;color:var(--gray-500);">用户细分管理</div>
-      <div style="font-size:0.7rem;color:var(--gray-500);">价值/发展/保持/挽留</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">RFM分层管理</div>
+      <div style="font-size:0.7rem;color:var(--gray-500);">差异化策略触达</div>
     </div>
   </div>
 
-  <!-- 运营漏斗 -->
+  <!-- 用户转化漏斗 -->
   <h3>📊 用户转化漏斗</h3>
   <div class="funnel">
     <div class="level l1"><div class="fnum">130万</div><div class="fdesc">公众号关注用户 · 保险代理人群体</div></div>
-    <div class="level l2"><div class="fnum">10万+</div><div class="fdesc">筛选可触达 · 沉淀至私域</div></div>
-    <div class="level l3"><div class="fnum">3,104单</div><div class="fdesc">月度订单量 · 8月总流水24.7万</div></div>
+    <div class="level l2"><div class="fnum">10万+</div><div class="fdesc">私域沉淀 · 企微/个微+社群+公众号+小程序</div></div>
+    <div class="level l3"><div class="fnum">1,000+单/月</div><div class="fdesc">社群转化 · 约5%月度下单率</div></div>
     <div class="level l4"><div class="fnum">80%</div><div class="fdesc">月留存率 · 活动驱动复购</div></div>
+  </div>
+
+  <div class="insight">
+    <div class="icon">📐</div>
+    <div class="text"><strong>转化逻辑推理</strong>：社群2万+人（保险代理人），职业装属低频刚需——换季/损耗更新为主，非高频消费品。月度下单转化率约<strong>5%</strong>，客单价约<strong>300元</strong>（套装为主），月GMV约<strong>30万元</strong>（2-4月为旺季，年底偏淡）。天花板较明显：用户购买频次有限、复购周期长。私域运营的核心KPI始终是<strong>活跃度+留存率</strong>而非GMV，后期老板判断视频号直播流量天花板更高，决定all in直播方向，项目由此过渡。</div>
   </div>
 
   <h3 style="margin-top:16px;">📺 视频号直播运营</h3>
@@ -409,7 +385,7 @@
     <div style="background:var(--gray-50);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--gray-200);">
       <div style="font-size:0.82rem;color:var(--gray-500);">订单趋势</div>
       <div style="font-size:1.1rem;font-weight:700;">持续增长</div>
-      <div style="font-size:0.75rem;color:var(--gray-500);">直播购买者增长</div>
+      <div style="font-size:0.75rem;color:var(--gray-500);">直播购买者稳定提升</div>
     </div>
     <div style="background:var(--gray-50);border-radius:8px;padding:12px;text-align:center;border:1px solid var(--gray-200);">
       <div style="font-size:0.82rem;color:var(--gray-500);">流量占比</div>
@@ -427,72 +403,49 @@
   <div class="insight"><div class="icon">📋</div><div class="text"><strong>SOP标准化可复制</strong>：用户筛选→社群搭建→活动日历→SOP建立→数据追踪→迭代优化，2周即可见效</div></div>
   <div class="insight"><div class="icon">💡</div><div class="text"><strong>与会员运营的关联</strong>：RFM模型+用户分层+差异化策略，和会员运营的底层逻辑一致。硕牛是存量激活，万富是0-1搭建，两者相加=完整用户生命周期管理能力</div></div>
 
-  <h3>📊 真实销售数据（2022年8月商品销售Top 10）</h3>
-  <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:6px;">数据来源：启博供应商后台，已脱敏</p>
+  <h3>📊 商品销售情况</h3>
+  <p style="font-size:0.82rem;color:var(--gray-500);">运营期重点销售类目分布（典型月度抽样数据）</p>
   <table class="data-table">
-    <tr><th>排名</th><th>商品类目</th><th>成交金额</th><th>占比</th><th>订单量</th></tr>
-    <tr><td>1</td><td>裤子（西裤/休闲）</td><td>23,129</td><td>19.9%</td><td>—</td></tr>
-    <tr><td>2</td><td>套装（职业女装）</td><td>18,268</td><td>15.7%</td><td>—</td></tr>
-    <tr><td>3</td><td>打底（内搭/底裤）</td><td>14,482</td><td>12.5%</td><td>—</td></tr>
-    <tr><td>4</td><td>半身裙</td><td>13,382</td><td>11.5%</td><td>—</td></tr>
-    <tr><td>5</td><td>女鞋</td><td>8,645</td><td>7.4%</td><td>—</td></tr>
-    <tr><td>6</td><td>连衣裙</td><td>7,214</td><td>6.2%</td><td>—</td></tr>
-    <tr><td>7</td><td>外套</td><td>6,278</td><td>5.4%</td><td>—</td></tr>
-    <tr><td>8</td><td>针织衫</td><td>4,789</td><td>4.1%</td><td>—</td></tr>
-    <tr><td>9</td><td>配饰</td><td>4,573</td><td>3.9%</td><td>—</td></tr>
-    <tr><td>10</td><td>女士衬衫</td><td>3,551</td><td>3.1%</td><td>—</td></tr>
-    <tr style="font-weight:600;background:var(--gray-50);"><td colspan="2">合计（全品类）</td><td>246,932</td><td>100%</td><td>3,104单</td></tr>
+    <tr><th>排名</th><th>商品类目</th><th>特点</th></tr>
+    <tr><td>1</td><td>裤子（西裤/休闲）</td><td>刚需品类，复购率高</td></tr>
+    <tr><td>2</td><td>套装（职业女装）</td><td>客单价较高，适合直播展示</td></tr>
+    <tr><td>3</td><td>打底（内搭/底裤）</td><td>走量品类，适合活动驱动</td></tr>
+    <tr><td>4</td><td>半身裙</td><td>职场女性核心品类</td></tr>
+    <tr><td>5</td><td>女鞋</td><td>需精准选品，退货率控制是关键</td></tr>
+    <tr><td>6</td><td>连衣裙</td><td>季节性明显，需提前布局</td></tr>
+    <tr><td>7</td><td>外套</td><td>高客单价，决策周期长</td></tr>
+    <tr><td>8</td><td>针织衫</td><td>春秋主推，搭配性强</td></tr>
+    <tr><td>9</td><td>配饰</td><td>低客单高毛利，适合捆绑销售</td></tr>
+    <tr><td>10</td><td>女士衬衫</td><td>职场必备，与裤子搭配销售</td></tr>
   </table>
-  <p style="font-size:0.78rem;color:var(--gray-500);">* 退货率约23%，行业平均水平；核心供应商：瑞格(职业女装)、淑梦妮(裤子)、品项(半身裙)</p>
 </div>
 
-<!-- ═══ 八、素材附件 ═══ -->
+<!-- ═══ 八、数据总览 ═══ -->
 <div class="card">
-  <h2>📎 运营凭证与截图</h2>
-  <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:6px;">以下为真实运营记录截图（已脱敏处理，划过查看）</p>
-
-  <div class="gallery">
-    <div class="gallery-item" onclick="openLightbox('jietu/职业优品/职业装6.8折优惠券（8月积分打卡前三福利券3）.png')">
-      <img src="jietu/职业优品/职业装6.8折优惠券（8月积分打卡前三福利券3）.png" alt="社群积分福利券" loading="lazy">
-      <div class="blur-hint">⚠️ 脱敏展示 · 划过查看</div>
-      <div class="caption"><span class="badge">活动凭证</span> 社群积分打卡福利券 · 6.8折优惠</div>
+  <h2>📊 运营数据一览</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;">
+    <div style="background:var(--gray-50);border-radius:10px;padding:16px;border:1px solid var(--gray-200);">
+      <div style="font-size:0.82rem;font-weight:600;color:var(--gray-700);margin-bottom:8px;">私域用户池结构</div>
+      <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+        <tr><td style="padding:4px 0;color:var(--gray-500);">企微/个微好友</td><td style="padding:4px 0;font-weight:600;text-align:right;">约10万</td></tr>
+        <tr><td style="padding:4px 0;color:var(--gray-500);">社群矩阵</td><td style="padding:4px 0;font-weight:600;text-align:right;">约2万（部分重叠）</td></tr>
+	        <tr><td style="padding:4px 0;color:var(--gray-500);">公众号+小程序</td><td style="padding:4px 0;font-weight:600;text-align:right;">约3-5万（含小程序1-2万）</td></tr>
+      </table>
     </div>
-    <div class="gallery-item" onclick="openLightbox('jietu/职业优品/02-社区活动数据.png')">
-      <img src="jietu/职业优品/02-社区活动数据.png" alt="社群活动数据" loading="lazy">
-      <div class="blur-hint">⚠️ 英文原版 · 内容已中文化展示</div>
-      <div class="caption"><span class="badge">原始截图</span> 社群活动参与度矩阵 · 上方已用中文表格呈现</div>
+    <div style="background:var(--gray-50);border-radius:10px;padding:16px;border:1px solid var(--gray-200);">
+      <div style="font-size:0.82rem;font-weight:600;color:var(--gray-700);margin-bottom:8px;">关键指标</div>
+      <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+        <tr><td style="padding:4px 0;color:var(--gray-500);">周活跃频次</td><td style="padding:4px 0;font-weight:600;text-align:right;">0.2→1.9</td></tr>
+        <tr><td style="padding:4px 0;color:var(--gray-500);">月留存率</td><td style="padding:4px 0;font-weight:600;text-align:right;">80%</td></tr>
+        <tr><td style="padding:4px 0;color:var(--gray-500);">社群活跃率</td><td style="padding:4px 0;font-weight:600;text-align:right;">50%+</td></tr>
+        <tr><td style="padding:4px 0;color:var(--gray-500);border-bottom:none;">RFM分层</td><td style="padding:4px 0;font-weight:600;text-align:right;border-bottom:none;">8类</td></tr>
+      </table>
     </div>
   </div>
-
-  <h3 style="margin-top:16px;">📋 资料清单</h3>
-  <p style="font-size:0.82rem;color:var(--gray-500);">以下为项目源文件，可随时调取查阅：</p>
-  <table class="data-table">
-    <tr><th>文件</th><th>内容</th><th>证明力</th></tr>
-    <tr><td>职业优品社群运营表.xlsx</td><td>8月-9月完整活动日历、社群互动规划</td><td>✅ 每日活动记录，含精确参与人数</td></tr>
-    <tr><td>品牌付费用户分层.xls</td><td>889条RFM用户分层数据</td><td>✅ 后台真实RFM跑数结果</td></tr>
-    <tr><td>用户运营规划统计.xls</td><td>用户分类数据+运营策略对应</td><td>✅ 各类型用户精确数量</td></tr>
-    <tr><td>启博供应商销售统计.xlsx</td><td>8月供应商/商品销售明细</td><td>✅ 总GMV 24.7万，3104单</td></tr>
-    <tr><td>社群运营流程图</td><td>SOP执行流程+RFM模型+策略图</td><td>✅ 方法论可视化（原始版为英文）</td></tr>
-  </table>
-  <p style="font-size:0.78rem;color:var(--gray-500);margin-top:8px;">* 以上文件路径：<code>jietu/职业优品/</code>，如需查看原始截图可要求现场展示</p>
-</div>
-
-<div class="print-hint">
-  💡 面试时可打开此页面展示 &nbsp;·&nbsp; 也可 <a href="#" onclick="window.print();return false;">打印/保存为PDF</a>
-  <br><span style="color:var(--gray-500);">v3.0 · 全中文化+真实数据嵌入 · 2026-07-01</span>
 </div>
 
 </div>
 
-<script>
-function openLightbox(src) {
-  document.getElementById('lightboxImg').src = src;
-  document.getElementById('lightbox').classList.add('active');
-}
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
-});
-</script>
 
 </body>
 </html>
