@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI驱动私域运营效能提升实践 · 作品展示</title>
+<style>
+  :root {
+    --primary: #0f172a;
+    --primary-light: #1e293b;
+    --accent: #0891b2;
+    --accent-light: #ecfeff;
+    --green: #059669;
+    --green-bg: #ecfdf5;
+    --amber: #d97706;
+    --amber-bg: #fffbeb;
+    --purple: #7c3aed;
+    --purple-bg: #f5f3ff;
+    --rose: #e11d48;
+    --rose-bg: #fff1f2;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: var(--gray-100);
+    color: var(--gray-900);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%);
+    color: white;
+    padding: 60px 24px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(8,145,178,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .hero-tags {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero-tags span {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ─── Stats Bar ─── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: -25px 16px 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 2;
+  }
+  .stats-bar .stat {
+    background: white;
+    padding: 20px 12px;
+    text-align: center;
+  }
+  .stats-bar .stat .num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stats-bar .stat .label {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  /* ─── Container ─── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+  }
+
+  /* ─── Cards ─── */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow-lg); }
+
+  .card h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 3px solid var(--accent);
+    color: var(--primary);
+  }
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 16px 0 8px;
+    color: var(--gray-700);
+  }
+
+  /* ─── Tags ─── */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .tag-blue { background: #dbeafe; color: #1d4ed8; }
+  .tag-green { background: #d1fae5; color: #065f46; }
+  .tag-amber { background: #fef3c7; color: #92400e; }
+  .tag-purple { background: #ede9fe; color: #5b21b6; }
+  .tag-rose { background: #ffe4e6; color: #9f1239; }
+
+  /* ─── Flow Diagram ─── */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+  }
+  .flow .node {
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #0f766e;
+    text-align: center;
+    min-width: 80px;
+  }
+  .flow .node.ai {
+    background: var(--purple-bg);
+    border-color: #c4b5fd;
+    color: var(--purple);
+  }
+  .flow .arrow {
+    font-size: 1.2rem;
+    color: var(--gray-300);
+    flex-shrink: 0;
+  }
+  .flow .node .sub {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* ─── Sub-flow detail ─── */
+  .subflow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .subflow .step {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+  }
+  .subflow .step .icon { font-size: 1.5rem; margin-bottom: 4px; }
+  .subflow .step .name { font-weight: 600; font-size: 0.88rem; color: var(--gray-700); }
+  .subflow .step .desc { font-size: 0.78rem; color: var(--gray-500); margin-top: 2px; }
+
+  /* ─── AI Scenario Cards ─── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 12px 0;
+  }
+  .scenario {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 18px;
+    background: var(--gray-50);
+    position: relative;
+  }
+  .scenario .rating {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 0.7rem;
+    color: var(--gray-500);
+  }
+  .scenario h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 6px; color: var(--primary); }
+  .scenario p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+
+  /* ─── Funnel ─── */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 0;
+  }
+  .funnel .level {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+  }
+  .funnel .level.l1 { background: #6366f1; max-width: 100%; }
+  .funnel .level.l2 { background: #818cf8; max-width: 78%; }
+  .funnel .level.l3 { background: #a5b4fc; max-width: 58%; color: #1e1b4b; }
+  .funnel .level.l4 { background: #c7d2fe; max-width: 45%; color: #1e1b4b; }
+  .funnel .level .fnum { font-weight: 700; }
+  .funnel .level .fdesc { font-weight: 400; opacity: 0.85; font-size: 0.78rem; }
+
+  /* ─── Table ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 12px 0;
+  }
+  .data-table th {
+    background: var(--gray-50);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--gray-700);
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-700);
+  }
+  .data-table tr:hover td { background: var(--gray-50); }
+
+  /* ─── Gallery ─── */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gallery-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-item .caption {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    color: var(--gray-700);
+    background: white;
+  }
+  .gallery-item .caption .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--accent-light);
+    color: #0f766e;
+    margin-right: 4px;
+  }
+
+  /* ─── Insights ─── */
+  .insight {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: var(--gray-50);
+    border-left: 3px solid var(--accent);
+  }
+  .insight .icon { font-size: 1.2rem; flex-shrink: 0; }
+  .insight .text { font-size: 0.88rem; color: var(--gray-700); }
+
+  .insight.hr {
+    border-left-color: var(--amber);
+    background: var(--amber-bg);
+  }
+
+  /* ─── Timeline ─── */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 16px 0 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-200);
+  }
+  .timeline .item {
+    position: relative;
+    padding: 0 0 20px 16px;
+  }
+  .timeline .item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid white;
+  }
+  .timeline .item:last-child { padding-bottom: 0; }
+  .timeline .item .tdate { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+  .timeline .item .ttitle { font-size: 0.92rem; font-weight: 600; color: var(--gray-700); }
+  .timeline .item .tdesc { font-size: 0.82rem; color: var(--gray-500); }
+
+  /* ─── HR Box ─── */
+  .hr-box {
+    background: var(--amber-bg);
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .hr-box .title { font-weight: 600; font-size: 0.85rem; color: #92400e; margin-bottom: 4px; }
+  .hr-box .content { font-size: 0.83rem; color: #78350f; line-height: 1.6; }
+
+  /* ─── Print ─── */
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+    .hero { padding: 30px 20px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stats-bar { margin-top: -25px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stats-bar .stat .num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .funnel .level { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .gallery-item { break-inside: avoid; }
+    .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.5rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); margin-left: 8px; margin-right: 8px; }
+    .stats-bar .stat { padding: 14px 8px; }
+    .stats-bar .stat .num { font-size: 1.3rem; }
+    .container { padding: 16px 8px 40px; }
+    .card { padding: 20px 16px; }
+    .gallery { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow .arrow { transform: rotate(90deg); }
+  }
+
+  /* ─── Lightbox ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    cursor: pointer;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+  .lightbox .close-hint {
+    position: absolute;
+    bottom: 20px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+  }
+
+  /* ─── Print hint ─── */
+  .print-hint {
+    text-align: center;
+    padding: 12px;
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    border-top: 1px solid var(--gray-200);
+    margin-top: 30px;
+  }
+  .print-hint a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ─── Lightbox ─── -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightboxImg" src="" alt="">
+  <div class="close-hint">点击任意位置关闭</div>
+</div>
+
+<!-- ─── Hero ─── -->
+<section class="hero">
+  <h1>AI驱动私域运营效能提升实践</h1>
+  <div class="subtitle">知识付费赛道 · 个人发起项目 · 2026年1月—5月</div>
+  <div class="hero-tags">
+    <span>🤖 AI深度应用</span>
+    <span>📱 私域全链路</span>
+    <span>👥 3人非全职团队</span>
+    <span>📕 小红书内容驱动</span>
+    <span>🔄 50%转化率</span>
+  </div>
+</section>
+
+<!-- ─── Stats ─── -->
+<div class="stats-bar">
+  <div class="stat"><div class="num">1万+</div><div class="label">微信私域沉淀用户</div></div>
+  <div class="stat"><div class="num">50%</div><div class="label">渠道引流转化率</div></div>
+  <div class="stat"><div class="num">5,939+1,613</div><div class="label">小红书双账号粉丝</div></div>
+  <div class="stat"><div class="num">1.6万份</div><div class="label">累计课件销量</div></div>
+  <div class="stat"><div class="num">4大</div><div class="label">AI深度应用场景</div></div>
+</div>
+
+<div class="container">
+
+<!-- ─── 项目背景 ─── -->
+<div class="card">
+  <h2>一、项目背景：为什么做这个？</h2>
+  <div class="timeline">
+    <div class="item">
+      <div class="tdate">2025年10月</div>
+      <div class="ttitle">万富传媒离职</div>
+      <div class="tdesc">公司业务方向调整，会员运营部门有始有终收尾关闭</div>
+    </div>
+    <div class="item">
+      <div class="tdate">2025.11 — 12月</div>
+      <div class="ttitle">案例梳理 + AI工具学习</div>
+      <div class="tdesc">系统整理前几份工作的案例文档；集中学习Claude/ChatGPT等AI工具在运营中的应用</div>
+    </div>
+    <div class="item">
+      <div class="tdate">2026年1月</div>
+      <div class="ttitle">项目启动</div>
+      <div class="tdesc">3人小组成立，选品确定（PPT课件/备考资料），小红书账号上线</div>
+    </div>
+    <div class="item">
+      <div class="tdate">2026.1 — 5月</div>
+      <div class="ttitle">全链路运营 + AI提效验证</div>
+      <div class="tdesc">内容生产→多平台分发→私域承接→转化交付，4大AI场景落地</div>
+    </div>
+    <div class="item">
+      <div class="tdate">2026年5月</div>
+      <div class="ttitle">项目转入朋友兼职运营</div>
+      <div class="tdesc">核心验证完成，我开始集中求职</div>
+    </div>
+  </div>
+  <div class="hr-box">
+    <div class="title">🎯 HR视角</div>
+    <div class="content">空窗期最怕什么都不做。这个项目说明你在离职后没有躺平，而是主动学习AI、验证方法论。更重要的是——你不是"学过AI"，而是"用AI做出了实际结果"。</div>
+  </div>
+</div>
+
+<!-- ─── 运营全链路 ─── -->
+<div class="card">
+  <h2>二、运营全链路拆解</h2>
+  <div style="text-align:center;font-size:0.85rem;color:var(--gray-500);margin-bottom:10px;">AI驱动私域运营全链路</div>
+
+  <div class="flow">
+    <div class="node ai">内容生产<br><span class="sub">🤖 AI赋能</span></div>
+    <span class="arrow">→</span>
+    <div class="node">平台分发<br><span class="sub">多账号矩阵</span></div>
+    <span class="arrow">→</span>
+    <div class="node">私域承接<br><span class="sub">个微标签分层</span></div>
+    <span class="arrow">→</span>
+    <div class="node">转化交付<br><span class="sub">课件产品交付</span></div>
+  </div>
+
+  <h3 style="margin-top:20px;">各环节详情</h3>
+  <div class="subflow">
+    <div class="step">
+      <div class="icon">📝</div>
+      <div class="name">内容生产</div>
+      <div class="desc">护理/大学生PPT课件，AI辅助框架→人工优化</div>
+    </div>
+    <div class="step">
+      <div class="icon">📱</div>
+      <div class="name">小红书分发</div>
+      <div class="desc">双账号运营，内容钩子引导添加微信</div>
+    </div>
+    <div class="step">
+      <div class="icon">💬</div>
+      <div class="name">微信承接</div>
+      <div class="desc">1万+用户沉淀，1352人已打标签分层</div>
+    </div>
+    <div class="step">
+      <div class="icon">💰</div>
+      <div class="name">转化交付</div>
+      <div class="desc">50%转化率，累计1.6万份课件交付</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── AI深度应用 ─── -->
+<div class="card">
+  <h2>三、AI深度应用：4大场景</h2>
+  <p style="font-size:0.88rem;color:var(--gray-500);margin-bottom:14px;">本项目的核心价值——证明AI在真实运营场景中是可用的、提效的、可复制的</p>
+
+  <div class="scenario-grid">
+    <div class="scenario">
+      <span class="rating">⭐⭐⭐⭐⭐</span>
+      <h4>① 内容批量自动化生成</h4>
+      <p>AI代码化批处理实现PPT封面统一风格批量生成，替代人工逐份制作。<strong>效率提升10倍+</strong></p>
+      <div style="margin-top:8px;"><span class="tag tag-purple">可迁移：电商详情页/活动海报</span></div>
+    </div>
+    <div class="scenario">
+      <span class="rating">⭐⭐⭐⭐</span>
+      <h4>② 用户分层与话术策略</h4>
+      <p>AI设计分层框架（大学生/护理/教师），制定差异化话术模板与触达节奏</p>
+      <div style="margin-top:8px;"><span class="tag tag-blue">AI出策略，人做判断</span></div>
+    </div>
+    <div class="scenario">
+      <span class="rating">⭐⭐⭐⭐</span>
+      <h4>③ 营销话术批量生成</h4>
+      <p>Claude/ChatGPT产出全链路话术：欢迎语→需求探询→产品介绍→异议处理→催单→售后</p>
+      <div style="margin-top:8px;"><span class="tag tag-green">从小时级降到分钟级</span></div>
+    </div>
+    <div class="scenario">
+      <span class="rating">⭐⭐⭐</span>
+      <h4>④ 半自动化数据看板</h4>
+      <p>飞书多维表+AI自动生成数据洞察摘要与优化建议，替代手动写周报</p>
+      <div style="margin-top:8px;"><span class="tag tag-amber">AI替代重复劳动</span></div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="icon">💡</div>
+    <div class="text"><strong>核心原则</strong>：AI负责策略和内容输出，人负责执行判断。不是所有环节都需要AI，也不是AI能做所有环节。</div>
+  </div>
+</div>
+
+<!-- ─── 转化漏斗 ─── -->
+<div class="card">
+  <h2>四、用户转化漏斗</h2>
+
+  <div class="funnel">
+    <div class="level l1">
+      <div class="fnum">7,552</div>
+      <div class="fdesc">公域曝光 · 小红书双账号粉丝（纯自然流量）</div>
+    </div>
+    <div class="level l2">
+      <div class="fnum">1万+</div>
+      <div class="fdesc">添加微信 · 累计私域沉淀用户</div>
+    </div>
+    <div class="level l3">
+      <div class="fnum">1,352人</div>
+      <div class="fdesc">已打标签分层管理 · 进入精细化运营</div>
+    </div>
+    <div class="level l4">
+      <div class="fnum">50%转化率</div>
+      <div class="fdesc">渠道引流→购买转化</div>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:0.82rem;color:var(--gray-500);margin-top:6px;">行业平均私域转化率15-30%，50%反映内容钩子精准度+SOP有效性</p>
+</div>
+
+<!-- ─── 核心认知 ─── -->
+<div class="card">
+  <h2>五、项目复盘与认知沉淀</h2>
+
+  <div class="insight">
+    <div class="icon">✅</div>
+    <div class="text"><strong>小团队+AI是可行的</strong>：3人非全职小组在AI辅助下覆盖全链路。AI并非替代策略思考，而是将执行层效率大幅提升。</div>
+  </div>
+  <div class="insight">
+    <div class="icon">🔄</div>
+    <div class="text"><strong>私域方法论可跨行业迁移</strong>：会员分层、标签体系、SOP标准化等方法论在知识付费场景同样有效。</div>
+  </div>
+  <div class="insight">
+    <div class="icon">🎯</div>
+    <div class="text"><strong>AI应用需要场景化</strong>：AI的价值在于找到运营流程中重复性高、规则明确的环节，将其自动化。</div>
+  </div>
+
+  <h3 style="margin-top:20px;">诚实展示：局限性说明</h3>
+  <p style="font-size:0.85rem;color:var(--gray-500);">这是一个小规模验证项目，不是商业化规模运营。但这恰恰是其价值所在——在最受限的条件下，通过AI工具撬动了可观的运营产出。</p>
+  <table class="data-table">
+    <tr><th>局限</th><th>实际情况</th><th>企业级放大效应</th></tr>
+    <tr><td>团队</td><td>3人均非全职，投入时间有限</td><td>全职团队 → 效率翻倍</td></tr>
+    <tr><td>预算</td><td>零投流预算，纯自然增长</td><td>投流加持 → 增速放大</td></tr>
+    <tr><td>工具</td><td>微信个微无API，手动分层</td><td>SCRM工具 → 自动化运营</td></tr>
+  </table>
+</div>
+
+<!-- ─── 截图展示 ─── -->
+<div class="card">
+  <h2>📸 截图附件：3张截图证明</h2>
+  <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:6px;">点击截图可放大查看</p>
+
+  <div class="gallery">
+    <div class="gallery-item" onclick="openLightbox('jietu/氟西汀PPT%20小红书账号店铺.jpg')">
+      <img src="jietu/氟西汀PPT%20小红书账号店铺.jpg" alt="氟西汀PPT小红书账号" loading="lazy">
+      <div class="caption">
+        <span class="badge">内容生产+分发</span>
+        <strong>「氟西汀|PPT」</strong> — 5,939粉丝 · 已售1.6万份
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('jietu/苏慕遮小红书账号.jpg')">
+      <img src="jietu/苏慕遮小红书账号.jpg" alt="苏慕遮小红书账号" loading="lazy">
+      <div class="caption">
+        <span class="badge">多账号矩阵</span>
+        <strong>「苏慕遮」</strong> — 1,613粉丝 · 大学生备考课件
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('jietu/微信小号添加标签人数（知识付费项目）.jpg')">
+      <img src="jietu/微信小号添加标签人数（知识付费项目）.jpg" alt="微信私域标签管理" loading="lazy">
+      <div class="caption">
+        <span class="badge">私域分层运营</span>
+        <strong>微信标签管理</strong> — 1,352人已打标签分层
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <table class="data-table">
+      <tr><th>截图</th><th>证明力</th></tr>
+      <tr><td>① 氟西汀|PPT 小红书店铺</td><td>✅ 多平台内容分发能力 ✅ 课件产品市场需求验证 ✅ 自然流量增长能力</td></tr>
+      <tr><td>② 苏慕遮 小红书账号</td><td>✅ 多账号矩阵运营 ✅ 不同人群定位的内容差异化</td></tr>
+      <tr><td>③ 微信标签管理</td><td>✅ 私域用户真实沉淀 ✅ 用户分层管理执行 ✅ 标签分类逻辑清晰</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ─── 面试话术 ─── -->
+<div class="card">
+  <h2>六、面试官追问应对</h2>
+
+  <div class="hr-box">
+    <div class="title">Q1："空窗期8个月在做什么？"</div>
+    <div class="content"><strong>回答思路</strong>：三条线——① 案例整理（专业沉淀）② AI学习（技能升级）③ 这个项目（实战验证）。展示空窗期仍有产出。</div>
+  </div>
+
+  <div class="hr-box">
+    <div class="title">Q2："这个项目规模这么小，能说明什么？"</div>
+    <div class="content"><strong>回答思路</strong>：小规模恰恰是亮点——最受限条件下验证了方法论和AI提效。"如果给我企业级资源，我能把同样的事情做得更大。"</div>
+  </div>
+
+  <div class="hr-box">
+    <div class="title">Q3："你会用AI吗？怎么用的？"</div>
+    <div class="content"><strong>回答思路</strong>：加分题！直接展示4个AI应用场景，说明你不仅"会"用AI，而且已经"在用"AI做实际产出。</div>
+  </div>
+
+  <div class="hr-box">
+    <div class="title">Q4："自己做项目和在公司做运营有什么区别？"</div>
+    <div class="content"><strong>回答思路</strong>：自己做是"全链路+结果导向"，在公司做是"体系化+规模效应"。跑过全链路更理解每个环节痛点，回到体系能更精准地找到优化点。</div>
+  </div>
+</div>
+
+<!-- ─── 可迁移能力 ─── -->
+<div class="card">
+  <h2>七、可迁移的企业级应用</h2>
+  <table class="data-table">
+    <tr><th>运营场景</th><th>项目验证</th><th>企业级应用</th></tr>
+    <tr><td>📝 内容运营</td><td>AI批量生成PPT封面</td><td>商品详情页文案 / 活动海报 / 社群推送</td></tr>
+    <tr><td>💬 用户触达</td><td>AI生成个性化话术</td><td>标签化AI触达 + 自动化时机决策</td></tr>
+    <tr><td>📊 数据分析</td><td>AI半自动生成周报</td><td>AI解读数据 + 自然语言摘要输出</td></tr>
+    <tr><td>🎧 客服效率</td><td>AI辅助话术模板</td><td>AI常见问题应答 + 降低人工重复劳动</td></tr>
+  </table>
+</div>
+
+<div class="print-hint">
+  💡 面试时可打开此页面展示 &nbsp;·&nbsp; 也可 <a href="#" onclick="window.print();return false;">打印/保存为PDF</a> &nbsp;·&nbsp;
+  <span style="color:var(--gray-500);">v1.0 · 2026-07-01</span>
+</div>
+
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+});
+</script>
+
+</body>
+</html>
