@@ -419,48 +419,69 @@
   /* ─── Print ─── */
   @media print {
     body { background: white; margin: 0; padding: 0; }
-    .container { max-width: 100%; padding: 8px 16px 10px; margin: 0 auto; }
-    .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; page-break-inside: avoid; margin-bottom: 14px; padding: 16px 16px; }
-    .card h2 { font-size: 1.15rem; }
-    .hero { padding: 22px 20px 18px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .hero h1 { font-size: 1.6rem; }
-    .hero .subtitle { font-size: 0.9rem; margin-bottom: 18px; }
-    .stats-bar { margin-top: -20px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .stats-bar .stat { padding: 12px 8px; }
-    .stats-bar .stat .num { font-size: 1.4rem; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .stats-bar .stat .label { font-size: 0.7rem; }
-    .funnel .level { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .funnel .level { padding: 8px 12px; }
-    .funnel .level .fnum { font-size: 0.95rem; }
+    .container { max-width: 680px; padding: 1px 0 4px; margin: 0 auto; }
+    .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; page-break-inside: avoid; margin-bottom: 5px; padding: 8px 12px; }
+    .card h2 { font-size: 1rem; margin-bottom: 5px; padding-left: 10px; }
+    .card h3 { font-size: 0.88rem; margin: 6px 0 3px; }
+    /* ─── Hero 压缩（让项目背景上移填充页面） ─── */
+    .hero { padding: 6px 16px 6px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hero h1 { font-size: 1.15rem; margin-bottom: 1px; }
+    .hero .subtitle { font-size: 0.7rem; margin-bottom: 4px; }
+    .hero-tags span { padding: 1px 6px; font-size: 0.6rem; }
+    .stats-bar { margin-top: -8px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stats-bar .stat { padding: 4px 3px; }
+    .stats-bar .stat .num { font-size: 0.95rem; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stats-bar .stat .label { font-size: 0.55rem; }
+    /* ─── 项目背景放大（填充第1页底部留白） ─── */
+    .timeline { padding-left: 18px; margin: 6px 0 0; }
+    .timeline .item { padding: 0 0 8px 14px; }
+    .timeline .item .tdate { font-size: 0.72rem; }
+    .timeline .item .ttitle { font-size: 0.88rem; }
+    .timeline .item .tdesc { font-size: 0.82rem; line-height: 1.5; }
+    /* ─── 漏斗 ─── */
+    .funnel .level { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 5px 8px; }
+    .funnel .level .fnum { font-size: 0.82rem; }
+    .funnel .level .fdesc { font-size: 0.65rem; }
+    .funnel { padding: 4px 0; gap: 2px; }
+    /* ─── 截图 ─── */
     .gallery-item { break-inside: avoid; page-break-inside: avoid; }
-    .gallery-item img { filter: blur(0) !important; }
+    .gallery-item img { filter: blur(0) !important; height: auto !important; max-height: 200px; object-fit: contain; }
     .blur-hint { display: none !important; }
-    .gallery { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .scenario-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .scenario { padding: 12px; }
-    .scenario h4 { font-size: 0.85rem; }
-    .scenario p { font-size: 0.78rem; }
+    .gallery { grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0; }
+    .gallery-item .caption { padding: 4px 6px; font-size: 0.72rem; }
+    /* ─── AI场景 ─── */
+    .scenario-grid { grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0; }
+    .scenario { padding: 7px; }
+    .scenario h4 { font-size: 0.82rem; margin-bottom: 2px; }
+    .scenario p { font-size: 0.74rem; }
+    .scenario .rating { font-size: 0.55rem; top: 3px; right: 5px; }
+    .scenario .tag { font-size: 0.6rem; padding: 1px 5px; }
+    details { margin: 4px 0 !important; }
     details summary { display: none; }
-    details > div { display: block !important; }
-    .flow { flex-direction: row; flex-wrap: nowrap; }
-    .flow .node { padding: 6px 10px; font-size: 0.78rem; min-width: 60px; }
-    .flow .arrow { font-size: 1rem; }
-    .subflow { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .subflow .step { padding: 8px; }
-    .subflow .step .name { font-size: 0.78rem; }
-    .subflow .step .desc { font-size: 0.72rem; }
-    .data-table { font-size: 0.78rem; }
-    .data-table th, .data-table td { padding: 6px 8px; }
-    .insight { padding: 10px 12px; margin: 6px 0; }
-    .insight .text { font-size: 0.8rem; }
-    .timeline .item { padding: 0 0 12px 14px; }
-    .timeline .item .tdesc { font-size: 0.78rem; }
-    .timeline .item .ttitle { font-size: 0.85rem; }
-    .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    details > div { display: block !important; margin-top: 2px !important; }
+    /* ─── 第2页：流程图 + 各环节方框放大 ─── */
+    .flow { flex-direction: row; flex-wrap: nowrap; padding: 6px 0; }
+    .flow .node { padding: 7px 14px; font-size: 0.9rem; min-width: 60px; border-radius: 8px; }
+    .flow .node .sub { font-size: 0.7rem; margin-top: 3px; }
+    .flow .arrow { font-size: 1rem; padding: 0 4px; }
+    .subflow { grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0; }
+    .subflow .step { padding: 8px; border-radius: 8px; }
+    .subflow .step .icon { font-size: 1.3rem; margin-bottom: 3px; }
+    .subflow .step .name { font-size: 0.85rem; }
+    .subflow .step .desc { font-size: 0.75rem; line-height: 1.4; }
+    /* ─── 表格 ─── */
+    .data-table { font-size: 0.7rem; margin: 4px 0; }
+    .data-table th, .data-table td { padding: 3px 6px; }
+    /* ─── 洞察框 ─── */
+    .insight { padding: 5px 10px; margin: 3px 0; }
+    .insight .text { font-size: 0.78rem; }
+    .insight .icon { font-size: 0.9rem; }
+    .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 0.65rem; padding: 2px 8px; }
     .lightbox { display: none !important; }
     .print-hint, .print-hint * { display: none !important; }
+    p { font-size: 0.78rem !important; margin-bottom: 3px !important; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    @page { margin: 10mm 8mm; size: A4; }
+    @page { margin: 5mm 6mm; size: A4; }
   }
 
   /* ─── Responsive ─── */
@@ -553,14 +574,9 @@
   <h2>一、项目背景：为什么做这个？</h2>
   <div class="timeline">
     <div class="item">
-      <div class="tdate">2025年10—12月</div>
-      <div class="ttitle">发现手工PPT制作痛点 + AI工具学习</div>
-      <div class="tdesc">了解到有朋友在做PPT课件，纯手工制作，产出不错但每份耗时3-4小时，效率提升空间大。同步集中学习Claude/ChatGPT等AI工具在内容生产中的应用</div>
-    </div>
-    <div class="item">
-      <div class="tdate">2026年1月</div>
-      <div class="ttitle">项目启动 + AI验证</div>
-      <div class="tdesc">3人小组成立，选品确定（PPT课件/备考资料），小红书账号上线，AI辅助内容生产试跑</div>
+      <div class="tdate">2025年12月—2026年1月</div>
+      <div class="ttitle">发现手工PPT痛点 → 项目启动</div>
+      <div class="tdesc">了解到有朋友在做PPT课件，纯手工制作效率低，有了用AI提效的想法。12月集中学习Claude/ChatGPT，1月正式3人组队、选品确定，基于已有小红书账号将AI融入内容生产流程</div>
     </div>
     <div class="item">
       <div class="tdate">2026.1 — 5月</div>
@@ -612,8 +628,9 @@
       <div class="name">转化交付</div>
       <div class="desc">50%转化率，累计2万+份课件交付（跨双产品线）</div>
     </div>
+  </div>
   <!-- 抖音/B站备注 -->
-  <p style="font-size:0.8rem;color:var(--gray-500);margin-top:4px;font-style:italic;">注：同步在抖音/B站发布内容引流，但账号大部分被限流/封号，未列入截图展示</p>
+  <p style="font-size:0.8rem;color:var(--gray-500);margin-top:6px;font-style:italic;">注：同步在抖音/B站发布内容引流，但账号大部分被限流/封号，未列入截图展示</p>
 </div>
 
 <div class="card">
@@ -647,22 +664,23 @@
     </div>
   </div>
 
-  <details style="margin:14px 0 8px;cursor:pointer;">
-    <summary style="font-size:0.88rem;font-weight:600;color:var(--accent);">📊 点击展开：飞书多维表 + AI洞察示例（真实周报数据）</summary>
+  <details open style="margin:14px 0 8px;cursor:pointer;">
+    <summary style="font-size:0.88rem;font-weight:600;color:var(--accent);">📊 飞书多维表模板 + AI洞察示例</summary>
     <div style="margin-top:12px;overflow-x:auto;">
+      <p style="font-size:0.78rem;color:var(--gray-500);margin-bottom:8px;font-style:italic;">以下为多维表结构模板，实际数据按周录入后AI自动生成洞察</p>
       <table class="data-table">
         <tr><th>周次</th><th>渠道</th><th>笔记数</th><th>曝光量</th><th>新增好友</th><th>转化数</th><th>转化率</th></tr>
-        <tr><td>W1</td><td>小红书-护理号</td><td>7</td><td>2,350</td><td>186</td><td>93</td><td>50.0%</td></tr>
-        <tr><td>W1</td><td>小红书-大学号</td><td>5</td><td>1,780</td><td>112</td><td>56</td><td>50.0%</td></tr>
-        <tr><td>W2</td><td>小红书-护理号</td><td>8</td><td>2,880</td><td>224</td><td>112</td><td>50.0%</td></tr>
-        <tr><td>W2</td><td>小红书-大学号</td><td>6</td><td>2,010</td><td>138</td><td>69</td><td>50.0%</td></tr>
-        <tr><td>W3</td><td>小红书-护理号</td><td>7</td><td>3,120</td><td>198</td><td>99</td><td>50.0%</td></tr>
-        <tr><td>W3</td><td>小红书-大学号</td><td>6</td><td>2,450</td><td>164</td><td>82</td><td>50.0%</td></tr>
+        <tr><td>W1</td><td>小红书-护理号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>W1</td><td>小红书-大学号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>W2</td><td>小红书-护理号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>W2</td><td>小红书-大学号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>W3</td><td>小红书-护理号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>W3</td><td>小红书-大学号</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
         <tr style="background:#f0fdf4;"><td colspan="7" style="padding:10px 14px;">
-          <strong>🤖 AI自动生成·本周数据洞察</strong><br><br>
-          <strong>📈 趋势判断：</strong>护理号曝光量连续3周递增（2,350→2,880→3,120），周均增速15%，"护理PPT"长尾关键词排名持续上升。大学号曝光量同样稳步增长，但增速略低于护理号。<br><br>
-          <strong>🎯 转化分析：</strong>两个账号转化率稳定维持在50%，说明内容钩子精准——用户因课件需求添加微信后购买意愿强，SOP话术有效。建议关注后续是否出现转化疲劳。<br><br>
-          <strong>⚡ 优化建议：</strong>① 大学号周三发布的笔记互动率比周五高35%，建议将大学号核心内容调整至周三发布；② 护理号"无菌操作"系列笔记曝光量是均值的2.1倍，可扩展为专题连载；③ 两个账号周末流量下降约22%，建议周末发布互动型轻内容维持活跃度。
+          <strong>🤖 AI自动生成·本周数据洞察（示例）</strong><br><br>
+          <strong>📈 趋势判断：</strong>对比上周数据，两个账号曝光量变化趋势如何？哪个账号增长更快？是否有爆款笔记带动流量？<br><br>
+          <strong>🎯 转化分析：</strong>本周转化率与上周对比，哪些渠道转化率提升/下降？是否存在转化疲劳迹象？<br><br>
+          <strong>⚡ 优化建议：</strong>① 基于笔记互动率数据，建议调整发布时间与内容类型；② 高曝光笔记可扩展为专题连载；③ 低转化环节需优化话术或钩子设计。
         </td></tr>
       </table>
     </div>
@@ -729,7 +747,7 @@
 
 <!-- ─── 截图展示 ─── -->
 <div class="card">
-  <h2>📸 实拍截图：3张现场截图</h2>
+  <h2>📸 部分截图</h2>
   <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:6px;">点击截图可放大查看</p>
 
   <div class="gallery">
