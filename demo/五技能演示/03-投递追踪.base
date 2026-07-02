@@ -22,6 +22,9 @@ properties:
 views:
   - type: table
     name: 全部投递
+    groupBy:
+      property: formula.days_since_applied
+      direction: ASC
     order:
       - company
       - position
