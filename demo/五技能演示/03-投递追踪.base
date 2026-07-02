@@ -14,11 +14,13 @@ properties:
   applied_date:
     displayName: 投递日期
   formula.days_since_applied:
-    displayName: 等待天数
+    displayName: 等待
   match_level:
-    displayName: 匹配等级
+    displayName: 等级
   source_platform:
     displayName: 来源
+  salary:
+    displayName: 薪资
 views:
   - type: table
     name: 全部投递
@@ -26,13 +28,14 @@ views:
       property: formula.days_since_applied
       direction: ASC
     order:
+      - status
       - company
       - position
-      - status
-      - formula.days_since_applied
+      - salary
       - match_level
       - source_platform
       - applied_date
+      - formula.days_since_applied
     sort:
       - property: match_level
         direction: DESC
@@ -47,6 +50,9 @@ views:
       direction: ASC
     order:
       - company
+      - position
+      - salary
+      - match_level
       - formula.days_since_applied
       - status
     summaries:
