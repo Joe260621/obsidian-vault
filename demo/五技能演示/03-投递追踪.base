@@ -4,6 +4,7 @@ filters:
     - file.ext == "md"
 formulas:
   days_since_applied: if(applied_date, (today() - date(applied_date)).days, "")
+  iced_at: if(status = "已追发话术" and days_since_applied > 1, "⏰ 超1天·放弃跟进", if(status = "已读未回" and days_since_applied > 3, "⏰ 超3天·放弃跟进", ""))
 properties:
   status:
     displayName: 状态
@@ -15,6 +16,8 @@ properties:
     displayName: 投递日期
   formula.days_since_applied:
     displayName: 等待
+  formula.iced_at:
+    displayName: 跟进判定
   match_level:
     displayName: 等级
   source_platform:
@@ -36,6 +39,7 @@ views:
       - source_platform
       - applied_date
       - formula.days_since_applied
+      - formula.iced_at
     sort:
       - property: match_level
         direction: DESC
@@ -45,6 +49,8 @@ views:
       and:
         - status != "已拒绝"
         - status != "已入职"
+        - formula.iced_at != "⏰ 超1天·放弃跟进"
+        - formula.iced_at != "⏰ 超3天·放弃跟进"
     groupBy:
       property: status
       direction: ASC
@@ -55,5 +61,6 @@ views:
       - match_level
       - formula.days_since_applied
       - status
+      - formula.iced_at
     summaries:
       formula.days_since_applied: Average
